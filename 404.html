@@ -1,14 +1,5 @@
 <html>
 
-<h3>404 ERROR</h3>
-
-<img border="7" src="dontpanic.jpg" width="304" height="228">
-
-<p>Hello this is my custom 404 page. Sorry for the inconvenience have a random fact: 
-  <a href = "http://en.wikipedia.org/wiki/Special:Randompage" target="_blank">Random Wikipedia Page!</a> </p>
-
-<p>Or go back to my home page: <a href = "http://sia.github.io">sia.github.io</a> </p>
-
 <head>
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
@@ -20,6 +11,19 @@
 
 
 <body>
+
+<div id="404text" style="z-index: 2; position: absolute; left:100px; top:100px">
+  <!--<h3>404 ERROR</h3>-->
+<p>Hello this is my custom 404 page. Sorry for the inconvenience have a random fact: 
+  <a href = "http://en.wikipedia.org/wiki/Special:Randompage" target="_blank">Random Wikipedia Page!</a> </p>
+
+
+<img border="7" src="dontpanic.jpg" width="304" height="228">
+
+<p>Or go back to my home page: <a href = "http://sia.github.io">sia.github.io</a> </p>
+</div>
+
+
 <script src="js/Three.js"></script>
 <script src="js/Detector.js"></script>
 <script src="js/Stats.js"></script>
@@ -50,10 +54,10 @@ function init()
 {
   scene = new THREE.Scene();
 
-  //var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
-  var SCREEN_WIDTH = 650, SCREEN_HEIGHT = 650;	
+  var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
+  //var SCREEN_WIDTH = 650, SCREEN_HEIGHT = 650;	
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
-  camera = new THREE.PerspectiveCamera();
+  camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
   // the camera defaults to position (0,0,0)
   // 	so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin
@@ -82,7 +86,7 @@ function init()
   // automatically resize renderer
 
   //WEIRD ISSUE ASDFASDFASDFSAFDASDFASDFASF!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  //THREEx.WindowResize(renderer, camera);
+  THREEx.WindowResize(renderer, camera);
 
   // toggle full-screen on given key press
   //THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
