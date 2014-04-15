@@ -1,5 +1,4 @@
 <html>
-
 <h1>HACK RU PROJECT:</h1>
 
 <p>ever heard of <a href = "http://www.nidhogggame.com/">nidhogg</a>? </br>welcome to jormungandr!</p>
@@ -29,7 +28,6 @@
 
 <div id="ThreeJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
 <script>
-
 //main
 // standard global variables
 var container, scene, camera, renderer, controls, stats;
@@ -148,23 +146,25 @@ function init()
   scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
 
   //cust
-        var faceColorMaterial = new THREE.MeshNormalMaterial( 
-	{ color: 0xffffff, vertexColors: THREE.FaceColors } );
+        var faceColorMaterial = new THREE.MeshBasicMaterial( 
+	{transparent: true, opacity: 0.65,
+         color: 0xffffff, vertexColors: THREE.FaceColors } );
+
 	
-	var sphereGeometry = new THREE.SphereGeometry( 80, 32, 16 );
-	for ( var i = 0; i < sphereGeometry.faces.length; i++ ) 
+	var cubeGeometry = new THREE.CubeGeometry( 80, 160, 80);
+	for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
 	{
-		face = sphereGeometry.faces[ i ];	
-		face.color.setRGB( 0, 0, 0.8 * Math.random() + 0.2 );		
+		face = cubeGeometry.faces[ i ];	
+		face.color.setRGB( 1, 0, 0 * Math.random() + 0.6 );		
 	}
-	var sphere = new THREE.Mesh( sphereGeometry, faceColorMaterial );
-	sphere.position.set(0, 0, 0);
+	var clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
+	clickCube.position.set(0, 0, 0);
 
-        sphere.userData = { URL: "http://google.com" };
+        clickCube.userData = { URL: "http://google.com" };
 
-	scene.add(sphere);
+	scene.add(clickCube);
 	
-	targets.push(sphere);
+	targets.push(clickCube);
         // initialize object to perform world/screen calculations
 	projector = new THREE.Projector();
 	
