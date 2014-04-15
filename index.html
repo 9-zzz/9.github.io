@@ -10,19 +10,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-
 </head>
-
 
 <body>
 
 <div id="HtmlText" style="z-index: 2; position: absolute; left:100px; top:100px">
   <h1>HACK RU PROJECT:</h1>
-
   <p>Ever heard of <a href = "http://www.nidhogggame.com/" target="_blank">Nidhogg</a>? </br>Welcome to Jormungandr!</p>
-
   <p>Play Jormungandr: <a href = "http://sia.github.io/jormungandr/jormlite">jormungandr!(lite version, no wiimote or webcam usage)</a> </p>
-
   <p>View Jormungandr's code: <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr" target="_blank">code</a> </p>
 </div>
 
@@ -43,7 +38,9 @@ var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
 
 //global variables
-var cube1, sphere1, sphere2, sphere3;
+var sphere3;
+var sphereSize = 0.25;
+var cubeSize = 0.25;
 var userData;
 
 var targets = [];
@@ -114,46 +111,21 @@ function init()
 
   // create a set of coordinate axes to help orient user
   //    specify length in pixels in each direction
-  var axes = new THREE.AxisHelper(100);
+  var axes = new THREE.AxisHelper(500);
   //scene.add( axes );
 
-  cube1 = new THREE.Mesh(
-      new THREE.CubeGeometry(38, 38, 38), 
-      new THREE.MeshNormalMaterial({transparent: true, opacity: 0.45,}));
-
-  cube1.scale.set(5,5,5);
-  //cube1.position.set(0,2350,-950);
-  //scene.add(cube1);
-
-  sphere1 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
-      new THREE.MeshNormalMaterial({
-transparent: true, opacity: 0.35,
-wireframe:true}));
-
-  sphere1.scale.set(15,15,15);
-  //scene.add(sphere1);
-
-  sphere2 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
-      new THREE.MeshNormalMaterial({
-transparent: true, opacity: 0.35,
-wireframe:true}));
-
-  sphere2.scale.set(52,52,52);
-  //scene.add(sphere2);
-
+  //MESHES
   sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
       new THREE.MeshNormalMaterial({
-transparent: true, opacity: 0.35,
+transparent: true, opacity: 0,
 wireframe:true}));
 
-  sphere3.scale.set(52,52,52);
   scene.add(sphere3);
-
 
   // fog must be added to scene before first render
   scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
 
-  //cust
+  //cust clickCube
   var faceColorMaterial = new THREE.MeshBasicMaterial( 
       {transparent: true, opacity: 0.65,
 color: 0xffffff, vertexColors: THREE.FaceColors } );
@@ -178,8 +150,6 @@ color: 0xffffff, vertexColors: THREE.FaceColors } );
 
   // when the mouse moves, call the given function
   document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-
-
 
 }//END INIT
 
@@ -213,7 +183,7 @@ function onDocumentMouseDown( event )
     // change the color of the closest face.
     intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.8, 0, 0 ); 
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
-    //window.location = intersects[ 0 ].objects.userData.URL;
+    //window.location = intersects[ 0 ].objects.userData.URL; //FOR LINKS!!!
   }
 
 }
@@ -226,15 +196,12 @@ function animate()
   render();		
   update();
 
-  /*
-  sphere1.rotation.x += 0.009;
-  sphere1.rotation.y += 0.009;
-  sphere1.rotation.z += 0.009;
+  sphere3.scale.set(sphereSize,sphereSize,sphereSize);
+    if(sphereSize <= 52) sphereSize *= 1.04;
+    if(sphere3.material.opacity <= 0.55) sphere3.material.opacity += 0.001;
 
-  sphere2.rotation.x -= 0.04;
-  sphere2.rotation.y -= 0.009;
-  sphere2.rotation.z -= 0.009;
-  */
+  clickCube.scale.set(cubeSize,cubeSize,cubeSize);
+    if(cubeSize <= 1.5) cubeSize *= 1.01;
 
   sphere3.rotation.x -= 0.001;
   sphere3.rotation.y -= 0.001;
@@ -243,10 +210,15 @@ function animate()
   if(keyboard.pressed("I")){ 
     sphere3.rotation.x += 0.04;
     sphere3.rotation.y += 0.02;
-    sphere3.rotation.z += 0.02;
-  }
+    sphere3.rotation.z += 0.02;}
 
   if(keyboard.pressed("O"))sphere3.rotation.y += 0.07;
+
+  if(keyboard.pressed("P")){
+    axes = new THREE.AxisHelper(250);
+    scene.add( axes );
+  }
+
 
   clickCube.rotation.z -= 0.01;
 
@@ -265,8 +237,6 @@ function render()
 {	
   renderer.render( scene, camera );
 }
-/*
-
 /*Blender
 var loader = new THREE.JSONLoader();
 
@@ -283,13 +253,8 @@ fr.position.set(0, 0, -90);
 scene.add(fr);
 });
  */
-
 </script>
 
 </body>
-
-
-
-
 
 </html>
