@@ -38,7 +38,7 @@ var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
 
 //global variables
-var cube1, sphere1, sphere2, sphere3;
+var cube1, sphere1, sphere2, sphere3, mesh404;
 var userData;
 
 var targets = [];
@@ -101,13 +101,13 @@ function init()
   stats.domElement.style.zIndex = 100;
   container.appendChild( stats.domElement );*/
 
-  // LIGHT //
-  // create a light
-  var light = new THREE.PointLight(0xffffff);
-  light.position.set(0,250,0);
-  scene.add(light);
+  // create a Light
+  var light = new THREE.DirectionalLight( 0xffffff, 0.5 );
+  light.position.set( 1, 1, 1 );
+  scene.add( light );
+
   var ambientLight = new THREE.AmbientLight(0x111111);
-  // scene.add(ambientLight);
+  //scene.add(ambientLight);
 
 
   // create a set of coordinate axes to help orient user
@@ -149,9 +149,23 @@ function init()
 
 
   // fog must be added to scene before first render
-  scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
+  //scene.fog = new THREE.Fog( 0xFFDBB8, 0, 1950 );
 
-  //cust
+//Blender
+var loader = new THREE.JSONLoader();
+
+loader.load( '404mesh.js', function(geometry, materials){
+
+for(var i =0;i<materials.length;i++){
+materials[i].shading = THREE.FlatShading;
+materials[i].opacity = 0.45;
+}
+var material = new THREE.MeshFaceMaterial({shading: THREE.FlatShading});
+mesh404  = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+mesh404.scale.set(7,7,7);
+mesh404.position.set(0, 0, 0);
+scene.add(mesh404);
+});
 
 }//END INIT
 
@@ -170,6 +184,7 @@ function animate()
   sphere2.rotation.y -= 0.009;
   sphere2.rotation.z -= 0.009;
 
+  mesh404.rotation.y += 0.09;
 
 }//END ANIM
 
