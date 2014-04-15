@@ -138,7 +138,7 @@ wireframe:true}));
 transparent: true, opacity: 0.35,
 wireframe:true}));
 
-  sphere2.scale.set(12,12,12);
+  sphere2.scale.set(52,52,52);
   //scene.add(sphere2);
 
   sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
@@ -159,18 +159,18 @@ wireframe:true}));
 color: 0xffffff, vertexColors: THREE.FaceColors } );
 
 
-  var cubeGeometry = new THREE.CubeGeometry( 80, 160, 80);
+  var cubeGeometry = new THREE.CubeGeometry( 22, 22, 22);
   for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
   {
     face = cubeGeometry.faces[ i ];	
-    face.color.setRGB( 1, 0, 0 * Math.random() + 0.6 );		
+    face.color.setRGB( 0, 0.5, 0 * Math.random() + 0.6 );		
   }
   clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
   clickCube.position.set(0, 0, 0);
 
   clickCube.userData = { URL: "http://google.com" };
 
-  //scene.add(clickCube);
+  scene.add(clickCube);
 
   targets.push(clickCube);
   // initialize object to perform world/screen calculations
@@ -211,9 +211,9 @@ function onDocumentMouseDown( event )
   {
     console.log("Hit @ " + toString( intersects[0].point ) );
     // change the color of the closest face.
-    intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
+    intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.8, 0, 0 ); 
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
-    window.location = intersects[ 0 ].objects.userData.URL;
+    //window.location = intersects[ 0 ].objects.userData.URL;
   }
 
 }
@@ -240,6 +240,14 @@ function animate()
   sphere3.rotation.y -= 0.001;
   sphere3.rotation.z -= 0.001;
 
+  if(keyboard.pressed("I")){ 
+    sphere3.rotation.x += 0.04;
+    sphere3.rotation.y += 0.02;
+    sphere3.rotation.z += 0.02;
+  }
+
+  if(keyboard.pressed("O"))sphere3.rotation.y += 0.07;
+
   clickCube.rotation.z -= 0.01;
 
 }//END ANIM
@@ -248,12 +256,6 @@ function update()
 {
   // delta = change in time since last call (in seconds)
   var delta = clock.getDelta(); 
-
-  // functionality provided by THREEx.KeyboardState.js
-  if ( keyboard.pressed("1") )
-    document.getElementById('message').innerHTML = ' Have a nice day! - 1';	
-  if ( keyboard.pressed("2") )
-    document.getElementById('message').innerHTML = ' Have a nice day! - 2 ';	
 
   controls.update();
   //stats.update();
