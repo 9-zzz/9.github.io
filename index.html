@@ -1,25 +1,29 @@
 <html>
+
 <link rel="icon" href="favicon.png" type="image/png">
 
-<h1>HACK RU PROJECT:</h1>
-
-<p>Ever heard of <a href = "http://www.nidhogggame.com/">nidhogg</a>? </br>welcome to jormungandr!</p>
-
-<p>Play jormungandr: <a href = "http://sia.github.io/jormungandr/jormlite">jormungandr!(lite version, no wiimote or webcam usage)</a> </p>
-
-<p>View Jormungandr's code: <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr">code</a> </p>
-
 <head>
+
 <style>body { font-family: Ubuntu, sans-serif; }</style>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
-
 <title>Shahan's Github Pages!</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+
 </head>
 
 
 <body>
+
+<h1>HACK RU PROJECT:</h1>
+
+<p>Ever heard of <a href = "http://www.nidhogggame.com/">Nidhogg</a>? </br>Welcome to Jormungandr!</p>
+
+<p>Play Jormungandr: <a href = "http://sia.github.io/jormungandr/jormlite">jormungandr!(lite version, no wiimote or webcam usage)</a> </p>
+
+<p>View Jormungandr's code: <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr">code</a> </p>
+
 <script src="js/Three.js"></script>
 <script src="js/Detector.js"></script>
 <script src="js/Stats.js"></script>
@@ -41,7 +45,7 @@ var cube1, sphere1, sphere2, sphere3;
 var userData;
 
 var targets = [];
-var projector, mouse = {x: 0, y: 0};
+var projector, mouse = {x: 0, y: 0}, clickCube;
 
 init();
 animate();
@@ -159,7 +163,7 @@ color: 0xffffff, vertexColors: THREE.FaceColors } );
     face = cubeGeometry.faces[ i ];	
     face.color.setRGB( 1, 0, 0 * Math.random() + 0.6 );		
   }
-  var clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
+  clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
   clickCube.position.set(0, 0, 0);
 
   clickCube.userData = { URL: "http://google.com" };
@@ -232,6 +236,7 @@ function animate()
   sphere3.rotation.y -= 0.001;
   sphere3.rotation.z -= 0.001;
 
+  clickCube.rotation.z -= 0.01;
 
 }//END ANIM
 
