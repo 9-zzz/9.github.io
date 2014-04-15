@@ -1,15 +1,16 @@
 <html>
 <link rel="icon" href="favicon.png" type="image/png">
+
 <h1>HACK RU PROJECT:</h1>
 
-<p>ever heard of <a href = "http://www.nidhogggame.com/">nidhogg</a>? </br>welcome to jormungandr!</p>
+<p>Ever heard of <a href = "http://www.nidhogggame.com/">nidhogg</a>? </br>welcome to jormungandr!</p>
 
-<p>play jormungandr: <a href = "http://sia.github.io/jormungandr/jormlite">jormungandr!(lite version, no wiimote or webcam usage)</a> </p>
+<p>Play jormungandr: <a href = "http://sia.github.io/jormungandr/jormlite">jormungandr!(lite version, no wiimote or webcam usage)</a> </p>
 
 <p>View Jormungandr's code: <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr">code</a> </p>
 
 <head>
-
+<style>body { font-family: Ubuntu, sans-serif; }</style>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 
 <title>Shahan's Github Pages!</title>
@@ -120,94 +121,94 @@ function init()
 
   sphere1 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
       new THREE.MeshNormalMaterial({
-      transparent: true, opacity: 0.35,
-      wireframe:true}));
+transparent: true, opacity: 0.35,
+wireframe:true}));
 
-      sphere1.scale.set(15,15,15);
-      scene.add(sphere1);
+  sphere1.scale.set(15,15,15);
+  scene.add(sphere1);
 
   sphere2 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
       new THREE.MeshNormalMaterial({
-      transparent: true, opacity: 0.35,
-      wireframe:true}));
+transparent: true, opacity: 0.35,
+wireframe:true}));
 
-      sphere2.scale.set(12,12,12);
-      scene.add(sphere2);
+  sphere2.scale.set(12,12,12);
+  scene.add(sphere2);
 
   sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
       new THREE.MeshNormalMaterial({
-      transparent: true, opacity: 0.35,
-      wireframe:true}));
+transparent: true, opacity: 0.35,
+wireframe:true}));
 
-      sphere3.scale.set(52,52,52);
-      scene.add(sphere3);
+  sphere3.scale.set(52,52,52);
+  scene.add(sphere3);
 
 
   // fog must be added to scene before first render
   scene.fog = new THREE.FogExp2( 0x9999ff, 0.00025 );
 
   //cust
-        var faceColorMaterial = new THREE.MeshBasicMaterial( 
-	{transparent: true, opacity: 0.65,
-         color: 0xffffff, vertexColors: THREE.FaceColors } );
+  var faceColorMaterial = new THREE.MeshBasicMaterial( 
+      {transparent: true, opacity: 0.65,
+color: 0xffffff, vertexColors: THREE.FaceColors } );
 
-	
-	var cubeGeometry = new THREE.CubeGeometry( 80, 160, 80);
-	for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
-	{
-		face = cubeGeometry.faces[ i ];	
-		face.color.setRGB( 1, 0, 0 * Math.random() + 0.6 );		
-	}
-	var clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
-	clickCube.position.set(0, 0, 0);
 
-        clickCube.userData = { URL: "http://google.com" };
+  var cubeGeometry = new THREE.CubeGeometry( 80, 160, 80);
+  for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
+  {
+    face = cubeGeometry.faces[ i ];	
+    face.color.setRGB( 1, 0, 0 * Math.random() + 0.6 );		
+  }
+  var clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
+  clickCube.position.set(0, 0, 0);
 
-	scene.add(clickCube);
-	
-	targets.push(clickCube);
-        // initialize object to perform world/screen calculations
-	projector = new THREE.Projector();
-	
-	// when the mouse moves, call the given function
-	document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-	
+  clickCube.userData = { URL: "http://google.com" };
+
+  scene.add(clickCube);
+
+  targets.push(clickCube);
+  // initialize object to perform world/screen calculations
+  projector = new THREE.Projector();
+
+  // when the mouse moves, call the given function
+  document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+
 
 
 }//END INIT
 
 function onDocumentMouseDown( event ) 
 {
-	// the following line would stop any other event handler from firing
-	// (such as the mouse's TrackballControls)
-	// event.preventDefault();
-	
-	console.log("Click.");
-	
-	// update the mouse variable
-	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-	
-	// find intersections
+  // the following line would stop any other event handler from firing
+  // (such as the mouse's TrackballControls)
+  // event.preventDefault();
 
-	// create a Ray with origin at the mouse position
-	//   and direction into the scene (camera direction)
-	var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
-	projector.unprojectVector( vector, camera );
-	var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+  console.log("Click.");
 
-	// create an array containing all objects in the scene with which the ray intersects
-	var intersects = ray.intersectObjects( targets );
-	
-	// if there is one (or more) intersections
-	if ( intersects.length > 0 )
-	{
-		console.log("Hit @ " + toString( intersects[0].point ) );
-		// change the color of the closest face.
-		intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
-		intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
-                window.location = intersects[ 0 ].objects.userData.URL;
-	}
+  // update the mouse variable
+  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+  mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+  // find intersections
+
+  // create a Ray with origin at the mouse position
+  //   and direction into the scene (camera direction)
+  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+  projector.unprojectVector( vector, camera );
+  var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+
+  // create an array containing all objects in the scene with which the ray intersects
+  var intersects = ray.intersectObjects( targets );
+
+  // if there is one (or more) intersections
+  if ( intersects.length > 0 )
+  {
+    console.log("Hit @ " + toString( intersects[0].point ) );
+    // change the color of the closest face.
+    intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
+    intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
+    window.location = intersects[ 0 ].objects.userData.URL;
+  }
 
 }
 
