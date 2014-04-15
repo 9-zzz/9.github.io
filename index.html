@@ -131,7 +131,7 @@ transparent: true, opacity: 0.35,
 wireframe:true}));
 
   sphere1.scale.set(15,15,15);
-  scene.add(sphere1);
+  //scene.add(sphere1);
 
   sphere2 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
       new THREE.MeshNormalMaterial({
@@ -139,7 +139,7 @@ transparent: true, opacity: 0.35,
 wireframe:true}));
 
   sphere2.scale.set(12,12,12);
-  scene.add(sphere2);
+  //scene.add(sphere2);
 
   sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
       new THREE.MeshNormalMaterial({
@@ -170,7 +170,7 @@ color: 0xffffff, vertexColors: THREE.FaceColors } );
 
   clickCube.userData = { URL: "http://google.com" };
 
-  scene.add(clickCube);
+  //scene.add(clickCube);
 
   targets.push(clickCube);
   // initialize object to perform world/screen calculations
@@ -226,6 +226,7 @@ function animate()
   render();		
   update();
 
+  /*
   sphere1.rotation.x += 0.009;
   sphere1.rotation.y += 0.009;
   sphere1.rotation.z += 0.009;
@@ -233,6 +234,7 @@ function animate()
   sphere2.rotation.x -= 0.04;
   sphere2.rotation.y -= 0.009;
   sphere2.rotation.z -= 0.009;
+  */
 
   sphere3.rotation.x -= 0.001;
   sphere3.rotation.y -= 0.001;
