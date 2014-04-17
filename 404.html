@@ -92,12 +92,13 @@ function init()
   scene.add( light );
 
   sphere2 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
-      new THREE.MeshNormalMaterial({
-transparent: true, opacity: 0.35,
-wireframe:true}));
+      new THREE.MeshBasicMaterial({
+        color: 0xFF0000,
+        transparent: true, opacity: 0.35,
+        wireframe:true}));
 
-  sphere2.scale.set(12,12,12);
-  sphere2.position.set(0, 90, 0);
+  sphere2.scale.set(36,36,36);
+  sphere2.position.set(0, -80, 0);
   scene.add(sphere2);
 
   //Blender
@@ -106,7 +107,7 @@ wireframe:true}));
   loader.load( '404mesh.js', function(geometry, materials){
       for(var i =0;i<materials.length;i++){
       materials[i].shading = THREE.FlatShading;
-      materials[i].opacity = 0.75;
+      materials[i].opacity = 0.42;
       }
       var material = new THREE.MeshFaceMaterial({shading: THREE.FlatShading});
       mesh404  = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
