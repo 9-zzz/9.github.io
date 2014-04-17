@@ -14,16 +14,19 @@
 
 <body>
 
+<div id="audio" style="z-index: 3; position: absolute; right:2px; top:0px">
+  <audio controls>
+    <source src="/music/synchretik-rocket-space.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  </br>Music by Synchretik
+</div>
 <div id="HtmlText" style="z-index: 2; position: absolute; left:82px; top:30px">
   <h1>Shahan Akhter</h1>
   <h3>HACK RU PROJECT:</h3>
   <p>Ever heard of <a href = "http://www.nidhogggame.com/" target="_blank">Nidhogg</a>? </br> Welcome to Jormungandr!
   </br>Play Jormungandr: <a href = "http://sia.github.io/jormungandr/jormlite" target="_blank">Jormungandr(Lite Version)</a> 
   : <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr" target="_blank">source code</a></p>
-  <audio controls>
-      <source src="music/synchretik-rocket-space.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
 </div>
 
 <script src="js/Three.js"></script>
@@ -115,10 +118,10 @@ function init()
   //MESHES
   sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
       new THREE.MeshNormalMaterial({
-      transparent: true, opacity: 0,
-      wireframe:true}));
+transparent: true, opacity: 0,
+wireframe:true}));
 
-      scene.add(sphere3);
+  scene.add(sphere3);
 
   // fog must be added to scene before first render
   //scene.fog = new THREE.FogExp2( 0x9999ff, 1000 );
@@ -126,7 +129,7 @@ function init()
   //cust clickCube
   var faceColorMaterial = new THREE.MeshBasicMaterial( 
       {transparent: true, opacity: 0.65,
-      color: 0xffffff, vertexColors: THREE.FaceColors } );
+color: 0xffffff, vertexColors: THREE.FaceColors } );
 
   var cubeGeometry = new THREE.CubeGeometry( 22, 22, 22);
   for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
@@ -205,11 +208,11 @@ function animate()
   sphere3.rotation.z -= 0.001;
 
   if(keyboard.pressed("Y")){
-  sphereSize /= 1.05;
+    sphereSize /= 1.05;
   }else if(sphereSize <= 42){sphereSize *= 1.04;}
 
   if(keyboard.pressed("U")){
-  sphereSize *= 1.04;
+    sphereSize *= 1.04;
   }else if(sphereSize >= 42){sphereSize /= 1.04;}
 
   if(keyboard.pressed("I")){ 
