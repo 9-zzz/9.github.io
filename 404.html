@@ -1,28 +1,28 @@
 <html>
 
+<link rel="icon" href="favicon.png" type="image/png">
+
 <head>
-
+<style>body { font-family: Ubuntu, sans-serif; }</style>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
-
-<title>Shahan's Github Pages!</title>
+<title>404 Error</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-</head>
 
+</head>
 
 <body>
 
-<div id="404text" style="z-index: 2; position: absolute; left:100px; top:100px">
-  <!--<h3>404 ERROR</h3>-->
-<p>Hello this is my custom 404 page. Sorry for the inconvenience have a random fact: 
+<div id="404text" align="center" style="z-index: 3;
+  position: absolute; left:200px; top:260px">
+
+  <img border="7" src="dontpanic.jpg" width="204" height="128">
+  <p>Hello this is my 404 page. Sorry... Have a random fact: 
   <a href = "http://en.wikipedia.org/wiki/Special:Randompage" target="_blank">Random Wikipedia Page!</a> </p>
 
+  <p><a href = "http://sia.github.io">sia.github.io</a> </p>
 
-<img border="7" src="dontpanic.jpg" width="304" height="228">
-
-<p>Or go back to my home page: <a href = "http://sia.github.io">sia.github.io</a> </p>
 </div>
-
 
 <script src="js/Three.js"></script>
 <script src="js/Detector.js"></script>
@@ -35,14 +35,12 @@
 <div id="ThreeJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
 <script>
 
-//main
-// standard global variables
+//global variables
 var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
 
-//global variables
-var cube1, sphere1, sphere2, sphere3, mesh404;
+var cube1, sphere2, mesh404;
 var userData;
 
 var targets = [];
@@ -61,11 +59,10 @@ function init()
   scene.add(camera);
   // the camera defaults to position (0,0,0)
   // 	so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin
-  camera.position.set(0,0,400);
+  camera.position.set(0,-200,400);
   camera.lookAt(scene.position);	
 
-  // RENDERER //
-  // create and start the renderer; choose antialias setting.
+  //renderer create and start the renderer; choose antialias setting.
   if ( Detector.webgl )
     renderer = new THREE.WebGLRenderer( {antialias:true} );
   else
@@ -82,94 +79,41 @@ function init()
   // attach renderer to the container div
   container.appendChild( renderer.domElement );
 
-  // EVENTS //
-  // automatically resize renderer
-
-  //WEIRD ISSUE ASDFASDFASDFSAFDASDFASDFASF!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //event automatically resize renderer
   THREEx.WindowResize(renderer, camera);
 
-  // toggle full-screen on given key press
-  //THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
-
-  // CONTROLS //
-  // move mouse and: left   click to rotate, 
-  //                 middle click to zoom, 
-  //                 right  click to pan
+  //controls move mouse and: left   click to rotate, 
+  //middle click to zoom, right  click to pan
   controls = new THREE.OrbitControls( camera, renderer.domElement );
-
-  /* STATS //
-  // displays current and past frames per second attained by scene
-  stats = new Stats();
-  stats.domElement.style.position = 'absolute';
-  stats.domElement.style.bottom = '0px';
-  stats.domElement.style.zIndex = 100;
-  container.appendChild( stats.domElement );*/
 
   // create a Light
   var light = new THREE.DirectionalLight( 0xffffff, 0.5 );
-  light.position.set( 1, 1, 1 );
+  light.position.set( 0,100,400 );
   scene.add( light );
-
-  var ambientLight = new THREE.AmbientLight(0x111111);
-  //scene.add(ambientLight);
-
-
-  // create a set of coordinate axes to help orient user
-  //    specify length in pixels in each direction
-  var axes = new THREE.AxisHelper(100);
-  //scene.add( axes );
-
-  cube1 = new THREE.Mesh(
-      new THREE.CubeGeometry(38, 38, 38), 
-      new THREE.MeshNormalMaterial({transparent: true, opacity: 0.45,}));
-
-  cube1.scale.set(5,5,5);
-  //cube1.position.set(0,2350,-950);
-  //scene.add(cube1);
-
-  sphere1 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
-      new THREE.MeshNormalMaterial({
-      transparent: true, opacity: 0.35,
-      wireframe:true}));
-
-      sphere1.scale.set(15,15,15);
-      scene.add(sphere1);
 
   sphere2 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
       new THREE.MeshNormalMaterial({
-      transparent: true, opacity: 0.35,
-      wireframe:true}));
+transparent: true, opacity: 0.35,
+wireframe:true}));
 
-      sphere2.scale.set(12,12,12);
-      scene.add(sphere2);
+  sphere2.scale.set(12,12,12);
+  sphere2.position.set(0, 90, 0);
+  scene.add(sphere2);
 
-  sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
-      new THREE.MeshNormalMaterial({
-      transparent: true, opacity: 0.35,
-      wireframe:true}));
+  //Blender
+  var loader = new THREE.JSONLoader();
 
-      sphere3.scale.set(52,52,52);
-  //    scene.add(sphere3);
-
-
-  // fog must be added to scene before first render
-  //scene.fog = new THREE.Fog( 0xFFDBB8, 0, 1950 );
-
-//Blender
-var loader = new THREE.JSONLoader();
-
-loader.load( '404mesh.js', function(geometry, materials){
-
-for(var i =0;i<materials.length;i++){
-materials[i].shading = THREE.FlatShading;
-materials[i].opacity = 0.45;
-}
-var material = new THREE.MeshFaceMaterial({shading: THREE.FlatShading});
-mesh404  = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
-mesh404.scale.set(11,13,14);
-mesh404.position.set(0, 0, 0);
-scene.add(mesh404);
-});
+  loader.load( '404mesh.js', function(geometry, materials){
+      for(var i =0;i<materials.length;i++){
+      materials[i].shading = THREE.FlatShading;
+      materials[i].opacity = 0.75;
+      }
+      var material = new THREE.MeshFaceMaterial({shading: THREE.FlatShading});
+      mesh404  = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+      mesh404.scale.set(8,9,4);
+      mesh404.position.set(0, 130, 0);
+      scene.add(mesh404);
+      });
 
 }//END INIT
 
@@ -180,9 +124,12 @@ function animate()
   render();		
   update();
 
-  sphere1.rotation.y += 0.09;
+  mesh404.position.y += (Math.sin( new Date().getTime() * 0.007 ))*0.7;
 
-  sphere2.rotation.y -= 0.009;
+  sphere2.rotation.y += 0.09;
+  if(sphere2.rotation.y >= 1){
+    sphere2.rotation.y /= 1.009;
+  }
 
 }//END ANIM
 
@@ -190,12 +137,6 @@ function update()
 {
   // delta = change in time since last call (in seconds)
   var delta = clock.getDelta(); 
-
-  // functionality provided by THREEx.KeyboardState.js
-  if ( keyboard.pressed("1") )
-    document.getElementById('message').innerHTML = ' Have a nice day! - 1';	
-  if ( keyboard.pressed("2") )
-    document.getElementById('message').innerHTML = ' Have a nice day! - 2 ';	
 
   controls.update();
   //stats.update();
@@ -205,31 +146,9 @@ function render()
 {	
   renderer.render( scene, camera );
 }
-/*
-
-/*Blender
-var loader = new THREE.JSONLoader();
-
-loader.load( 'models/fr.js', function(geometry, materials){
-
-for(var i =0;i<materials.length;i++){
-materials[i].shading = THREE.FlatShading;
-}
-var material = new THREE.MeshFaceMaterial({shading: THREE.FlatShading});
-var  fr  = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
-//  var  u = new THREE.Mesh(geometry, materials);
-fr.scale.set(6, 6, 6);
-fr.position.set(0, 0, -90);
-scene.add(fr);
-});
- */
 
 </script>
 
 </body>
-
-
-
-
 
 </html>
