@@ -107,7 +107,7 @@ function init()
 
   // create a set of coordinate axes to help orient user
   //    specify length in pixels in each direction
-  var axes = new THREE.AxisHelper(1000);
+  var axes = new THREE.AxisHelper(1);
   //scene.add( axes );
 
   //MESHES
@@ -218,7 +218,7 @@ function animate()
   if(keyboard.pressed("O"))sphere3.rotation.y += 0.07;
 
   if(keyboard.pressed("P")){
-    axes = new THREE.AxisHelper(250);
+    axes = new THREE.AxisHelper(10000);
     scene.add( axes );
   }
 
