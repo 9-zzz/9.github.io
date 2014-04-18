@@ -4,8 +4,10 @@
 
 <head>
 
+<!--For Ubuntu Font-->
 <style>body { font-family: Ubuntu, sans-serif; }</style>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+
 <title>Shahan's GitHub Pages | "Hello, my friend. Stay awhile and listen."</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -17,10 +19,14 @@
 <div id="HtmlText" style="z-index: 2; position: absolute; left:82px; top:30px">
 
   <h1>Shahan Akhter
-    <span style="color:black;font-size: 8pt" 
-      title="This is me.">Coder. Artist. Gummy Bear Connoisseur.</span>
+    <span 
+      style="color:black;font-size: 8pt" 
+      title="This is me.">Coder. Artist. Gummy Bear Connoisseur.
+    </span>
   </h1>
+
   <h3>HACK RU PROJECT:</h3>
+
   <p>Ever heard of <a href = "http://www.nidhogggame.com/" 
     style="TEXT-DECORATION: NONE"
     target="_blank">Nidhogg</a>? </br> Welcome to Jormungandr!
@@ -30,28 +36,58 @@
   : <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr" 
     style="TEXT-DECORATION: NONE"
     target="_blank">source code</a>
+
+  </br>
   </br>
 
-  </br><a href = "http://sia.github.io/me"
-    style="TEXT-DECORATION: NONE"><span style="color:cyan;font-size: 11pt">ABOUT ME</span></a>
+  <a href = "http://sia.github.io/me" style="TEXT-DECORATION: NONE">
+    <span 
+      style="color:cyan;font-size: 11pt">ABOUT ME
+    </span>
+  </a>
 
-  </br><a href = "http://www.youtube.com/user/ShahanDraw/videos" 
+  </br>
+
+  <a href = "http://www.youtube.com/user/ShahanDraw/videos" 
     style="TEXT-DECORATION: NONE"
     target="_blank">
-    <span style="color:orange;font-size: 11pt" title="Some videos of me drawing.">MY YOUTUBE CHANNEL</span></a>
+    <span 
+      style="color:orange;font-size: 11pt" 
+      title="Some videos of me drawing.">MY YOUTUBE CHANNEL
+    </span>
+  </a>
 
-  </br><span style="font-size: 11pt">MY RESUME:</span> 
+  </br>
+
+  <span 
+    style="font-size: 11pt">MY RESUME:
+  </span> 
   <a href = "http://goo.gl/BEJcY7" style="TEXT-DECORATION: NONE"> 
-    <span style="color:red" title="A download linke to my resume in PDF format from Google Drive.">PDF</span></a>
+    <span 
+      style="color:red" 
+      title="A download linke to my resume in PDF format from Google Drive.">PDF
+    </span>
+  </a>
 
-  </br><a href = "http://sia.github.io/art" style="TEXT-DECORATION: NONE" target="_blank">
-    <span style="color:magenta;font-size: 11pt">ARTWORK</span></a>
+  </br>
 
-  </br><span style="color:lightgreen;font-size: 7pt"
-    title="Use the 'Y U I O' keys to control the Sphere and 'P' to add Axes. Right click to pan, left to rotate and Scroll to zoom.">WEBSITE GOODIES!</span>
+  <a href = "http://sia.github.io/art" 
+    style="TEXT-DECORATION: NONE" 
+    target="_blank">
+    <span 
+      style="color:magenta;font-size: 11pt">ARTWORK
+    </span>
+  </a>
+
+  </br>
+
+  <span 
+    style="color:lightgreen;font-size: 7pt"
+    title="Use the 'Y U I O' keys to control the Sphere and 'P' to add Axes. Right click to pan, left to rotate and Scroll to zoom.">WEBSITE GOODIES!
+  </span>
 
   </p>
-</div>
+</div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
 
 <script src="js/Three.js"></script>
 <script src="js/Detector.js"></script>
@@ -60,9 +96,11 @@
 <script src="js/THREEx.KeyboardState.js"></script>
 <script src="js/THREEx.FullScreen.js"></script>
 <script src="js/THREEx.WindowResize.js"></script>
-
+<!--Imported three.js lib files, may need to update-->
 <div id="ThreeJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
+
 <script>
+
 //global variables
 var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
@@ -87,8 +125,7 @@ function init()
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
-  // the camera defaults to position (0,0,0)
-  // 	so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin
+  //cam defaults to (0,0,0) so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin
   camera.position.set(0,150,400);
   camera.lookAt(scene.position);	
 
@@ -100,15 +137,16 @@ function init()
 
   renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
+  // fog must be added to scene before first render
+  //scene.fog = new THREE.FogExp2( 0x9999ff, 1000 );
+
   // attach div element to variable to contain the renderer
   container = document.getElementById( 'ThreeJS' );
   // alternatively: to create the div at runtime, use:
   //   container = document.createElement( 'div' );
   //    document.body.appendChild( container );
-
   // attach renderer to the container div
   container.appendChild( renderer.domElement );
-
   //events
   // automatically resize renderer
   THREEx.WindowResize(renderer, camera);
@@ -117,13 +155,12 @@ function init()
   //                 middle click to zoom, 
   //                 right  click to pan
   controls = new THREE.OrbitControls( camera, renderer.domElement );
-
   /*Stats displays current and past frames per second attained by scene
-  stats = new Stats();
-  stats.domElement.style.position = 'absolute';
-  stats.domElement.style.top = '0px';
-  stats.domElement.style.zIndex = 100;
-  container.appendChild( stats.domElement );*/
+    stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.top = '0px';
+    stats.domElement.style.zIndex = 100;
+    container.appendChild( stats.domElement );*/
 
   //Light
   var light = new THREE.PointLight(0xffffff);
@@ -134,19 +171,17 @@ function init()
 
   // create a set of coordinate axes to help orient user
   //    specify length in pixels in each direction
-  var axes = new THREE.AxisHelper(1);
-  //scene.add( axes );
+  var axes = new THREE.AxisHelper(0);
+  //scene.add( axes );//Done in animate() not here
 
   //Meshes
   sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
       new THREE.MeshNormalMaterial({
-transparent: true, opacity: 0,
-wireframe:true}));
+      transparent: true, 
+      opacity: 0,
+      wireframe:true}));
 
   scene.add(sphere3);
-
-  // fog must be added to scene before first render
-  //scene.fog = new THREE.FogExp2( 0x9999ff, 1000 );
 
   //cust clickCube
   var faceColorMaterial = new THREE.MeshBasicMaterial( 
