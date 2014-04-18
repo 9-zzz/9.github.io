@@ -50,7 +50,7 @@ var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
 
-var sphere3;
+var sphere3,sphere;
 var sphereSize = 0.25;
 var cubeSize = 0.25;
 var userData;
@@ -127,6 +127,13 @@ function init()
 
   scene.add(sphere3);
 
+  sphere = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
+      new THREE.MeshNormalMaterial({
+      transparent: true, 
+      opacity: 0}));
+
+  scene.add(sphere);
+
 }//END INIT
 
 function animate() 
@@ -136,12 +143,13 @@ function animate()
   update();
 
   sphere3.scale.set(sphereSize,sphereSize,sphereSize);
+  sphere.scale.set(sphereSize,sphereSize,sphereSize);
   if(sphereSize <= 42) sphereSize *= 1.04;
   if(sphere3.material.opacity <= 0.55) sphere3.material.opacity += 0.003;
 
-  sphere3.rotation.x -= 0.001;
-  sphere3.rotation.y -= 0.001;
-  sphere3.rotation.z -= 0.001;
+  sphere3.rotation.x -= 0.01;
+  sphere3.rotation.y -= 0.01;
+  sphere3.rotation.z -= 0.01;
 
   if(keyboard.pressed("Y")){
     sphereSize /= 1.05;
