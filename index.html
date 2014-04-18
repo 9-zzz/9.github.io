@@ -118,15 +118,14 @@ function init()
   //                 right  click to pan
   controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-  //Stats displays current and past frames per second attained by scene
+  /*Stats displays current and past frames per second attained by scene
   stats = new Stats();
   stats.domElement.style.position = 'absolute';
   stats.domElement.style.top = '0px';
   stats.domElement.style.zIndex = 100;
-  container.appendChild( stats.domElement );
+  container.appendChild( stats.domElement );*/
 
-  // LIGHT //
-  // create a light
+  //Light
   var light = new THREE.PointLight(0xffffff);
   light.position.set(0,250,0);
   scene.add(light);
@@ -138,7 +137,7 @@ function init()
   var axes = new THREE.AxisHelper(1);
   //scene.add( axes );
 
-  //MESHES
+  //Meshes
   sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
       new THREE.MeshNormalMaterial({
 transparent: true, opacity: 0,
@@ -262,7 +261,7 @@ function update()
   var delta = clock.getDelta(); 
 
   controls.update();
-  stats.update();
+  //stats.update();
 }
 
 function render() 
