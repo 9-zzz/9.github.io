@@ -27,7 +27,7 @@
 
   <a href = "http://sia.github.io/" style="TEXT-DECORATION: NONE">
     <span 
-      style="color:cyan;font-size: 11pt">HOME
+      style="color:orange;font-size: 11pt">HOME
     </span>
   </a>
 
@@ -70,7 +70,7 @@ function init()
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
   //cam defaults to (0,0,0) so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin
-  camera.position.set(0,150,400);
+  camera.position.set(0,300,800);
   camera.lookAt(scene.position);	
 
   //Renderer create and start the renderer; choose antialias setting.
@@ -127,69 +127,7 @@ function init()
 
   scene.add(sphere3);
 
-  //cust clickCube
-  var faceColorMaterial = new THREE.MeshBasicMaterial( 
-      {transparent: true, opacity: 0.65,
-color: 0xffffff, vertexColors: THREE.FaceColors } );
-
-  var cubeGeometry = new THREE.CubeGeometry( 22, 22, 22);
-  for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
-  {
-    face = cubeGeometry.faces[ i ];	
-    face.color.setRGB( 0, 0.5, 0 * Math.random() + 0.6 );		
-  }
-  clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
-  clickCube.position.set(0, 0, 0);
-
-  clickCube.userData = { URL: "http://google.com" };
-
-  scene.add(clickCube);
-
-  targets.push(clickCube);
-
-  // initialize object to perform world/screen calculations
-  projector = new THREE.Projector();
-
-  // when the mouse moves, call the given function
-  document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-
 }//END INIT
-
-function onDocumentMouseDown( event ) 
-{
-  // the following line would stop any other event handler from firing
-  // (such as the mouse's TrackballControls)
-  // event.preventDefault();
-
-  console.log("click");
-
-  // update the mouse variable
-  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-  mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-  // find intersections
-
-  // create a Ray with origin at the mouse position
-  //   and direction into the scene (camera direction)
-  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
-  projector.unprojectVector( vector, camera );
-  var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
-
-  // create an array containing all objects in the scene with which the ray intersects
-  var intersects = ray.intersectObjects( targets );
-
-  // if there is one (or more) intersections
-  if ( intersects.length > 0 )
-  {
-    console.log("Hit @ " + toString( intersects[0].point ) );
-    // change the color of the closest face.
-    intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.8, 0, 0 ); 
-    intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
-    //window.location = intersects[ 0 ].objects.userData.URL; //FOR LINKS!!!
-  }
-}
-
-function toString(v) { return "[ " + v.x + ", " + v.y + ", " + v.z + " ]"; }
 
 function animate() 
 {
@@ -200,9 +138,6 @@ function animate()
   sphere3.scale.set(sphereSize,sphereSize,sphereSize);
   if(sphereSize <= 42) sphereSize *= 1.04;
   if(sphere3.material.opacity <= 0.55) sphere3.material.opacity += 0.003;
-
-  clickCube.scale.set(cubeSize,cubeSize,cubeSize);
-  if(cubeSize <= 1.5) cubeSize *= 1.01;
 
   sphere3.rotation.x -= 0.001;
   sphere3.rotation.y -= 0.001;
@@ -227,10 +162,6 @@ function animate()
     axes = new THREE.AxisHelper(10000);
     scene.add( axes );
   }
-
-  clickCube.rotation.z -= 0.01;
-  clickCube.rotation.y -= 0.01;
-  clickCube.rotation.x -= 0.01;
 
 }//END ANIM
 
