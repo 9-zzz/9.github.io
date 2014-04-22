@@ -40,7 +40,7 @@ body { font-family: Ubuntu, sans-serif; }
     </br>
 
     <span 
-      style="color:red;font-size: 12pt" >
+      style="color:yellow;font-size: 12pt" >
       The Rutgers University Creation Of Games Society
       </br>
     </span>
@@ -50,24 +50,24 @@ body { font-family: Ubuntu, sans-serif; }
       style="color:white;font-size: 11pt" >
       We meet in room 248 in the Hill Mathematical Center's Annex on Wednesday nights from 6pm until 8pm.</br></br>
       <span 
-        style="color:red;font-size: 14pt" >
+        style="color:yellow;font-size: 14pt" >
         MISSION:
       </span>
 
       To make games we want to play and help others make games too</br></br>
       We are "platform agnostic" but we're not strangers to GameMaker, py-game, blender, Unity and browser based games.</br></br>
       Some of us participated Global Game Jam 2014 and loved it, our game was called: 
-      <a href = "http://globalgamejam.org/2014/games/focal-points" style="color:red" target="_blank">Focal Points</a>:
-      <a href = "https://dl.dropboxusercontent.com/u/1820269/FocalPoints.zip" style="color:red" >Download</a></br></br>
+      <a href = "http://globalgamejam.org/2014/games/focal-points" style="color:yellow" target="_blank">Focal Points</a>:
+      <a href = "https://dl.dropboxusercontent.com/u/1820269/FocalPoints.zip" style="color:yellow" >Download</a></br></br>
 
       <center>
         <!--<img src="images/alert.png" width="27" height="69">-->
-        <a href = "http://sia.github.io/g/andrewmusic" style="color:red" target="_blank">Original Video Game Music!</a></center>
-        </br>
-        </br>
+        <a href = "http://sia.github.io/g/andrewmusic" style="color:yellow" target="_blank">Original Video Game Music!</a></center>
+      </br>
+      </br>
 
       <span 
-        style="color:red;font-size: 12pt" >
+        style="color:yellow;font-size: 12pt" >
         RESOURCES:
       </span>
       IRC chatrooms are a good way to get immediate help and discuss gamedev.
@@ -79,9 +79,9 @@ body { font-family: Ubuntu, sans-serif; }
           #bbg on irc.freenode.net</br>
           #reddit-gamedev on irc.freenode.net</br>
         </ul>
-        16-bit sound generator! <a href = "http://www.drpetter.se/project_sfxr.html" style="color:red" target="_blank">drpetter.se/project_sfxr</a></br>
-        Tile generator <a href = "http://autotilegen.com/" style="color:red" target="_blank">autotilegen.com</a></br></br>
-        Other resources are listed on SAKAI email <address><a href="mailto:biglars@cs.rutgers.edu" style="color:red" >biglars@cs.rutgers.edu</a></address>
+        16-bit sound generator! <a href = "http://www.drpetter.se/project_sfxr.html" style="color:yellow" target="_blank">drpetter.se/project_sfxr</a></br>
+        Tile generator <a href = "http://autotilegen.com/" style="color:yellow" target="_blank">autotilegen.com</a></br></br>
+        Other resources are listed on SAKAI email <address><a href="mailto:biglars@cs.rutgers.edu" style="color:yellow" >biglars@cs.rutgers.edu</a></address>
         for access.
       </span></br></br>
       (site under construction, more substance and content to come.)</br>
@@ -111,8 +111,10 @@ var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
 
-var cog, cog2, cog3, cogb, light2, light, loader;
+var cog, cog2, cog3, cogb, pac, light2, light, loader;
 var lensflare;
+var specv = '#00FF00';
+var emv = '#1A0000';
 
 
 init();
@@ -161,12 +163,9 @@ function init()
   //controls.maxPolarAngle = Math.PI/2;
 
   //Light
-  light = new THREE.PointLight(0xffffff);
+  light = new THREE.PointLight(0xffffff, 1, 3000);
   light.position.set(0,200,200);
   scene.add(light);
-
-  var ambientLight = new THREE.AmbientLight(0x000000);
-  //scene.add(ambientLight);
 
   //////////////////// lens flares
 
@@ -174,9 +173,10 @@ function init()
   var textureFlare2 = THREE.ImageUtils.loadTexture( "images/lensflare/lensflare2.png" );
   var textureFlare3 = THREE.ImageUtils.loadTexture( "images/lensflare/lensflare3.png" );
 
-  //addLight( 0.55, 0.9, 0.1, -2700, 400, -5000 );
+  addLight( 0.55, 0.09, 0.1, 1100, 1800, -2000 );
+  //addLight( 0.55, 0.9, 0.1, 1100, 1800, -2000 );
 
-  addLight( 0.08, 0.8, 0.5,    1100, 1800, -2000 );
+  //addLight( 0.995, 0.005, 0.9,    1100, 1800, -2000 );
 
   //addLight( 0.995, 0.5, 0.9, 5000, 5000, -1000 );
 
@@ -190,7 +190,7 @@ function init()
     var flareColor = new THREE.Color( 0xffffff );
     flareColor.setHSL( h, s, l + 0.5 );
 
-    lensFlare = new THREE.LensFlare( textureFlare0, 400, 0.01, THREE.AdditiveBlending, flareColor );
+    lensFlare = new THREE.LensFlare( textureFlare0, 180, 0.01, THREE.AdditiveBlending, flareColor );
 
     lensFlare.add( textureFlare2, 512, 0.0, THREE.AdditiveBlending );
     lensFlare.add( textureFlare2, 512, 0.0, THREE.AdditiveBlending );
@@ -215,48 +215,54 @@ function init()
   //Blender
   loader = new THREE.JSONLoader();
 
-  loader.load( 'meshes/cog.js', function(geometry, materials){
+  loader.load( 'meshes/cog.js', function(geometry){
+      var material = new THREE.MeshPhongMaterial({
+color: '#FF0000',
+specular: specv,
+emissive: emv,
+shading:THREE.FlatShading,
+shininess: 50 });
 
-      for(var i =0;i<materials.length;i++){
-      materials[i].shading = THREE.FlatShading;
-      materials[i].opacity = 1;
-      }
-
-      var material = new THREE.MeshFaceMaterial({shading: THREE.SmoothShading});
-      cog = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
-      cog2 = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
-      cog3 = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+      cog = new THREE.Mesh(geometry, material);
+      cog2 = new THREE.Mesh(geometry,material);
+      cog3 = new THREE.Mesh(geometry,material);
       cog.scale.set(24,24,24);
       cog2.scale.set(164,164,164);
       cog3.scale.set(15,15,15);
       cog.position.set(0, 0, 0);
-      cog2.position.set(-1700, 0, -300);
+      cog2.position.set(-1700, 0, -900);
+      cog2.rotation.y = 25 * Math.PI / 180;
       cog3.position.set(490, 86, 0);
       scene.add(cog);
       scene.add(cog2);
       scene.add(cog3);
-      });
+  });
 
-  loader.load( 'meshes/bcog.js', function(geometry, materials){
-      for(var i =0;i<materials.length;i++){
-      materials[i].shading = THREE.FlatShading;
-      materials[i].opacity = 1;}
+  loader.load('meshes/bcog.js', function(geometry){
+      var material = new THREE.MeshPhongMaterial({
+color: '#FF0000',
+specular: specv,
+emissive: emv,
+shading:THREE.FlatShading,
+shininess: 50 });
 
-      var material = new THREE.MeshFaceMaterial({shading: THREE.SmoothShading});
-      cogb = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+      cogb=new THREE.Mesh(geometry, material);
       cogb.scale.set(54,54,54);
       cogb.position.set(700, 0, -100);
+      cogb.overdraw = true;
       scene.add(cogb);
       });
 
-  loader.load( 'meshes/dcog.js', function(geometry, materials){
-      for(var i =0;i<materials.length;i++){
-      materials[i].shading = THREE.FlatShading;
-      materials[i].opacity = 1;}
+  loader.load( 'meshes/dcog.js', function(geometry){
+      var material = new THREE.MeshPhongMaterial({
+color: '#FF0000',
+specular: specv,
+emissive: emv,
+shading:THREE.FlatShading,
+shininess: 60 });
 
-      var material = new THREE.MeshFaceMaterial({shading: THREE.SmoothShading});
-      cog4 = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
-      cog5 = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+      cog4 = new THREE.Mesh(geometry, material);
+      cog5 = new THREE.Mesh(geometry, material);
       cog4.scale.set(105,105,105);
       cog5.scale.set(7,7,7);
       cog4.position.set(100, 200, -540);
@@ -265,6 +271,22 @@ function init()
       scene.add(cog5);
       });
 
+  loader.load('meshes/pac.js', function(geometry){
+      var material = new THREE.MeshPhongMaterial({
+        //color: '#FF0000',
+color: '#FFF81C',
+//specular: specv,
+specular: '#0000FF',
+emissive: emv,
+shading:THREE.FlatShading,
+shininess: 50 });
+
+      pac=new THREE.Mesh(geometry, material);
+      pac.position.set(0,17,0);
+      pac.scale.set(25, 25, 25);
+      pac.overdraw = true;
+      scene.add(pac);
+      });
 
 }//END INIT
 
@@ -314,8 +336,6 @@ function animate()
 
   if(keyboard.pressed("i"))scene.remove( lensFlare );
   if(keyboard.pressed("o"))scene.add( lensFlare );
-  if(keyboard.pressed("j"))scene.remove( lensFlare );
-  if(keyboard.pressed("k"))scene.add( lensFlare );
 
 
 }//END ANIM
@@ -345,9 +365,16 @@ function render()
   cog4.rotation.z -= 0.02;
   cog5.rotation.z -= 0.079;
 
-  camera.rotation.y += Math.sin( time * 7 ) * 0.01;
-  camera.position.x += Math.sin( time * 7 ) * 2.5;
- 
+  //camera.rotation.y += Math.sin( time * 7 ) * 0.01;
+  //camera.position.x += Math.sin( time * 7 ) * 2.5;
+
+  lensFlare.position.x = pac.position.x +20;
+  lensFlare.position.y = pac.position.y +80;
+  lensFlare.position.z = pac.position.z +50;
+
+
+  pac.position.y -= Math.sin( time * 20 ) * 3;
+  pac.rotation.y -= 0.07;
 
   renderer.render( scene, camera );
 }
