@@ -345,6 +345,10 @@ function render()
   cog4.rotation.z -= 0.02;
   cog5.rotation.z -= 0.079;
 
+  camera.rotation.y += Math.sin( time * 7 ) * 0.01;
+  camera.position.x += Math.sin( time * 7 ) * 2.5;
+ 
+
   renderer.render( scene, camera );
 }
 
