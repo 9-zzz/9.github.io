@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 
 <link rel="icon" href="images/favicon.png" type="image/png">
 
@@ -24,60 +25,65 @@ body { font-family: Ubuntu, sans-serif; }
 
 <body>
 
-<div class ="cogstext" id="Html" style="background-image: url(images/bgdiv.png); height:510px;width:380px;z-index: 2; position: absolute; left:82px; top:42px">
+  <div  id="Html2" style="overflow:hidden; height:511px;width:445px;z-index: 2; position: absolute; left: 0px; top: 0px">
+  <div  id="Html" style="overflow:scroll; background-image: url(images/bgdiv.png); height:510px;width:380px;z-index: 3; position: absolute; left:82px; top:42px">
 
-  <span 
-    style="color:white;font-size: 22pt" 
-    title="This is.">C.O.G.S.
-  </span>
-  </br>
+      <center><object type="image/svg+xml" data="images/cogslogo-sm2.svg">Your browser does not support SVG</object></center>
 
-  <span 
-    style="color:red;font-size: 12pt" >
-    The Rutgers University Creation Of Games Society
-    </br>
-  </span>
-  </br>
+      <a href="https://www.facebook.com/groups/ru.cogs/" target="_blank"><center><img src="images/fblogo.png" alt="COGS Facebook page" width="22" height="22"></center></a>
 
-  <span 
-    style="color:white;font-size: 11pt" >
-    We meet in room 248 in the Hill Mathematical Center's Annex on Wednesday nights from 6pm until 8pm.</br></br>
     <span 
-      style="color:red;font-size: 14pt" >
-      MISSION:
+      style="color:white;font-size: 22pt" 
+      title="This is.">C.O.G.S.
     </span>
-
-    To make games we want to play and help others make games too</br></br>
-    We are "platform agnostic" but we're not strangers to GameMaker, py-game, blender, Unity and browser based games.</br></br>
-    Some of us participated Global Game Jam 2014 and loved it, our game was called: 
-    <a href = "http://globalgamejam.org/2014/games/focal-points" style="color:red" target="_blank">Focal Points</a>:
-    <a href = "https://dl.dropboxusercontent.com/u/1820269/FocalPoints.zip" style="color:red" >Download</a></br></br>
-
+    </br>
 
     <span 
       style="color:red;font-size: 12pt" >
-      RESOURCES:
+      The Rutgers University Creation Of Games Society
+      </br>
     </span>
-    IRC chatrooms are a good way to get immediate help and discuss gamedev
-    some rooms I've found helpful are:
+    </br>
+
     <span 
-      style="color:white;font-size: 10pt" >
-      <ul>
-        #ludumdare on irc.afternet.org</br>
-        #bbg on irc.freenode.net</br>
-        #reddit-gamedev on irc.freenode.net</br>
-      </ul>
-      Other resources are listed on SAKAI email the Viking for access.
-    </span></br></br>
-    (site under construction, more substance and content to come.)</br>
+      style="color:white;font-size: 11pt" >
+      We meet in room 248 in the Hill Mathematical Center's Annex on Wednesday nights from 6pm until 8pm.</br></br>
+      <span 
+        style="color:red;font-size: 14pt" >
+        MISSION:
+      </span>
 
-  <a href="https://www.facebook.com/groups/ru.cogs/" target="_blank"><center><img src="images/fblogo.png" alt="COGS Facebook page" width="22" height="22"></center></a>
-  <center><object type="image/svg+xml" data="images/cogslogo-sm2.svg">Your browser does not support SVG</object></center>
-  </span>
-  </br>
+      To make games we want to play and help others make games too</br></br>
+      We are "platform agnostic" but we're not strangers to GameMaker, py-game, blender, Unity and browser based games.</br></br>
+      Some of us participated Global Game Jam 2014 and loved it, our game was called: 
+      <a href = "http://globalgamejam.org/2014/games/focal-points" style="color:red" target="_blank">Focal Points</a>:
+      <a href = "https://dl.dropboxusercontent.com/u/1820269/FocalPoints.zip" style="color:red" >Download</a></br></br>
 
 
+      <span 
+        style="color:red;font-size: 12pt" >
+        RESOURCES:
+      </span>
+      IRC chatrooms are a good way to get immediate help and discuss gamedev
+      some rooms I've found helpful are:
+      <span 
+        style="color:white;font-size: 10pt" >
+        <ul>
+          #ludumdare on irc.afternet.org</br>
+          #bbg on irc.freenode.net</br>
+          #reddit-gamedev on irc.freenode.net</br>
+        </ul>
+        Other resources are listed on SAKAI email the Viking for access.
+      </span></br></br>
+      (site under construction, more substance and content to come.)</br>
+
+    </span>
+    </br>
+
+
+  </div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
 </div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
+
 
 <script src="js/Three.js"></script>
 <script src="js/Detector.js"></script>
@@ -97,6 +103,7 @@ var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
 
 var cog, cog2, cog3, cogb, light2, light, loader;
+var lensflare;
 
 
 init();
@@ -116,9 +123,12 @@ function init()
 
   //Renderer create and start the renderer; choose antialias setting.
   if ( Detector.webgl )
-    renderer = new THREE.WebGLRenderer( {antialias:true} );
+    renderer = new THREE.WebGLRenderer( {antialias:true, alpha: true } );
   else
     renderer = new THREE.CanvasRenderer(); 
+
+  //renderer.setClearColor( scene.fog.color, 1 );
+
 
   renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -128,6 +138,12 @@ function init()
   // attach div element to variable to contain the renderer
   container = document.getElementById( 'ThreeJS' );
   container.appendChild( renderer.domElement );
+
+  //
+
+  renderer.gammaInput = true;
+  renderer.gammaOutput = true;
+
   //events
   // automatically resize renderer
   THREEx.WindowResize(renderer, camera);
@@ -142,6 +158,50 @@ function init()
 
   var ambientLight = new THREE.AmbientLight(0x000000);
   //scene.add(ambientLight);
+
+  //////////////////// lens flares
+
+  var textureFlare0 = THREE.ImageUtils.loadTexture( "images/lensflare/lensflare0.png" );
+  var textureFlare2 = THREE.ImageUtils.loadTexture( "images/lensflare/lensflare2.png" );
+  var textureFlare3 = THREE.ImageUtils.loadTexture( "images/lensflare/lensflare3.png" );
+
+  addLight( 0.55, 0.9, 0.1, -2700, 400, -5000 );
+
+  addLight( 0.08, 0.8, 0.1,    1100, 1800, -2000 );
+
+  //addLight( 0.995, 0.5, 0.9, 5000, 5000, -1000 );
+
+  function addLight( h, s, l, x, y, z ) {
+
+    var light = new THREE.PointLight( 0xffffff, 1.5, 4500 );
+    light.color.setHSL( h, s, l );
+    light.position.set( x, y, z );
+    scene.add( light );
+
+    var flareColor = new THREE.Color( 0xffffff );
+    flareColor.setHSL( h, s, l + 0.5 );
+
+    lensFlare = new THREE.LensFlare( textureFlare0, 400, 0.01, THREE.AdditiveBlending, flareColor );
+
+    lensFlare.add( textureFlare2, 512, 0.0, THREE.AdditiveBlending );
+    lensFlare.add( textureFlare2, 512, 0.0, THREE.AdditiveBlending );
+    lensFlare.add( textureFlare2, 512, 0.0, THREE.AdditiveBlending );
+
+    lensFlare.add( textureFlare3, 60, 0.6, THREE.AdditiveBlending );
+    lensFlare.add( textureFlare3, 70, 0.7, THREE.AdditiveBlending );
+    lensFlare.add( textureFlare3, 120, 0.9, THREE.AdditiveBlending );
+    lensFlare.add( textureFlare3, 70, 1.0, THREE.AdditiveBlending );
+
+    lensFlare.customUpdateCallback = lensFlareUpdateCallback;
+    lensFlare.position = light.position;
+
+    scene.add( lensFlare );
+
+  }
+
+
+  //////////////////// lens flares
+
 
   //Blender
   loader = new THREE.JSONLoader();
@@ -169,11 +229,9 @@ function init()
       });
 
   loader.load( 'meshes/bcog.js', function(geometry, materials){
-
       for(var i =0;i<materials.length;i++){
       materials[i].shading = THREE.FlatShading;
-      materials[i].opacity = 1;
-      }
+      materials[i].opacity = 1;}
 
       var material = new THREE.MeshFaceMaterial({shading: THREE.SmoothShading});
       cogb = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
@@ -182,14 +240,71 @@ function init()
       scene.add(cogb);
       });
 
+  loader.load( 'meshes/dcog.js', function(geometry, materials){
+      for(var i =0;i<materials.length;i++){
+      materials[i].shading = THREE.FlatShading;
+      materials[i].opacity = 1;}
+
+      var material = new THREE.MeshFaceMaterial({shading: THREE.SmoothShading});
+      cog4 = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+      cog5 = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+      cog4.scale.set(105,105,105);
+      cog5.scale.set(10,10,10);
+      cog4.position.set(100, 200, -540);
+      cog5.position.set(400, -200, -20);
+      scene.add(cog4);
+      scene.add(cog5);
+      });
+
 
 }//END INIT
+
+//
+
+function lensFlareUpdateCallback( object ) {
+
+  var f, fl = object.lensFlares.length;
+  var flare;
+  var vecX = -object.positionScreen.x * 2;
+  var vecY = -object.positionScreen.y * 2;
+
+
+  for( f = 0; f < fl; f++ ) {
+
+    flare = object.lensFlares[ f ];
+
+    flare.x = object.positionScreen.x + vecX * flare.distance;
+    flare.y = object.positionScreen.y + vecY * flare.distance;
+
+    flare.rotation = 0;
+
+  }
+
+  object.lensFlares[ 2 ].y += 0.025;
+  object.lensFlares[ 3 ].rotation = object.positionScreen.x * 0.5 + THREE.Math.degToRad( 45 );
+
+}
+
+//
+
+function onWindowResize( event ) {
+
+  renderer.setSize( window.innerWidth, window.innerHeight );
+
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+
+}
+
 
 function animate() 
 {
   requestAnimationFrame( animate );
   render();		
   update();
+
+  if(keyboard.pressed("i"))scene.remove( lensFlare );
+  if(keyboard.pressed("o"))scene.add( lensFlare );
 
 
 }//END ANIM
@@ -216,6 +331,8 @@ function render()
   cog2.rotation.z -= 0.001;
   cog3.rotation.z -= 0.01;
   cogb.rotation.z -= 0.003;
+  cog4.rotation.z -= 0.02;
+  cog5.rotation.z -= 0.079;
 
   renderer.render( scene, camera );
 }
