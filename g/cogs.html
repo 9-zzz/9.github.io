@@ -1,11 +1,9 @@
 <!DOCTYPE HTML>
 <html lang="en">
-
 <link rel="icon" href="images/favicon.png" type="image/png">
 
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
 <link rel="stylesheet" type="text/css" href="style.css">
 <!--For Ubuntu Font All the time!-->
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
@@ -30,18 +28,17 @@ $(window).scroll(function () {
   </script>
 </div>
 
-
 <div  id="cogscontent"  class="cogscontent">
 
-
   <center><object type="image/svg+xml" data="images/cogslogo-sm2.svg">Your browser does not support SVG</object></center>
-
   <a href="https://www.facebook.com/groups/ru.cogs/" target="_blank"><center><img src="images/fblogo.png" alt="COGS Facebook page" width="22" height="22"></center></a>
 
-  <span 
-    style="color:white;font-size: 22pt" 
-    title="This is.">C.O.G.S.
-  </span>
+  <center>
+    <span 
+      style="color:white;font-size: 19pt" 
+      title="This is.">C.O.G.S.
+    </span>
+  </center>
   </br>
 
   <span 
@@ -94,10 +91,7 @@ $(window).scroll(function () {
   </span>
   </br>
 
-
 </div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
-
-
 <script src="js/Three.js"></script>
 <script src="js/Detector.js"></script>
 <script src="js/Stats.js"></script>
@@ -107,9 +101,7 @@ $(window).scroll(function () {
 <script src="js/THREEx.WindowResize.js"></script>
 <!--Imported three.js lib files, may need to update-->
 <div id="ThreeJS" class="ThreeJS"></div>
-
 <script>
-
 //global variables
 var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
@@ -119,7 +111,6 @@ var cog, cog2, cog3, cogb, pac, light2, light, loader;
 var lensflare;
 var specv = '#00FF00';
 var emv = '#1A0000';
-
 
 init();
 animate();
@@ -171,9 +162,7 @@ function init()
   light.position.set(0,200,200);
   scene.add(light);
 
-
   //////////////////// lens flares
-
   var textureFlare0 = THREE.ImageUtils.loadTexture( "images/lensflare/lensflare0.png" );
   var textureFlare2 = THREE.ImageUtils.loadTexture( "images/lensflare/lensflare2.png" );
   var textureFlare3 = THREE.ImageUtils.loadTexture( "images/lensflare/lensflare3.png" );
@@ -297,8 +286,6 @@ shininess: 0 });
   });
 
 }//END INIT
-
-//
 
 function lensFlareUpdateCallback( object ) {
 

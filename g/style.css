@@ -1,5 +1,3 @@
-div:hover a {color:magenta}
-
 body 
 {
   background-color: #000;
@@ -52,8 +50,8 @@ body
   z-index: 3; 
   background: #f00;
   border-radius: 10px;
-  width: 40px;
-  height: 40px;
+  width: 0px;/*this crap was 40 remember whole spinny thing*/
+  height: 0px;
   position: fixed;
   top: 20px;
   left: 20px;
