@@ -57,3 +57,18 @@ body
   top: 20px;
   left: 20px;
 }
+
+a:link,a:visited
+{
+  color:#FFFFFF;
+  background-color:#A10C00;
+  font-size:10;
+  width:140px;
+  text-align:center;
+  padding:2px;
+  text-decoration:none;
+}
+a:hover,a:active
+{
+  background-color:#FF0000;
+}
