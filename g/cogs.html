@@ -1,36 +1,38 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 
 <link rel="icon" href="images/favicon.png" type="image/png">
 
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-<style>
-body {
-  background-color: #000;
-  margin: 0px;
-  overflow: hidden;
-}
-body { font-family: Ubuntu, sans-serif; }
-</style>
-
-<!--For Ubuntu Font-->
+<link rel="stylesheet" type="text/css" href="style.css">
+<!--For Ubuntu Font All the time!-->
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
-
 <title>COGS | Rutgers Game Dev Community</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-
 </head>
 
 <body>
+<div id="cog">
+  <script>
+var $cog = $('#cog'),
+    $body = $(document.body),
+    bodyHeight = $body.height();
 
-<div  id="Html" style="overflow: scroll; 
-  background-image: url(images/bgdiv.png); 
-  height:100%;
-  width:25%;
-  z-index: 3; 
-  position: absolute;">
+$(window).scroll(function () {
+    $cog.css({
+      'transform': 'rotate(' + ($body.scrollTop() / bodyHeight * 360) + 'deg)'
+      });
+    });
+
+  </script>
+</div>
+
+
+<div  id="cogscontent"  class="cogscontent">
+
 
   <center><object type="image/svg+xml" data="images/cogslogo-sm2.svg">Your browser does not support SVG</object></center>
 
@@ -43,7 +45,7 @@ body { font-family: Ubuntu, sans-serif; }
   </br>
 
   <span 
-    style="color:yellow;font-size: 12pt" >
+    style="color:red;font-size: 12pt" >
     The Rutgers University Creation Of Games Society
     </br>
   </span>
@@ -53,24 +55,24 @@ body { font-family: Ubuntu, sans-serif; }
     style="color:white;font-size: 11pt" >
     We meet in room 248 in the Hill Mathematical Center's Annex on Wednesday nights from 6pm until 8pm.</br></br>
     <span 
-      style="color:yellow;font-size: 14pt" >
+      style="color:red;font-size: 14pt" >
       MISSION:
     </span>
 
     To make games we want to play and help others make games too</br></br>
     We are "platform agnostic" but we're not strangers to GameMaker, py-game, blender, Unity and browser based games.</br></br>
     Some of us participated Global Game Jam 2014 and loved it, our game was called: 
-    <a href = "http://globalgamejam.org/2014/games/focal-points" style="color:yellow" target="_blank">Focal Points</a>:
-    <a href = "https://dl.dropboxusercontent.com/u/1820269/FocalPoints.zip" style="color:yellow" >Download</a></br></br>
+    <a href = "http://globalgamejam.org/2014/games/focal-points" style="color:red" target="_blank">Focal Points</a>:
+    <a href = "https://dl.dropboxusercontent.com/u/1820269/FocalPoints.zip" style="color:red" >Download</a></br></br>
 
     <center>
       <!--<img src="images/alert.png" width="27" height="69">-->
-      <a href = "http://sia.github.io/g/andrewmusic" style="color:yellow" target="_blank">Original Video Game Music!</a></center>
+      <a href = "http://sia.github.io/g/andrewmusic" style="color:red" target="_blank">Original Video Game Music!</a></center>
     </br>
     </br>
 
     <span 
-      style="color:yellow;font-size: 12pt" >
+      style="color:red;font-size: 12pt" >
       RESOURCES:
     </span>
     IRC chatrooms are a good way to get immediate help and discuss gamedev.
@@ -82,9 +84,9 @@ body { font-family: Ubuntu, sans-serif; }
         #bbg on irc.freenode.net</br>
         #reddit-gamedev on irc.freenode.net</br>
       </ul>
-      16-bit sound generator! <a href = "http://www.drpetter.se/project_sfxr.html" style="color:yellow" target="_blank">drpetter.se/project_sfxr</a></br>
-      Tile generator <a href = "http://autotilegen.com/" style="color:yellow" target="_blank">autotilegen.com</a></br></br>
-      Other resources are listed on SAKAI email <address><a href="mailto:biglars@cs.rutgers.edu" style="color:yellow" >biglars@cs.rutgers.edu</a></address>
+      16-bit sound generator! <a href = "http://www.drpetter.se/project_sfxr.html" style="color:red" target="_blank">drpetter.se/project_sfxr</a></br>
+      Tile generator <a href = "http://autotilegen.com/" style="color:red" target="_blank">autotilegen.com</a></br></br>
+      Other resources are listed on SAKAI email <address><a href="mailto:biglars@cs.rutgers.edu" style="color:red" >biglars@cs.rutgers.edu</a></address>
       for access.
     </span></br></br>
     (site under construction, more substance and content to come.)</br>
@@ -104,7 +106,7 @@ body { font-family: Ubuntu, sans-serif; }
 <script src="js/THREEx.FullScreen.js"></script>
 <script src="js/THREEx.WindowResize.js"></script>
 <!--Imported three.js lib files, may need to update-->
-<div id="ThreeJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
+<div id="ThreeJS" class="ThreeJS"></div>
 
 <script>
 
@@ -168,6 +170,7 @@ function init()
   light = new THREE.PointLight(0xffffff, 1, 3000);
   light.position.set(0,200,200);
   scene.add(light);
+
 
   //////////////////// lens flares
 
@@ -285,7 +288,13 @@ shininess: 0 });
       pac.scale.set(20, 20, 20);
       pac.overdraw = true;
       scene.add(pac);
-      });
+      var lightpac = new THREE.PointLight(0xffffff, 1, 200);
+      lightpac.position.x = pac.position.x -49;
+      lightpac.position.y = pac.position.y +80;
+      lightpac.position.z = pac.position.z +50;
+      scene.add(lightpac);
+
+  });
 
 }//END INIT
 
@@ -345,7 +354,6 @@ function update()
   //var delta = clock.getDelta(); 
 
   controls.update();
-  //stats.update();
 }
 
 function render() 
@@ -367,14 +375,14 @@ function render()
   //camera.rotation.y += Math.sin( time * 7 ) * 0.01;
   //camera.position.x += Math.sin( time * 7 ) * 2.5;
 
-  lensFlare.position.x = pac.position.x +19;
+  lensFlare.position.x = pac.position.x -49;
   lensFlare.position.y = pac.position.y +80;
   lensFlare.position.z = pac.position.z;
-  //lensFlare.position.x -= Math.sin( time * 20 ) * 3;
+  //lensflare.position.x -= math.sin( time * 20 ) * 1;
 
 
-  //pac.position.y -= Math.sin( time * 20 ) * 3;
-  pac.rotation.y -= 0.07;
+  pac.position.y -= Math.sin( time * 20 ) * 1;
+  //pac.rotation.y -= 0.07;
 
   renderer.render( scene, camera );
 }
