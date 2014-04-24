@@ -4,6 +4,8 @@ body
   margin: 0;
   overflow: hidden;
   font-family: Ubuntu, sans-serif;
+  color:white;
+  font-size: 11pt;
 }
 
 .ThreeJS
