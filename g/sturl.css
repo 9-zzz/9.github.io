@@ -21,7 +21,7 @@ body
   background-image: url(images/bgdiv.png); 
   left: 42px;
   height:100%;
-  width:28%;
+  width:400px;
   padding-right:10px;
   z-index: 2; 
   position: absolute;
