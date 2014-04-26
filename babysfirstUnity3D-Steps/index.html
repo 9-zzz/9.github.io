@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<link rel="icon" href="../images/favicon.png" type="image/png">
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="sturl.css">
+<!--For Ubuntu Font All the time!-->
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+<title>Unity Game Doodles | Linux</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+
+<body>
+
+<div  id="main"  class="main">
+  </br>
+  </br>
+  <center>
+    <a href = "http://sia.github.io/babysfirstUnity3D-Steps/web"
+      title = "" 
+      >
+      Unity WebPlayer Link</a></br></br>
+
+    <a href = "http://sia.github.io/babysfirstUnity3D-Steps/chrome"
+      title = "" 
+      >
+      Chrome Native Link</a></br></br>
+
+    <a href = "https://docs.google.com/uc?id=0B6zvZgdI_bKweWxxXzBJZXdrNE0&export=download"
+      title = "">
+      Windows .zip Download</a></br></br>
+
+    <a href = "https://docs.google.com/uc?id=0B6zvZgdI_bKwVGF0VWtlamxwY0U&export=download" 
+      title = "">
+      Linux .tar Download</a></br>
+
+    </br> </br> </br> </br> </br> </br> </br> 
+
+    <a href = "http://sia.github.io"
+      title = "Author of this site" 
+      style="font-size: 8pt"
+      >
+      sia.github.io</a>
+
+  </center>
+
+</div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
+
+<script src="../js/Three.js"></script>
+<script src="../js/Detector.js"></script>
+<script src="../js/Stats.js"></script>
+<script src="../js/OrbitControls.js"></script>
+<script src="../js/THREEx.KeyboardState.js"></script>
+<script src="../js/THREEx.FullScreen.js"></script>
+<script src="../js/THREEx.WindowResize.js"></script>
+<!--Imported three.js lib files, may need to update-->
+<div id="ThreeJS" class="ThreeJS"></div>
+<script>
+//global variables
+var container, scene, camera, renderer, controls, stats;
+var keyboard = new THREEx.KeyboardState();
+var clock = new THREE.Clock();
+
+var light2, light, loader;
+var lensflare;
+var specv = '#00FF00';
+var emv = '#1A0000';
+
+var cube;
+var cube2;
+var cube3;
+var cube4;
+var cube5;
+var cube6;
+
+init();
+animate();
+function init() 
+{
+  scene = new THREE.Scene();
+
+  var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
+  var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+  camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+  scene.add(camera);
+  camera.position.set(-19,5,9);
+  camera.lookAt(scene.position);	
+
+  //Renderer create and start the renderer; choose antialias setting.
+  if ( Detector.webgl )
+    renderer = new THREE.WebGLRenderer( {antialias:true, alpha: true } );
+  else
+    renderer = new THREE.CanvasRenderer(); 
+
+  //renderer.setClearColor( scene.fog.color, 1 );
+
+
+  renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+  // fog must be added to scene before first render
+  //scene.fog = new THREE.FogExp2( 0x9999ff, 100000000);
+
+  // attach div element to variable to contain the renderer
+  container = document.getElementById( 'ThreeJS' );
+  container.appendChild( renderer.domElement );
+
+  //
+
+  renderer.gammaInput = true;
+  renderer.gammaOutput = true;
+
+  //events
+  // automatically resize renderer
+  THREEx.WindowResize(renderer, camera);
+
+  controls = new THREE.OrbitControls( camera, renderer.domElement );
+  //controls.maxPolarAngle = Math.PI/2;
+
+  //Light
+  light = new THREE.PointLight(0xffffff, 1, 3000);
+  light.position.set(0,200,200);
+  scene.add(light);
+
+
+  cube = new  THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
+  cube2 = new THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
+  cube3 = new THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
+  cube4 = new THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
+  cube5 = new THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
+  cube6 = new THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
+  scene.add(cube);
+
+  cube2.position.x = 10;
+  scene.add(cube2);
+
+  cube3.position.x = 20;
+  scene.add(cube3);
+
+  cube4.position.x = 30;
+  scene.add(cube4);
+
+  cube5.position.x = 40;
+  scene.add(cube5);
+
+  cube6.position.x = 50;
+  scene.add(cube6);
+
+  //Blender
+  loader = new THREE.JSONLoader();
+
+
+  /*
+     loader.load('meshes/bcog.js', function(geometry){
+     var material = new THREE.MeshPhongMaterial({
+color: '#FF0000',
+specular: specv,
+emissive: emv,
+shading:THREE.FlatShading,
+shininess: 50 });
+
+cogb=new THREE.Mesh(geometry, material);
+cogb.scale.set(54,54,54);
+cogb.position.set(700, 0, -100);
+cogb.overdraw = true;
+scene.add(cogb);
+});
+   */
+
+  }//END INIT
+
+function onWindowResize( event ) {
+
+  renderer.setSize( window.innerWidth, window.innerHeight );
+
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+
+}
+
+
+function animate() 
+{
+  requestAnimationFrame( animate );
+  render();		
+  update();
+
+  cube.rotation.y += 0.04;
+  cube2.rotation.y += 0.04;
+  cube3.rotation.y += 0.04;
+  cube4.rotation.y += 0.04;
+  cube5.rotation.y += 0.04;
+  cube6.rotation.y += 0.04;
+
+  cube.rotation.x += 0.01;
+  cube2.rotation.x += 0.02;
+  cube3.rotation.x += 0.03;
+  cube4.rotation.x += 0.04;
+  cube5.rotation.x += 0.05;
+  cube6.rotation.x += 0.06;
+
+}//END ANIM
+
+function update()
+{
+  // delta = change in time since last call (in seconds)
+  //var delta = clock.getDelta(); 
+
+  controls.update();
+}
+
+function render() 
+{	
+  var time = Date.now() * 0.0005;
+  var delta = clock.getDelta();
+
+
+  renderer.render( scene, camera );
+}
+
+</script>
+
+</body>
+
+</html>
