@@ -12,7 +12,6 @@
 <script src="js/Three.js"></script>
 <script src="js/Detector.js"></script>
 <script src="js/Stats.js"></script>
-<script src="js/OrbitControls.js"></script>
 <script src="js/THREEx.KeyboardState.js"></script>
 <script src="js/THREEx.FullScreen.js"></script>
 <script src="js/THREEx.WindowResize.js"></script>
@@ -46,7 +45,7 @@ function init()
   container = document.getElementById( 'ThreeJS' );
   container.appendChild( renderer.domElement );
   THREEx.WindowResize(renderer, camera);
-  controls = new THREE.OrbitControls( camera, renderer.domElement );
+  //controls = new THREE.OrbitControls( camera, renderer.domElement );
   var light = new THREE.PointLight(0xffffff);
   light.position.set(0,100,0);
   scene.add(light);
@@ -70,15 +69,16 @@ function animate()
   render();		
   update();
 
-
   f.position.z = (i*(i++))/42;
+
   console.log(f.position.z);
+
   if(f.position.z > 6501) f.position.z = 6502;
 }
 
 function update(){
 
-  controls.update();
+  //controls.update();
 
 }
 
