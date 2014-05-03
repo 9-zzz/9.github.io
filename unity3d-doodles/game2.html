@@ -130,6 +130,9 @@ function init()
   cube4 = new THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
   cube5 = new THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
   cube6 = new THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
+  cube7 = new THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
+  cube8 = new THREE.Mesh( new THREE.CubeGeometry( 2, 20, 2 ), new THREE.MeshNormalMaterial() );
+
   scene.add(cube);
 
   cube2.position.x = 10;
@@ -147,58 +150,47 @@ function init()
   cube6.position.x = 50;
   scene.add(cube6);
 
-  //Blender
-  loader = new THREE.JSONLoader();
+  cube7.position.x = 60;
+  scene.add(cube7);
 
+  cube8.position.x = 70;
+  scene.add(cube8);
 
-  /*
-     loader.load('meshes/bcog.js', function(geometry){
-     var material = new THREE.MeshPhongMaterial({
-color: '#FF0000',
-specular: specv,
-emissive: emv,
-shading:THREE.FlatShading,
-shininess: 50 });
+  }//end init
 
-cogb=new THREE.Mesh(geometry, material);
-cogb.scale.set(54,54,54);
-cogb.position.set(700, 0, -100);
-cogb.overdraw = true;
-scene.add(cogb);
-});
-   */
+function onwindowresize( event ) {
 
-  }//END INIT
+  renderer.setsize( window.innerwidth, window.innerheight );
 
-function onWindowResize( event ) {
-
-  renderer.setSize( window.innerWidth, window.innerHeight );
-
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
+  camera.aspect = window.innerwidth / window.innerheight;
+  camera.updateprojectionmatrix();
 
 }
 
 
 function animate() 
 {
-  requestAnimationFrame( animate );
+  requestanimationframe( animate );
   render();		
   update();
 
-  cube.rotation.y += 0.04;
+   cube.rotation.y += 0.04;
   cube2.rotation.y += 0.04;
   cube3.rotation.y += 0.04;
   cube4.rotation.y += 0.04;
   cube5.rotation.y += 0.04;
   cube6.rotation.y += 0.04;
+  cube7.rotation.y += 0.04;
+  cube8.rotation.y += 0.04;
 
-  cube.rotation.x += 0.01;
-  cube2.rotation.x += 0.02;
-  cube3.rotation.x += 0.03;
-  cube4.rotation.x += 0.04;
-  cube5.rotation.x += 0.05;
-  cube6.rotation.x += 0.06;
+   cube.rotation.x += 0.001;
+  cube2.rotation.x += 0.002;
+  cube3.rotation.x += 0.003;
+  cube4.rotation.x += 0.004;
+  cube5.rotation.x += 0.005;
+  cube6.rotation.x += 0.006;
+  cube7.rotation.x += 0.007;
+  cube8.rotation.x += 0.008;
 
 }//END ANIM
 
