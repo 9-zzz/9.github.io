@@ -113,30 +113,31 @@
   </span>
 
   </p>
-</div><!--End of the html, links, non THREEjs, essentially the website, in a div zindex > than threejs-->
+</div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
 
-<script src="js/THREE.js"></script>
+<script src="js/Three.js"></script>
 <script src="js/Detector.js"></script>
 <script src="js/Stats.js"></script>
 <script src="js/OrbitControls.js"></script>
 <script src="js/THREEx.KeyboardState.js"></script>
 <script src="js/THREEx.FullScreen.js"></script>
 <script src="js/THREEx.WindowResize.js"></script>
-<!--Imported THREE.js lib files, may need to update-->
-<div id="THREEJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
+<!--Imported three.js lib files, may need to update-->
+<div id="ThreeJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
 
 <script>
-var msg = '░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░\n ░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░\n ░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░\n ░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░\n ░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░\n ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░\n ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░\n ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░\n ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░\n ░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░\n ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░\n ▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌\n ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░\n ░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░\n ░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░\n ░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░\n ░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░\n ░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░\n ░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░\n'
-console.log(msg);
+var doge = '░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░\n░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░\n░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░\n░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░\n░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░\n░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░\n░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░\n░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░\n░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░\n░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░\n▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░\n▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌\n▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░\n░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░\n░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░\n░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░\n░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░\n░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░\n░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░\nWow. Such console. Much inspect! So html. Wow!'
+console.log(doge);
+
 //global variables
 var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
-var clock = new THREE.clock();
+var clock = new THREE.Clock();
 
 var sphere3;
-var spheresize = 0.25;
-var cubesize = 0.25;
-var userdata;
+var sphereSize = 0.25;
+var cubeSize = 0.25;
+var userData;
 
 var targets = [];
 var projector, mouse = {x: 0, y: 0}, clickCube;
@@ -145,86 +146,86 @@ init();
 animate();
 function init() 
 {
-  scene = new THREE.scene();
+  scene = new THREE.Scene();
 
-  var screen_width = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
-  var view_angle = 45, aspect = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
-  camera = new THREE.perspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+  var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
+  var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+  camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
   camera.position.set(0,150,400);
-  camera.lookat(scene.position);	
+  camera.lookAt(scene.position);	
 
-  //renderer create and start the renderer; choose antialias setting.
-  if ( detector.webgl )
-    renderer = new THREE.webglrenderer( {antialias:true} );
+  //Renderer create and start the renderer; choose antialias setting.
+  if ( Detector.webgl )
+    renderer = new THREE.WebGLRenderer( {antialias:true} );
   else
-    renderer = new THREE.canvasRenderer(); 
+    renderer = new THREE.CanvasRenderer(); 
 
-  renderer.setsize(screen_width, SCREEN_HEIGHT);
+  renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
   // attach div element to variable to contain the renderer
-  container = document.getelementById( 'THREEJS' );
+  container = document.getElementById( 'ThreeJS' );
   // alternatively: to create the div at runtime, use:
   //   container = document.createElement( 'div' );
-  //    document.body.appendchild( container );
+  //    document.body.appendChild( container );
   // attach renderer to the container div
-  container.appendchild( renderer.domElement );
+  container.appendChild( renderer.domElement );
   //events
   // automatically resize renderer
-  THREEx.windowresize(renderer, camera);
+  THREEx.WindowResize(renderer, camera);
   //controls
   // move mouse and: left   click to rotate, 
   //                 middle click to zoom, 
   //                 right  click to pan
-  controls = new THREE.orbitcontrols( camera, renderer.domElement );
+  controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-  //light
-  var light = new THREE.pointlight(0xffffff);
+  //Light
+  var light = new THREE.PointLight(0xffffff);
   light.position.set(0,250,0);
   scene.add(light);
-  var ambientlight = new THREE.AmbientLight(0x111111);
-  //scene.add(ambientlight);
+  var ambientLight = new THREE.AmbientLight(0x111111);
+  //scene.add(ambientLight);
 
-  var axes = new THREE.axishelper(0);
-  //scene.add( axes );//done in animate() not here
+  var axes = new THREE.AxisHelper(0);
+  //scene.add( axes );//Done in animate() not here
 
-  //meshes
-  sphere3 = new THREE.mesh(new THREE.SphereGeometry(9, 19, 19),
-      new THREE.meshnormalmaterial({ transparent: true, opacity: 0,wireframe:true}));
+  //Meshes
+  sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
+      new THREE.MeshNormalMaterial({ transparent: true, opacity: 0,wireframe:true}));
   scene.add(sphere3);
 
-  //cust clickcube
-  var facecolormaterial = new THREE.MeshBasicMaterial( 
+  //cust clickCube
+  var faceColorMaterial = new THREE.MeshBasicMaterial( 
       {transparent: true, opacity: 0.65, color: 0xffffff, vertexColors: THREE.FaceColors } );
 
-  var cubegeometry = new THREE.CubeGeometry( 22, 22, 22);
-  for ( var i = 0; i < cubegeometry.faces.length; i++ ) 
+  var cubeGeometry = new THREE.CubeGeometry( 22, 22, 22);
+  for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
   {
-    face = cubegeometry.faces[ i ];	
-    face.color.setrgb( 0, 0.5, 0 * Math.random() + 0.6 );		
+    face = cubeGeometry.faces[ i ];	
+    face.color.setRGB( 0, 0.5, 0 * Math.random() + 0.6 );		
   }
-  clickcube = new THREE.mesh( cubeGeometry, faceColorMaterial );
-  clickcube.position.set(0, 0, 0);
+  clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
+  clickCube.position.set(0, 0, 0);
 
-  clickcube.userdata = { url: "http://google.com" };
+  clickCube.userData = { URL: "http://google.com" };
 
-  scene.add(clickcube);
+  scene.add(clickCube);
 
-  targets.push(clickcube);
+  targets.push(clickCube);
 
   // initialize object to perform world/screen calculations
-  projector = new THREE.projector();
+  projector = new THREE.Projector();
 
   // when the mouse moves, call the given function
-  document.addeventlistener( 'mousedown', onDocumentMouseDown, false );
+  document.addEventListener( 'mousedown', onDocumentMouseDown, false );
 
-}//end init
+}//END INIT
 
-function ondocumentmousedown( event ) 
+function onDocumentMouseDown( event ) 
 {
   // the following line would stop any other event handler from firing
-  // (such as the mouse's trackballControls)
-  // event.preventdefault();
+  // (such as the mouse's TrackballControls)
+  // event.preventDefault();
 
   console.log("click");
 
