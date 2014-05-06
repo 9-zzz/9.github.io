@@ -18,8 +18,6 @@
 
 <body>
 
-
-
 <div id="HtmlText" style="z-index: 2; position: absolute; left:82px; top:30px">
 
   <h1>Shahan Akhter
@@ -36,8 +34,8 @@
     target="_blank">Nidhogg</a>? </br> Welcome to Jormungandr!
   </br>Play Jormungandr: <a href = "http://sia.github.io/jormungandr/jormlite" 
     style="TEXT-DECORATION: NONE"
-    target="_blank">Jormungandr(Lite Version)</a> 
-  : <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr" 
+    target="_blank">Jormungandr(Lite Version)</a>:
+  <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr" 
     style="TEXT-DECORATION: NONE"
     target="_blank">source code</a>
 
@@ -103,7 +101,7 @@
 
   <a href = "http://sia.github.io/unity3d-doodles" style="TEXT-DECORATION: NONE">
     <span 
-      style="color:black;font-size: 14pt">Unity3D Game Doodles!
+      style="color:black;font-size: 19pt">Unity3D Game Experiments!
     </span>
   </a>
 
@@ -149,11 +147,9 @@ function init()
   scene = new THREE.Scene();
 
   var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
-  //var SCREEN_WIDTH = 500, SCREEN_HEIGHT = 500;	
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
-  //cam defaults to (0,0,0) so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin
   camera.position.set(0,150,400);
   camera.lookAt(scene.position);	
 
@@ -164,9 +160,6 @@ function init()
     renderer = new THREE.CanvasRenderer(); 
 
   renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-
-  // fog must be added to scene before first render
-  //scene.fog = new THREE.FogExp2( 0x9999ff, 20000 );
 
   // attach div element to variable to contain the renderer
   container = document.getElementById( 'ThreeJS' );
@@ -183,12 +176,6 @@ function init()
   //                 middle click to zoom, 
   //                 right  click to pan
   controls = new THREE.OrbitControls( camera, renderer.domElement );
-  /*Stats displays current and past frames per second attained by scene
-    stats = new Stats();
-    stats.domElement.style.position = 'absolute';
-    stats.domElement.style.top = '0px';
-    stats.domElement.style.zIndex = 100;
-    container.appendChild( stats.domElement );*/
 
   //Light
   var light = new THREE.PointLight(0xffffff);
@@ -197,24 +184,17 @@ function init()
   var ambientLight = new THREE.AmbientLight(0x111111);
   //scene.add(ambientLight);
 
-  // create a set of coordinate axes to help orient user
-  //    specify length in pixels in each direction
   var axes = new THREE.AxisHelper(0);
   //scene.add( axes );//Done in animate() not here
 
   //Meshes
   sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
-      new THREE.MeshNormalMaterial({
-transparent: true, 
-opacity: 0,
-wireframe:true}));
-
+      new THREE.MeshNormalMaterial({ transparent: true, opacity: 0,wireframe:true}));
   scene.add(sphere3);
 
   //cust clickCube
   var faceColorMaterial = new THREE.MeshBasicMaterial( 
-      {transparent: true, opacity: 0.65,
-color: 0xffffff, vertexColors: THREE.FaceColors } );
+      {transparent: true, opacity: 0.65, color: 0xffffff, vertexColors: THREE.FaceColors } );
 
   var cubeGeometry = new THREE.CubeGeometry( 22, 22, 22);
   for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
@@ -265,7 +245,7 @@ function onDocumentMouseDown( event )
   // if there is one (or more) intersections
   if ( intersects.length > 0 )
   {
-    console.log("Hit @ " + toString( intersects[0].point ) );
+    console.log("Hit on cube @ " + toString( intersects[0].point ) );
     // change the color of the closest face.
     intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.8, 0, 0 ); 
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
@@ -297,7 +277,7 @@ function animate()
   }else if(sphereSize <= 42){sphereSize *= 1.04;}
 
   if(keyboard.pressed("U")){
-    sphereSize *= 1.04;
+    sphereSize *= 1.05;
   }else if(sphereSize >= 42){sphereSize /= 1.04;}
 
   if(keyboard.pressed("I")){ 
