@@ -139,6 +139,7 @@ var sphereSize = 0.25;
 var cubeSize = 0.25;
 var userData;
 var cr = 0.01;
+var cubeCtr=0;
 
 var targets = [];
 var projector, mouse = {x: 0, y: 0}, clickCube;
@@ -248,6 +249,8 @@ function onDocumentMouseDown( event )
   // if there is one (or more) intersections
   if ( intersects.length > 0 )
   {
+    cubeCtr++;
+    if(cubeCtr > 10) window.open("http://en.wikipedia.org/wiki/Special:Random","_blank")
     //console.log("Hit on cube @ " + toString( intersects[0].point ) );
     // change the color of the closest face.
     intersects[ 0 ].face.color.setRGB(Math.random(), Math.random(), Math.random()); 
