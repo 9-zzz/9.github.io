@@ -138,6 +138,7 @@ var sphere3;
 var sphereSize = 0.25;
 var cubeSize = 0.25;
 var userData;
+var cr = 0.01;
 
 var targets = [];
 var projector, mouse = {x: 0, y: 0}, clickCube;
@@ -207,7 +208,7 @@ function init()
   clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
   clickCube.position.set(0, 0, 0);
 
-  clickCube.userData = { URL: "http://google.com" };
+  clickCube.userData = { URL: 'http://google.com' };
 
   scene.add(clickCube);
 
@@ -247,10 +248,11 @@ function onDocumentMouseDown( event )
   // if there is one (or more) intersections
   if ( intersects.length > 0 )
   {
-    console.log("Hit on cube @ " + toString( intersects[0].point ) );
+    //console.log("Hit on cube @ " + toString( intersects[0].point ) );
     // change the color of the closest face.
-    intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.8, 0, 0 ); 
+    intersects[ 0 ].face.color.setRGB(Math.random(), Math.random(), Math.random()); 
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
+    cr = cr + 0.003;
     //window.location = intersects[ 0 ].objects.userData.URL; //FOR LINKS!!!
   }
 }
@@ -294,9 +296,10 @@ function animate()
     scene.add( axes );
   }
 
-  clickCube.rotation.z -= 0.01;
-  clickCube.rotation.y -= 0.01;
-  clickCube.rotation.x -= 0.01;
+  clickCube.rotation.z += 0.01;
+  clickCube.rotation.y += cr;
+  clickCube.rotation.x += 0.01;
+  if(keyboard.pressed("space"))cr = 0.01;
 
 }//END ANIM
 
