@@ -250,7 +250,10 @@ function onDocumentMouseDown( event )
   if ( intersects.length > 0 )
   {
     cubeCtr++;
-    if(cubeCtr > 10) window.open("http://en.wikipedia.org/wiki/Special:Random","_blank")
+    if(cubeCtr > 10){
+      window.open("http://en.wikipedia.org/wiki/Special:Random","_blank")
+        cubeCtr = 0;
+    }
     //console.log("Hit on cube @ " + toString( intersects[0].point ) );
     // change the color of the closest face.
     intersects[ 0 ].face.color.setRGB(Math.random(), Math.random(), Math.random()); 
