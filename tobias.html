@@ -39,6 +39,7 @@ var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
 var tobias;
+var tobias2;
 
 
 
@@ -47,6 +48,8 @@ animate();
 function init() 
 {
   scene = new THREE.Scene();
+
+  scene.fog = new THREE.FogExp2( 0xefd1b5, 0.0002 );
 
   var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
@@ -66,8 +69,11 @@ function init()
   THREEx.WindowResize(renderer, camera);
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   var light = new THREE.DirectionalLight(0xffffff);
+  var light2 = new THREE.DirectionalLight(0xffffff);
   light.position.set(0,0,200);
+  light2.position.set(0,0,-200);
   scene.add(light);
+  scene.add(light2);
   var ambientLight = new THREE.AmbientLight(0x111111);
 
   //Meshes
@@ -78,9 +84,13 @@ function init()
       }
       var material = new THREE.MeshFaceMaterial({shading: THREE.FlatShading});
       tobias = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+      tobias2 = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
       tobias.scale.set(19, 19, 19);
+      tobias2.scale.set(909, 909, 909);
       tobias.position.set(0, 0, 0);
+      tobias2.position.set(0, 0, -10000);
       scene.add(tobias);
+      scene.add(tobias2);
       });
 
 
@@ -95,6 +105,7 @@ function animate()
   update();
 
   tobias.rotation.y += 0.008;
+  tobias2.rotation.z += 0.0008;
   //  if(keyboard.pressed("space"))cr = 0.01;
 
 }//END ANIM
