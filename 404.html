@@ -103,7 +103,7 @@ function init()
   //Blender
   var loader = new THREE.JSONLoader();
 
-  loader.load( '/404mesh.js', function(geometry, materials){
+  loader.load( '/meshes/404mesh.js', function(geometry, materials){
       for(var i =0;i<materials.length;i++){
       materials[i].shading = THREE.FlatShading;
       materials[i].opacity = 0.42;

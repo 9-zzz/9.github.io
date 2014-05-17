@@ -81,7 +81,7 @@ function init()
 
   //Meshes
   var loader = new THREE.JSONLoader();
-  loader.load( 'tob.js', function(geometry, materials){
+  loader.load( '/meshes/tob.js', function(geometry, materials){
       for(var i =0;i<materials.length;i++){
       materials[i].shading = THREE.FlatShading;
       }
