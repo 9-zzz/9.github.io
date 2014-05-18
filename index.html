@@ -4,7 +4,7 @@
 <link rel="icon" href="/images/favicon.png" type="image/png">
 
 <div id="A" style="z-index: 5; position: absolute; bottom: 42px; right: 42px; opacity:0.9; display: none;">
-  <video id="Arthur" height="600" width="600" preload="auto" controls>
+  <video id="Arthur" height="480" width="640" preload="auto" controls style="border-radius: 11px">
     <source src="Arthur-C-Clarke.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -347,7 +347,7 @@ function animate()
     scene.add( axes );
   }
 
-  if(((keyboard.pressed("B") && keyboard.pressed("S")) || keyboard.pressed("space"))){
+  if(keyboard.pressed("B") && keyboard.pressed("S")){
     document.getElementById('mmm').play();
     $('#credit').delay(20).fadeIn('slow');
   }else{
@@ -355,9 +355,9 @@ function animate()
     $('#credit').fadeOut(2000);
   }
 
-  if(keyboard.pressed("A")){
-    $('#A').delay(20).fadeIn('slow');
-  }
+  if(keyboard.pressed("A")) $('#A').delay(200).fadeIn('slow');
+
+  if(keyboard.pressed("shift") && keyboard.pressed("A")) $('#A').fadeOut('slow');
 
   clickCube.rotation.z += 0.01;
   clickCube.rotation.y += cr;
