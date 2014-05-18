@@ -251,7 +251,8 @@ function init()
 
   loader.load('meshes/animation.js', function (geometry, materials) {
       skinnedMesh = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
-      skinnedMesh.position.y = 50;
+      skinnedMesh.position.y = 20;
+      skinnedMesh.position.z = 40;
       skinnedMesh.scale.set(15, 15, 15);
       scene.add(skinnedMesh);
 
