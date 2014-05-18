@@ -317,15 +317,13 @@ function animate()
     scene.add( axes );
   }
 
-  if(keyboard.pressed("B") && keyboard.pressed("S")){
+  if(((keyboard.pressed("B") && keyboard.pressed("S")) || keyboard.pressed("space"))){
     document.getElementById('mmm').play();
     $('#credit').delay(20).fadeIn('slow');
   }else{
     document.getElementById('mmm').load();
     $('#credit').fadeOut(2000);
   }
-
-  if(keyboard.pressed("space")) document.getElementById('mmm').play();
 
   clickCube.rotation.z += 0.01;
   clickCube.rotation.y += cr;
