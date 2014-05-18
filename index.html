@@ -55,20 +55,20 @@
   </div>
 
   <script> <!--unorganized javascript -->
-$(document).ready(function(){
-    $("#h").click(function(){
-      $("#hackru").toggle('fast');
-      });
-    });
+  $(document).ready(function(){
+  $("#h").click(function(){
+  $("#hackru").toggle('fast');
+  });
+  });
 
-function randColor() { //for random color of button mouseover
+  function randColor() { //for random color of button mouseover
   return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
-}
-$("#h").css("background-color",randColor());//set inital random color
+  }
+  $("#h").css("background-color",randColor());//set inital random color
 
-$("#h").mouseover(function() {
-    $(this).css("background-color",randColor());//change on mouseover
-    });
+  $("#h").mouseover(function() {
+  $(this).css("background-color",randColor());//change on mouseover
+  });
   </script><!--unorganized javascript -->
 
   <a href = "http://sia.github.io/me" style="TEXT-DECORATION: NONE">
@@ -170,6 +170,7 @@ var cubeSize = 0.25;
 var userData;
 var cr = 0.01;
 var cubeCtr=0;
+var skinnedMesh;
 
 var targets = [];
 var projector, mouse = {x: 0, y: 0}, clickCube;
@@ -184,7 +185,7 @@ function init()
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
-  camera.position.set(0,150,400);
+  camera.position.set(0,150,-400);
   camera.lookAt(scene.position);	
 
   //Renderer create and start the renderer; choose antialias setting.
@@ -202,13 +203,7 @@ function init()
   //    document.body.appendChild( container );
   // attach renderer to the container div
   container.appendChild( renderer.domElement );
-  //events
-  // automatically resize renderer
   THREEx.WindowResize(renderer, camera);
-  //controls
-  // move mouse and: left   click to rotate, 
-  //                 middle click to zoom, 
-  //                 right  click to pan
   controls = new THREE.OrbitControls( camera, renderer.domElement );
 
   //Light
@@ -250,6 +245,18 @@ function init()
 
   // when the mouse moves, call the given function
   document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+
+  //Blender
+  var loader = new THREE.JSONLoader;
+
+  loader.load('meshes/animation.js', function (geometry, materials) {
+      skinnedMesh = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
+      skinnedMesh.position.y = 50;
+      skinnedMesh.scale.set(15, 15, 15);
+      scene.add(skinnedMesh);
+
+      animate(skinnedMesh);
+      });
 
 }//END INIT
 
@@ -362,7 +369,5 @@ function render()
 }
 
 </script>
-
 </body>
-
 </html>
