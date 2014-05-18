@@ -41,20 +41,27 @@
     </span>
   </h1>
 
-  <h3>HACK RU PROJECT:</h3>
+  <button id="h" style="background-color: #DEFF57; padding: 5px;">HACKRU PROJECT</button></br>
 
-  <p>Ever heard of <a href = "http://www.nidhogggame.com/" 
-    style="TEXT-DECORATION: NONE"
-    target="_blank">Nidhogg</a>? </br> Welcome to Jormungandr!
-  </br>Play Jormungandr: <a href = "http://sia.github.io/jormungandr/jormlite" 
-    style="TEXT-DECORATION: NONE"
-    target="_blank">Jormungandr(Lite Version)</a>:
-  <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr" 
-    style="TEXT-DECORATION: NONE"
-    target="_blank">source code</a>
+  <div id="hackru" style="display: none">
+    <p>Ever heard of <a href = "http://www.nidhogggame.com/" 
+      style="TEXT-DECORATION: NONE"
+      target="_blank">Nidhogg</a>? </br> Welcome to Jormungandr!
+    </br>Play Jormungandr: <a href = "http://sia.github.io/jormungandr/jormlite" 
+      style="TEXT-DECORATION: NONE"
+      target="_blank">Jormungandr(Lite Version)</a>:
+    <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr" 
+      style="TEXT-DECORATION: NONE"
+      target="_blank">source code</a>
+  </div>
 
-  </br>
-  </br>
+  <script>
+$(document).ready(function(){
+    $("#h").click(function(){
+      $("#hackru").toggle('fast');
+      });
+    });
+  </script>
 
   <a href = "http://sia.github.io/me" style="TEXT-DECORATION: NONE">
     <span 
@@ -115,7 +122,7 @@
 
   <a href = "http://sia.github.io/unity3d-doodles" style="TEXT-DECORATION: NONE">
     <span 
-      style="color:black;font-size: 19pt">Unity3D Game Experiments!
+      style="color:black;font-size: 17pt">Unity3D Game Experiments!
     </span>
   </a>
 
