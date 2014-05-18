@@ -1,6 +1,13 @@
 <!DOCTYPE HTML>
 <html>
 
+<div style="z-index: 3; position: absolute;">
+<audio id="mmm">
+  <source src="mmm.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</div>
+
 <link rel="icon" href="favicon.png" type="image/png">
 
 <head>
@@ -133,7 +140,8 @@ console.log(doge);
 var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
-
+mmmVol = document.getElementById("mmm");//For sound
+mmmVol.volume=0.2;
 var sphere3;
 var sphereSize = 0.25;
 var cubeSize = 0.25;
@@ -300,6 +308,12 @@ function animate()
   if(keyboard.pressed("P")){
     axes = new THREE.AxisHelper(10000);
     scene.add( axes );
+  }
+
+  if(keyboard.pressed("B") && keyboard.pressed("S")){
+    document.getElementById('mmm').play();
+  }else{
+    document.getElementById('mmm').load();
   }
 
   clickCube.rotation.z += 0.01;
