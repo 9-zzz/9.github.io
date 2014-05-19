@@ -37,7 +37,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 
-<body>
+<body bgcolor="#000000">
 
 <div id="HtmlText" style="z-index: 2; position: absolute; left:82px; top:30px">
 
@@ -159,7 +159,7 @@
 <script src="js/THREEx.FullScreen.js"></script>
 <script src="js/THREEx.WindowResize.js"></script>
 <!--Imported three.js lib files, may need to update-->
-<div id="ThreeJS" style="index: 1; position: absolute; right:0px; top:0px"></div>
+<div id="ThreeJS" style="index: 1; position: absolute; right:0px; top:0px; background-color: #FFFFFF"></div>
 
 <script>
 var doge = '░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░\n░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░\n░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░\n░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░\n░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░\n░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░\n░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░\n░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░\n░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░\n░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░\n▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░\n▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌\n▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░\n░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░\n░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░\n░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░\n░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░\n░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░\n░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░\nWow. Such console. Much inspect! So html. Wow!\n'
@@ -178,6 +178,9 @@ var userData;
 var cr = 0.01;
 var cubeCtr=0;
 var skinnedMesh;
+
+var video = document.getElementsByTagName('video')[0];
+var i = 0;
 
 var targets = [];
 var projector, mouse = {x: 0, y: 0}, clickCube;
@@ -355,7 +358,26 @@ function animate()
     $('#credit').fadeOut(2000);
   }
 
-  if(keyboard.pressed("A")) $('#A').delay(200).fadeIn('slow');
+
+  video.onended = function(e) {
+  console.log('Detecting that video ended. Now fade out the video div and bring back the background Threejs div.');
+  //camera.position.set(0,150,-400);//reset camera position
+  $('#A').fadeOut('slow');
+  $('#ThreeJS').delay(200).fadeIn('slow');
+  };
+
+  video.onplaying = function(e) {
+  console.log('Detecting that video started. Fade out the Threejs background.');
+  $('#ThreeJS').fadeOut(2000);
+  };
+
+  video.onpause = function(e) {
+  console.log('Detecting that video paused. Fade in the Threejs background.');
+  $('#ThreeJS').delay(200).fadeIn('slow');
+  };
+  if(keyboard.pressed("A")){
+    $('#A').delay(200).fadeIn('slow');
+  }
 
   //if(keyboard.pressed("shift") && keyboard.pressed("A")) $('#A').fadeOut('slow');
 
