@@ -1,0 +1,21 @@
+body 
+{
+  margin: 0px;
+  overflow: hidden;
+}
+
+.HtmlText
+{
+  z-index: 2;
+  position: absolute;
+  left:82px;
+  top:30px;
+}
+
+.ThreeJS
+{
+  z-index: 1;
+  overflow: auto;
+  overflow-y: hidden;
+  background-color: #FFFFFF;
+}
