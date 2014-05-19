@@ -5,13 +5,23 @@
 <head>
 <title>404 Error</title>
 <meta charset="utf-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><!--JQuery mofo most up to date?-->
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 
-<body style="height: 100%">
-<video class="gfyVid" autoplay="" loop="" poster="true" width="800"  height="600" style="position: absolute; top: 0px; left: 0px; border: 0px; padding: 0px; z-index: 25;">
+<body>
+
+<video class="gfyVid" autoplay="" loop="" poster="true" width="800"  height="600" style="position: absolute; top: 0px; left: 0px; border: 0px; padding: 0px; z-index: 1;">
   <source id="webmsource" src="http://zippy.gfycat.com/EntireHomelyHamadryad.webm" type="video/webm" class="webmsource">
 </video>
+
+<script>
+$(function() {  
+    var winHeight = $(window).height();
+    $('video').css({  'height': winHeight, 'width': '100%'});
+    });
+</script>
+
 <!--  <div id="404text" style="z-index: 2">
     <img src="https://raw.githubusercontent.com/sia/sia.github.io/master/images/dontpanic.jpg" width="204" height="128">
   <p>Hello this is my 404 page. Sorry... Have a random fact: 
@@ -25,7 +35,7 @@
 <script src="/js/THREEx.KeyboardState.js"></script>
 <script src="/js/THREEx.FullScreen.js"></script>
 <script src="/js/THREEx.WindowResize.js"></script>
-<div id="ThreeJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
+<div id="ThreeJS" style="z-index: 2; position: absolute; right:0px; top:0px"></div>
 <script>
 //global variables
 var container, scene, camera, renderer, controls, stats;
