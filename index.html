@@ -363,7 +363,7 @@ function animate()
   console.log('Detecting that video ended. Now fade out the video div and bring back the background Threejs div.');
   //camera.position.set(0,150,-400);//reset camera position
   $('#A').fadeOut('slow');
-  $('#ThreeJS').delay(200).fadeIn('slow');
+  $('#ThreeJS').delay(200).fadeIn(2000);
   };
 
   video.onplaying = function(e) {
@@ -373,7 +373,7 @@ function animate()
 
   video.onpause = function(e) {
   console.log('Detecting that video paused. Fade in the Threejs background.');
-  $('#ThreeJS').fadeIn('slow');
+  $('#ThreeJS').fadeIn(2000);
   };
 
   if(keyboard.pressed("A")){
