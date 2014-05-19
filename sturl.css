@@ -2,6 +2,7 @@ body
 {
   margin: 0px;
   overflow: hidden;
+  font-family: Ubuntu, sans-serif;
 }
 
 .ThreeJS
