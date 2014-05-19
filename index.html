@@ -373,8 +373,9 @@ function animate()
 
   video.onpause = function(e) {
   console.log('Detecting that video paused. Fade in the Threejs background.');
-  $('#ThreeJS').delay(200).fadeIn('slow');
+  $('#ThreeJS')fadeIn('slow');
   };
+
   if(keyboard.pressed("A")){
     $('#A').delay(200).fadeIn('slow');
   }
