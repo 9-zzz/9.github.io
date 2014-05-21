@@ -41,17 +41,18 @@ mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
 var cities = new L.LayerGroup();
   L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
 
-var grayscale = L.tileLayer(mbUrl, {id: 'examples.map-20v6611k', attribution: mbAttr}),
+  var mapOSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+
     streets = L.tileLayer(mbUrl, {id: 'examples.map-i86knfo3',   attribution: mbAttr});
 
 var map = L.map('map', {
 center: [39.73, -104.99],
 zoom: 10,
-layers: [grayscale, cities]
+layers: [mapOSM, cities]
 });
 
 var baseLayers = {
-  "Grayscale": grayscale,
+  "Pretty Sweet Map": mapOSM,
   "Streets": streets
 };
 
