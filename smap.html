@@ -32,20 +32,38 @@
 
   <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
   <script>
-
-var map = L.map('map').setView([40.5221, -74.46252], 18);
-
-L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-maxZoom: 18,
-attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-id: 'examples.map-i86knfo3'
-}).addTo(map);
+mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
 
+var cities = new L.LayerGroup();
+  L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+
+var grayscale = L.tileLayer(mbUrl, {id: 'examples.map-20v6611k', attribution: mbAttr}),
+    streets = L.tileLayer(mbUrl, {id: 'examples.map-i86knfo3',   attribution: mbAttr});
+
+var map = L.map('map', {
+center: [39.73, -104.99],
+zoom: 10,
+layers: [grayscale, cities]
+});
+
+var baseLayers = {
+  "Grayscale": grayscale,
+  "Streets": streets
+};
+
+var overlays = {
+  "Cities": cities
+};
+
+L.control.layers(baseLayers, overlays).addTo(map);
+
+map = map.setView([40.5221, -74.46252], 18);
 
 L.marker([40.5221, -74.46252]).addTo(map)
-  .bindPopup("<b>Hello Ian!</b><br />I am a popup... Just for you <3 This is literally exactly where the cave is.").openPopup();
+  .bindPopup("<b>Hello Faiq!</b><br />I am a popup... Just for you <3 This is literally exactly where the cave is.").openPopup();
 
   L.circle([40.5221, -74.4629], 10, {
 color: 'green',
