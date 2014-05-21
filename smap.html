@@ -1,156 +1,70 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 
 <head>
-<title>Shahan's GitHub Pages | "Hello, my friend. Stay awhile and listen."</title>
+<title>My Leaflet App</title>
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+
 <link rel="icon" href="/images/favreaucon.png" type="image/png">
-<meta property="og:title" content="Shahan's Github Page | Bwahaahaa I manipulate Facebook!"/>
+
+<meta property="og:title" content="Maps!"/>
 <meta property="og:image" content="http://i.imgur.com/qLW96JN.png"/>
-<meta property="og:site_name" content="www.erroneousName.youSuck!"/>
-<meta property="og:description" content="This is a site for buying puppies and plutonium! Bwahaha, that is false! You've been LIED to!!!"/>
-<meta property="og:url" content="http://sia.github.io"/>
-<meta name="wot-verification" content="7e897864f806e7457ad5"/>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><!--JQuery mofo most up to date?-->
-<link rel="stylesheet" type="text/css" href="css/sturl.css">
+<meta property="og:site_name" content="Maps!"/>
+<meta property="og:description" content="Maps!"/>
+<meta property="og:url" content="http://sia.github.io/smap"/>
+
+<meta name="wot-verification" content="7e897864f806e7457ad5"/><!--Do i need this?-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/smapsturl.css">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 
-<div id="A" style="z-index: 5; position: absolute; bottom: 42px; right: 42px; opacity:0.9; display: none;">
-  <video id="Arthur" height="480" width="640" preload="auto" controls poster="images/Arthur.jpg">
-    <source src="Arthur-C-Clarke.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
-
-<div style="z-index: 3;">
-  <audio id="mmm">
-    <source src="mmm.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-</div>
-
-<div id="credit" style="z-index: 4; position: absolute; top: 30px; right: 80px; background-color:rgba(255,26,79,0.65); border:2px solid #CAFF1A; padding:5px 20px; width:260px; border-radius:25px; display: none">
-  <span style="color:white;font-size: 8pt" >
-    Congratulations! You just played the sound: "Mmm"</br>From jennpeare's App:
-    <a href = "https://github.com/jennpeare/Mmm"
-      style="color:#FF1A4F; background-color:rgba(202,255,26,0.85); font-size:10; width:140px; text-align:center; padding:2px; -webkit-border-radius: 5px; text-decoration:none;"
-      target="_blank">Mmm</a>
-    </br>Credit to jennpeare for this wonderful invention!
-  </span>
-</div>
-
 <body>
+
 <div id="HtmlText" style="z-index: 2; position: absolute; left:82px; top:30px">
-  <h1>Shahan Akhter
+  <h1>Leaflet.js Thing
     <span 
-      style="color:black;font-size: 8pt" 
-      title="This is me.">Coder. Artist. Gummy Bear Connoisseur.
+      style="color:pink;font-size: 8pt" 
+      title="This is me.">by Shahan
     </span>
   </h1>
-  <button id="h" title="Random Color on every mousemove and Refresh." style="border-radius: 5px;padding:5px;">HACKRU PROJECT</button></br>
+  <button id="mapbutton" title="Random Color on every mousemove and Refresh." style="border-radius: 5px;padding:5px;">MAP</button></br>
 
-  <div id="hackru" style="display: none">
-    <p>Ever heard of <a href = "http://www.nidhogggame.com/" 
-      style="TEXT-DECORATION: NONE"
-      target="_blank">Nidhogg</a>? </br> Welcome to Jormungandr!
-    </br>Play Jormungandr: <a href = "http://sia.github.io/jormungandr/jormlite" 
-      style="TEXT-DECORATION: NONE"
-      target="_blank">Jormungandr(Lite Version)</a>:
-    <a href = "https://github.com/sia/sia.github.io/tree/master/jormungandr" 
-      style="TEXT-DECORATION: NONE"
-      target="_blank">source code</a>
+  <div id="map" style="display: none;">
+
+    <script>
+var map = L.map('map').setView([51.505, -0.09], 13);
+
+L.tileLayer('http://{s}.tiles.mapbox.com/v3/MapID/{z}/{x}/{y}.png', {
+attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+maxZoom: 18
+}).addTo(map);
+    </script>
+
   </div>
 
   <script> <!--unorganized javascript -->
   $(document).ready(function(){
-  $("#h").click(function(){
-  $("#hackru").toggle('fast');
+  $("#mapbutton").click(function(){
+  $("#map").toggle('fast');
   });
   });
 
   function randColor() { //for random color of button mouseover
   return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
   }
-  $("#h").css("background-color",randColor());//set inital random color
+  $("#mapbutton").css("background-color",randColor());//set inital random color
 
-  $("#h").mousemove(function() {
+  $("#mapbutton").mousemove(function() {
   $(this).css("background-color",randColor());//change on mouseover
   });
   </script><!--unorganized javascript -->
 
-  <a href = "http://sia.github.io/me" style="TEXT-DECORATION: NONE">
-    <span 
-      style="color:cyan;font-size: 11pt">ABOUT ME
-    </span>
-  </a>
-
-  </br>
-
-  <a href = "http://www.youtube.com/user/ShahanDraw/videos" 
-    style="TEXT-DECORATION: NONE"
-    target="_blank">
-    <span 
-      style="color:orange;font-size: 11pt" 
-      title="Some videos of me drawing.">MY YOUTUBE CHANNEL
-    </span>
-  </a>
-
-  </br>
-
-  <!--<span 
-    style="font-size: 11pt">MY RESUME:
-  </span> 
-  <a href = "http://goo.gl/BEJcY7" style="TEXT-DECORATION: NONE"> 
-    <span 
-      style="color:red" 
-      title="A download linke to my resume in PDF format from Google Drive.">PDF
-    </span>
-  </a>
-
-  </br>-->
-
-  <a href = "http://sia.github.io/art" 
-    style="TEXT-DECORATION: NONE" 
-    target="_blank">
-    <span 
-      style="color:magenta;font-size: 11pt">ARTWORK
-    </span>
-  </a>
-
-  </br>
-
-  <a href = "http://sia.github.io/fun" style="TEXT-DECORATION: NONE">
-    <span 
-      style="color:brown;font-size: 14pt">FUN
-    </span>
-  </a>
-
-  </br>
-
-  <a href = "http://sia.github.io/g/cogs" style="TEXT-DECORATION: NONE">
-    <span 
-      style="color:red;font-size: 14pt">C.O.G.S.
-    </span>
-  </a>
-
-  </br>
-
-  <a href = "http://sia.github.io/unity3d-doodles" style="TEXT-DECORATION: NONE">
-    <span 
-      style="color:black;font-size: 17pt">Unity3D Game Experiments!
-    </span>
-  </a>
-
-  </br>
-
-  <span 
-    style="color:lightgreen;font-size: 7pt"
-    title="Use the 'Y U I O' keys to control the Sphere and 'P' to add Axes. Right click to pan, left to rotate and Scroll to zoom.">WEBSITE GOODIES*
-  </span>
-
-  </p>
 </div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
 
 <script src="js/Three.js"></script>
@@ -171,8 +85,6 @@ console.log(doge);
 var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
-mmmVol = document.getElementById("mmm");//For sound
-mmmVol.volume=0.2;
 var sphere3;
 var sphereSize = 0.25;
 var cubeSize = 0.25;
@@ -258,19 +170,6 @@ function init()
   // when the mouse moves, call the given function
   document.addEventListener( 'mousedown', onDocumentMouseDown, false );
 
-  //Blender
-  var loader = new THREE.JSONLoader;
-
-  /*
-     loader.load('meshes/animation.js', function (geometry, materials) {
-     skinnedMesh = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
-     skinnedMesh.position.y = 20;
-     skinnedMesh.position.z = 40;
-     skinnedMesh.scale.set(15, 15, 15);
-     scene.add(skinnedMesh);
-     });
-   */
-
 }//END INIT
 
 function onDocumentMouseDown( event ) 
@@ -350,31 +249,6 @@ function animate()
     axes = new THREE.AxisHelper(10000);
     scene.add( axes );
   }
-
-  if(keyboard.pressed("B") && keyboard.pressed("S")){
-    document.getElementById('mmm').play();
-    $('#credit').delay(20).fadeIn('slow');
-  }else{
-    document.getElementById('mmm').load();
-    $('#credit').fadeOut(2000);
-  }
-
-  video.onended = function(e) {
-    console.log('Detecting that video ended. Now fade out the video div and bring back the background Threejs div.');
-    //camera.position.set(0,150,-400);//reset camera position
-    $('#A').fadeOut('slow');
-    $('#ThreeJS').delay(200).fadeIn(2000);
-  };
-
-  video.onplaying = function(e) {
-    console.log('Detecting that video started. Fade out the Threejs background.');
-    $('#ThreeJS').fadeOut(2000);
-  };
-
-  video.onpause = function(e) {
-    console.log('Detecting that video paused. Fade in the Threejs background.');
-    $('#ThreeJS').fadeIn(2000);
-  };
 
   if(keyboard.pressed("A")){
     $('#A').delay(200).fadeIn('slow');

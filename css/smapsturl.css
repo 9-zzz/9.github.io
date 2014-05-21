@@ -1,0 +1,16 @@
+body 
+{
+  margin: 0px;
+  overflow: hidden;
+  font-family: Ubuntu, sans-serif;
+}
+
+.ThreeJS
+{
+  z-index: 1;
+  overflow: auto;
+  overflow-y: hidden;
+  background-color: #FFFFFF;
+}
+
+#map { height: 180px; }
