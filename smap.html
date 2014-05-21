@@ -26,55 +26,48 @@
 <body>
 
 
-<div id="HtmlText" style="z-index: 2; position: absolute; left:82px; top:30px">
+<div id="smapText" style="z-index: 2; position: absolute; left:42px; top:10px">
   <h1>Leaflet.js Thing
     <span 
       style="color:magenta;font-size: 8pt" 
       title="This is me.">by Shahan
     </span>
   </h1>
-  <button id="mapbutton" title="Random Color on every mousemove and Refresh." style="border-radius: 5px;padding:5px;">MAP</button></br>
+  <button id="mapbutton" title="Random Color on every mousemove and Refresh." style="border-radius: 5px;padding:5px;">TOGGLE MAP</button></br>
 
 
-  <div id="map" style="width: 600px; height: 400px"></div>
+  <div id="map" style="opacity: 0.9; width: 800px; height: 420px"></div>
 
   <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
   <script>
 
-var map = L.map('map').setView([51.505, -0.09], 13);
+var map = L.map('map').setView([40.5221, -74.46252], 18);
 
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    id: 'examples.map-i86knfo3'
-    }).addTo(map);
+maxZoom: 18,
+attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+id: 'examples.map-i86knfo3'
+}).addTo(map);
 
 
-L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup("<b>Hello Najma!</b><br />I am a popup.").openPopup();
+L.marker([40.5221, -74.46252]).addTo(map)
+  .bindPopup("<b>Hello Ian!</b><br />I am a popup... Just for you <3 This is literally exactly where the cave is.").openPopup();
 
-      L.circle([51.508, -0.11], 500, {
-          color: 'red',
-          fillColor: '#f03',
-          fillOpacity: 0.5
-          }).addTo(map).bindPopup("I am a circle.");
-
-L.polygon([
-        [51.509, -0.08],
-            [51.503, -0.06],
-                [51.51, -0.047]
-                    ]).addTo(map).bindPopup("I am a polygon.");
-
+  L.circle([40.5221, -74.4629], 10, {
+color: 'green',
+fillColor: '#f09',
+fillOpacity: 0.4
+}).addTo(map).bindPopup("I am a random circle.");
 
 var popup = L.popup();
 
 function onMapClick(e) {
-    popup
-          .setLatLng(e.latlng)
-              .setContent("You clicked the map at " + e.latlng.toString())
-                  .openOn(map);
+  popup
+    .setLatLng(e.latlng)
+    .setContent("You clicked the map at " + e.latlng.toString())
+    .openOn(map);
 }
 
 map.on('click', onMapClick);
@@ -143,7 +136,7 @@ function init()
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
-  camera.position.set(0,150,-400);
+  camera.position.set(0,150,-600);
   camera.lookAt(scene.position);	
 
   //Renderer create and start the renderer; choose antialias setting.
@@ -175,25 +168,25 @@ function init()
   //scene.add( axes );//Done in animate() not here
 
   //Meshes
-  sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
+  sphere3 = new THREE.Mesh(new THREE.PlaneGeometry(42, 42, 42, 42),
       new THREE.MeshNormalMaterial({ transparent: true, opacity: 0,wireframe:true}));
   scene.add(sphere3);
 
   //cust clickCube
-  var faceColorMaterial = new THREE.MeshBasicMaterial( 
-      {transparent: true, opacity: 0.65, color: 0xffffff, vertexColors: THREE.FaceColors } );
+  var faceColorMaterial = new THREE.MeshNormalMaterial( 
+      {wireframe:true, transparent: true, opacity: 0.65, color: 0x000fff, vertexColors: THREE.FaceColors } );
 
-  var cubeGeometry = new THREE.CubeGeometry( 22, 22, 22);
+  var cubeGeometry = new THREE.IcosahedronGeometry( 40, 1 ); // radius, subdivisions
   for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
   {
     face = cubeGeometry.faces[ i ];	
     face.color.setRGB( 0, 0.5, 0 * Math.random() + 0.6 );		
   }
   clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
-  clickCube.position.set(0, 0, 0);
 
   clickCube.userData = { URL: 'http://google.com' };
 
+  clickCube.position.x = -285;
   scene.add(clickCube);
 
   targets.push(clickCube);
@@ -233,15 +226,15 @@ function onDocumentMouseDown( event )
   if ( intersects.length > 0 )
   {
     cubeCtr++;
-    if(cubeCtr > 10){
-      window.open("http://en.wikipedia.org/wiki/Special:Random","_blank")
+    if(cubeCtr > 1){
+      window.open("http://leafletjs.com/","_blank")
         cubeCtr = 0;
     }
     //console.log("Hit on cube @ " + toString( intersects[0].point ) );
     // change the color of the closest face.
     intersects[ 0 ].face.color.setRGB(Math.random(), Math.random(), Math.random()); 
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
-    cr = cr + 0.003;
+    cr = cr + 3;
   }
 }
 
@@ -260,9 +253,7 @@ function animate()
   clickCube.scale.set(cubeSize,cubeSize,cubeSize);
   if(cubeSize <= 1.5) cubeSize *= 1.01;
 
-  sphere3.rotation.x -= 0.001;
   sphere3.rotation.y -= 0.001;
-  sphere3.rotation.z -= 0.001;
 
   if(keyboard.pressed("Y")){
     sphereSize /= 1.05;
@@ -289,9 +280,7 @@ function animate()
     //document.getElementById('Arthur').play(); //auto play when hit 'A'
   }
 
-  clickCube.rotation.z += 0.01;
   clickCube.rotation.y += cr;
-  clickCube.rotation.x += 0.01;
   if(keyboard.pressed("space"))cr = 0.01;
 
 }//END ANIM

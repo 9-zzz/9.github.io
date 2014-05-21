@@ -1,8 +1,11 @@
+h1 {color: #00FA3A;}
+
 body 
 {
   margin: 0px;
   overflow: hidden;
   font-family: Ubuntu, sans-serif;
+  background-color: #EEFF7C;
 }
 
 .ThreeJS
@@ -15,6 +18,5 @@ body
 
 #map 
 { 
-  height: 420px; 
-  width: 500px; 
+
 }
