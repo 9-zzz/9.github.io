@@ -5,7 +5,6 @@
 <title>My Leaflet App</title>
 
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 
 <link rel="icon" href="/images/favreaucon.png" type="image/png">
 
@@ -26,19 +25,20 @@
 
 <body>
 
+
 <div id="HtmlText" style="z-index: 2; position: absolute; left:82px; top:30px">
   <h1>Leaflet.js Thing
     <span 
-      style="color:pink;font-size: 8pt" 
+      style="color:magenta;font-size: 8pt" 
       title="This is me.">by Shahan
     </span>
   </h1>
   <button id="mapbutton" title="Random Color on every mousemove and Refresh." style="border-radius: 5px;padding:5px;">MAP</button></br>
 
   <div id="map" style="display: none;">
-
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
     <script>
-var map = L.map('map').setView([51.505, -0.09], 13);
+var map = L.map('map').setView([40.379217, -74.54], 13);
 
 L.tileLayer('http://{s}.tiles.mapbox.com/v3/MapID/{z}/{x}/{y}.png', {
 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',

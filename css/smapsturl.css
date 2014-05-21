@@ -13,4 +13,8 @@ body
   background-color: #FFFFFF;
 }
 
-#map { height: 180px; }
+#map 
+{ 
+  height: 420px; 
+  width: 500px; 
+}
