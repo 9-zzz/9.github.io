@@ -3,20 +3,15 @@
 
 <head>
 <title>My Leaflet App</title>
-
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-
 <link rel="icon" href="/images/favreaucon.png" type="image/png">
-
 <meta property="og:title" content="Maps!"/>
 <meta property="og:image" content="http://i.imgur.com/qLW96JN.png"/>
 <meta property="og:site_name" content="Maps!"/>
 <meta property="og:description" content="Maps!"/>
 <meta property="og:url" content="http://sia.github.io/smap"/>
-
 <meta name="wot-verification" content="7e897864f806e7457ad5"/><!--Do i need this?-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
 <link rel="stylesheet" type="text/css" href="css/smapsturl.css">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 <meta charset="utf-8">
@@ -24,17 +19,14 @@
 </head>
 
 <body>
-
-
 <div id="smapText" style="z-index: 2; position: absolute; left:42px; top:10px">
-  <h1>Leaflet.js Thing
+  <h2>Leaflet.js Thing
     <span 
       style="color:magenta;font-size: 8pt" 
       title="This is me.">by Shahan
-    </span>
-  </h1>
-  <button id="mapbutton" title="Random Color on every mousemove and Refresh." style="border-radius: 5px;padding:5px;">TOGGLE MAP</button></br>
-
+    </span></br>
+    <button id="mapbutton" title="Random Color on every mousemove and Refresh." style="border-radius: 5px;padding:5px;">TOGGLE MAP</button>
+  </h2>
 
   <div id="map" style="opacity: 0.9; width: 800px; height: 420px"></div>
 
@@ -69,11 +61,8 @@ function onMapClick(e) {
     .setContent("You clicked the map at " + e.latlng.toString())
     .openOn(map);
 }
-
 map.on('click', onMapClick);
-
   </script>
-
 
   <script> <!--unorganized javascript -->
   $(document).ready(function(){
@@ -91,7 +80,6 @@ map.on('click', onMapClick);
   $(this).css("background-color",randColor());//change on mouseover
   });
   </script><!--unorganized javascript -->
-
 </div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
 
 <script src="js/Three.js"></script>
@@ -104,10 +92,7 @@ map.on('click', onMapClick);
 <!--Imported three.js lib files, may need to update-->
 <div id="ThreeJS"></div>
 
-<script>
-var doge = '░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░\n░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░\n░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░\n░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░\n░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░\n░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░\n░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░\n░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░\n░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░\n░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░\n▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░\n▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌\n▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░\n░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░\n░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░\n░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░\n░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░\n░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░\n░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░\nWow. Such console. Much inspect! So HTML. Wow!\n'
-console.log(doge);
-
+<script><!--Three.js-->
 //global variables
 var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
