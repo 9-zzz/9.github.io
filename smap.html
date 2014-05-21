@@ -29,9 +29,9 @@
 
   </h3>
 
-  <div id="map" class="map"></div>
-
-
+  <div id="map2" class="map2">
+    <div id="map" class="map"></div>
+  </div>
 
   <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
   <script src="leaflet-plugins/leaflet-geoip-master/leaflet-geoip.js"></script>
@@ -128,12 +128,15 @@ map.on('click', onMapClick);
   </script>
 
   <script> <!--unorganized javascript -->
+
   $(document).ready(function(){
   $("#mapbutton").click(function(){
   console.log("make clickmesh appear");
   $("#map").toggle('fast');
   });
   });
+
+  function fullOpac() { return 1.0; }
 
   function randColor() { //for random color of button mouseover
   return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
@@ -143,6 +146,19 @@ map.on('click', onMapClick);
   $("#mapbutton").mousemove(function() {
   $(this).css("background-color",randColor());//change on mouseover
   });
+
+$(".map").css('opacity','0.65');
+$(document).ready(function(){
+    $(".map2").hover(
+      function() {
+      $(this).find(".map").stop().animate({ opacity: 1 });
+      },
+      function() {
+      $(this).find(".map").stop().animate({ opacity: 0.65 }); 
+      });
+
+    });
+
   </script><!--unorganized javascript -->
 </div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
 
