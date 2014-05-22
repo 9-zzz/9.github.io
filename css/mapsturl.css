@@ -23,7 +23,7 @@ body, html
   position: absolute;
 }
 
-#smapText
+#smapText, #smapText2
 {
   text-align: center;
   z-index: 2;
@@ -49,4 +49,22 @@ body, html
   font-size: 9px;
   border-radius: 5px;
   padding:5px;
+}
+
+a:link,a:visited
+{
+  color:#FFFFFF;
+  background-color:rgba(255,255,25,0.45);
+  font-size:30pt;
+  width:140px;
+  text-align:center;
+  padding:2px;
+  -webkit-border-radius: 5px;
+  text-decoration:none;
+}
+
+a:hover,a:active
+{
+  color:#00FFFF;
+  background-color:rgba(255,0,0,0.5);
 }
