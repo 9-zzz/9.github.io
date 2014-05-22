@@ -309,7 +309,8 @@ function onDocumentMouseDown( event )
     }
     //console.log("Hit on cube @ " + toString( intersects[0].point ) );
     // change the color of the closest face.
-    intersects[ 0 ].face.color.setRGB(Math.random(), Math.random(), Math.random()); 
+    //intersects[ 0 ].face.color.setRGB(Math.random(), Math.random(), Math.random()); 
+    intersects[ 0 ].face.color.setRGB(149,259,19); 
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
     cr = cr + 0.003;
   }
