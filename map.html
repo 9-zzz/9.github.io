@@ -226,7 +226,7 @@ THREEx.WindowResize(renderer, camera);
 controls = new THREE.OrbitControls( camera, renderer.domElement );
 
 var leafletLogo = THREE.ImageUtils.loadTexture( 'images/leaflet-logo.png' );
-var leafletMaterial = new THREE.SpriteMaterial( { map: leafletLogo, useScreenCoordinates: false,transparent: true, opacity: 0.6} );
+var leafletMaterial = new THREE.SpriteMaterial( { map: leafletLogo, useScreenCoordinates: false,transparent: true, opacity: 0.7} );
 
 sprite = new THREE.Sprite( leafletMaterial);
 sprite.position.set( 0, 0, 0 );
@@ -254,7 +254,7 @@ scene.add(sphere3);
 var faceColorMaterial = new THREE.MeshNormalMaterial( 
 {wireframe:true, transparent: true, opacity: 0.65, color: 0x000fff, vertexColors: THREE.FaceColors } );
 
-var cubeGeometry = new THREE.IcosahedronGeometry( 40, 0 ); // radius, subdivisions
+var cubeGeometry = new THREE.CubeGeometry(60,60,60,0);
 for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
 {
 face = cubeGeometry.faces[ i ];	
