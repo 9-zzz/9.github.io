@@ -9,10 +9,10 @@
 <meta property="og:image" content="http://i.imgur.com/PeRS1tI.png" />
 <meta property="og:site_name" content="Maps!"/>
 <meta property="og:description" content="My leaflet.js attempt."/>
-<meta property="og:url" content="http://sia.github.io/smap"/>
+<meta property="og:url" content="http://sia.github.io/map"/>
 <meta name="wot-verification" content="7e897864f806e7457ad5"/><!--Do i need this?-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/smapsturl.css">
+<link rel="stylesheet" type="text/css" href="css/mapsturl.css">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -33,7 +33,7 @@
     <div id="map" class="map"></div>
   </div>
 
-  <div id="smapText2" class="smapText2" style="display: none">
+  <div id="smapText2" class="smapText2" style="z-index: 99; display: none">
     <h1>This is another Div!</h1>
     For testing
   </div>
@@ -206,7 +206,7 @@ function init()
 scene = new THREE.Scene();
 
 var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
-var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 2000;
 camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
 scene.add(camera);
 camera.position.set(0,150,-600);
@@ -230,6 +230,15 @@ container.appendChild( renderer.domElement );
 THREEx.WindowResize(renderer, camera);
 controls = new THREE.OrbitControls( camera, renderer.domElement );
 
+var leafletLogo = THREE.ImageUtils.loadTexture( 'images/leaflet-logo.png' );
+var leafletMaterial = new THREE.SpriteMaterial( { map: leafletLogo, useScreenCoordinates: false,transparent: true, opacity: 0.6} );
+
+var sprite = new THREE.Sprite( leafletMaterial);
+sprite.position.set( 0, 0, 0 );
+sprite.scale.set( 83.5, 129.5, 1.0 ); // imageWidth, imageHeight
+scene.add( sprite );
+
+
 //Light
 var light = new THREE.PointLight(0xffffff);
 light.position.set(0,250,0);
@@ -242,21 +251,20 @@ var axes = new THREE.AxisHelper(0);
 
 //Meshes
 sphere3 = new THREE.Mesh(new THREE.PlaneGeometry(42, 42, 42, 42),
-new THREE.MeshNormalMaterial({ transparent: true, opacity: 0,wireframe:true}));
+    new THREE.MeshNormalMaterial({ transparent: true, opacity: 0,wireframe:true}));
 scene.add(sphere3);
 
 //cust clickCube
 var faceColorMaterial = new THREE.MeshNormalMaterial( 
-{wireframe:true, transparent: true, opacity: 0.65, color: 0x000fff, vertexColors: THREE.FaceColors } );
+    {wireframe:true, transparent: true, opacity: 0.65, color: 0x000fff, vertexColors: THREE.FaceColors } );
 
 var cubeGeometry = new THREE.IcosahedronGeometry( 40, 1 ); // radius, subdivisions
 for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
 {
-face = cubeGeometry.faces[ i ];	
-face.color.setRGB( 0, 0.5, 0 * Math.random() + 0.6 );		
+  face = cubeGeometry.faces[ i ];	
+  face.color.setRGB( 0, 0.5, 0 * Math.random() + 0.6 );		
 }
 clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
-
 
 scene.add(clickCube);
 
@@ -272,101 +280,101 @@ document.addEventListener( 'mousedown', onDocumentMouseDown, false );
 
 function onDocumentMouseDown( event ) 
 {
-// the following line would stop any other event handler from firing
-// (such as the mouse's TrackballControls)
-// event.preventDefault();
+  // the following line would stop any other event handler from firing
+  // (such as the mouse's TrackballControls)
+  // event.preventDefault();
 
-console.log("click");
+  console.log("click");
 
-// update the mouse variable
-mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+  // update the mouse variable
+  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+  mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
-// find intersections
+  // find intersections
 
-// create a Ray with origin at the mouse position
-//   and direction into the scene (camera direction)
-var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
-projector.unprojectVector( vector, camera );
-var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+  // create a Ray with origin at the mouse position
+  //   and direction into the scene (camera direction)
+  var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+  projector.unprojectVector( vector, camera );
+  var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
-// create an array containing all objects in the scene with which the ray intersects
-var intersects = ray.intersectObjects( targets );
+  // create an array containing all objects in the scene with which the ray intersects
+  var intersects = ray.intersectObjects( targets );
 
-// if there is one (or more) intersections
-if ( intersects.length > 0 )
-{
-cubeCtr++;
-if(cubeCtr > 1){
-window.open("http://leafletjs.com/","_blank")
-cubeCtr = 0;
-}
-//console.log("Hit on cube @ " + toString( intersects[0].point ) );
-// change the color of the closest face.
-intersects[ 0 ].face.color.setRGB(Math.random(), Math.random(), Math.random()); 
-intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
-cr = cr + 3;
-}
+  // if there is one (or more) intersections
+  if ( intersects.length > 0 )
+  {
+    cubeCtr++;
+    if(cubeCtr > 1){
+      window.open("http://leafletjs.com/","_blank")
+        cubeCtr = 0;
+    }
+    //console.log("Hit on cube @ " + toString( intersects[0].point ) );
+    // change the color of the closest face.
+    intersects[ 0 ].face.color.setRGB(Math.random(), Math.random(), Math.random()); 
+    intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
+    cr = cr + 0.15;
+  }
 }
 
 function toString(v) { return "[ " + v.x + ", " + v.y + ", " + v.z + " ]"; }
 
 function animate() 
 {
-requestAnimationFrame( animate );
-render();		
-update();
+  requestAnimationFrame( animate );
+  render();		
+  update();
 
-sphere3.scale.set(sphereSize,sphereSize,sphereSize);
-if(sphereSize <= 42) sphereSize *= 1.04;
-if(sphere3.material.opacity <= 0.55) sphere3.material.opacity += 0.003;
+  sphere3.scale.set(sphereSize,sphereSize,sphereSize);
+  if(sphereSize <= 42) sphereSize *= 1.04;
+  if(sphere3.material.opacity <= 0.55) sphere3.material.opacity += 0.003;
 
-clickCube.scale.set(cubeSize,cubeSize,cubeSize);
-if(cubeSize <= 1.5) cubeSize *= 1.01;
+  clickCube.scale.set(cubeSize,cubeSize,cubeSize);
+  if(cubeSize <= 1.5) cubeSize *= 1.01;
 
-sphere3.rotation.y -= 0.001;
+  sphere3.rotation.y -= 0.001;
 
-if(keyboard.pressed("Y")){
-sphereSize /= 1.05;
-}else if(sphereSize <= 42){sphereSize *= 1.04;}
+  if(keyboard.pressed("Y")){
+    sphereSize /= 1.05;
+  }else if(sphereSize <= 42){sphereSize *= 1.04;}
 
-if(keyboard.pressed("U")){
-sphereSize *= 1.05;
-}else if(sphereSize >= 42){sphereSize /= 1.04;}
+  if(keyboard.pressed("U")){
+    sphereSize *= 1.05;
+  }else if(sphereSize >= 42){sphereSize /= 1.04;}
 
-if(keyboard.pressed("I")){ 
-sphere3.rotation.x += 0.04;
-sphere3.rotation.y += 0.02;
-sphere3.rotation.z += 0.02;}
+  if(keyboard.pressed("I")){ 
+    sphere3.rotation.x += 0.04;
+    sphere3.rotation.y += 0.02;
+    sphere3.rotation.z += 0.02;}
 
-if(keyboard.pressed("O"))sphere3.rotation.y += 0.07;
+  if(keyboard.pressed("O"))sphere3.rotation.y += 0.07;
 
-if(keyboard.pressed("P")){
-axes = new THREE.AxisHelper(10000);
-scene.add( axes );
-}
+  if(keyboard.pressed("P")){
+    axes = new THREE.AxisHelper(10000);
+    scene.add( axes );
+  }
 
-if(keyboard.pressed("A")){
-$('#A').delay(200).fadeIn('slow');
-//document.getElementById('Arthur').play(); //auto play when hit 'A'
-}
+  if(keyboard.pressed("A")){
+    $('#A').delay(200).fadeIn('slow');
+    //document.getElementById('Arthur').play(); //auto play when hit 'A'
+  }
 
-clickCube.rotation.y += cr;
-if(keyboard.pressed("space"))cr = 0.01;
+  clickCube.rotation.y += cr;
+  if(keyboard.pressed("space"))cr = 0.01;
 
 }//END ANIM
 
 function update()
 {
-// delta = change in time since last call (in seconds)
-var delta = clock.getDelta(); 
+  // delta = change in time since last call (in seconds)
+  var delta = clock.getDelta(); 
 
-controls.update();
+  controls.update();
 }
 
 function render() 
 {	
-renderer.render( scene, camera );
+  renderer.render( scene, camera );
 }
 
 </script>
