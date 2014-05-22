@@ -20,28 +20,33 @@
 
 <body>
 <div id="smapText" class="smapText">
-  <h3>Leaflet.js Thing
-    <span 
-      style="color:magenta;font-size: 8pt" 
-      title="This is me.">by Shahan
-    </span>
-    <button id="mapbutton" title="Random Color on every mousemove and Refresh.">TOGGLE MAP</button>
 
-  </h3>
+    <h3>Leaflet.js Thing
+      <span 
+        style="color:magenta;font-size: 8pt" 
+        title="This is me.">by Shahan
+      </span>
+      <button id="mapbutton" title="Random Color on every mousemove and Refresh.">TOGGLE MAP</button>
+    </h3>
 
   <div id="map2" class="map2">
     <div id="map" class="map"></div>
   </div>
 
+  <div id="smapText2" class="smapText2" style="display: none">
+    <h1>This is another Div!</h1>
+    For testing
+  </div>
+
   <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
   <script src="leaflet-plugins/leaflet-geoip-master/leaflet-geoip.js"></script>
-  <script>
+  <script><!-- Leaflet script -->
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
 
-var yourLoc = new L.LayerGroup();
+var yourLoc = new L.LayerGroup();//for IP loc.
 var cities = new L.LayerGroup();
 L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
 
@@ -110,7 +115,6 @@ shadowAnchor: [9, 79],  // the same for the shadow
 popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-
 L.marker([40.5221, -74.462], {icon: redIcon}).addTo(map).bindPopup("<b>This is a leaf</b><br/>...For Ian...");
 L.marker([40.5221, -74.461], {icon: tobIcon}).addTo(map).bindPopup("<b>This is Tobias</b><br/>...For Ian...");
 L.marker([40.5220, -74.458], {icon: tobIcon}).addTo(map).bindPopup("<b>This is Tobias</b><br/>...For Ian...");
@@ -128,36 +132,40 @@ map.on('click', onMapClick);
   </script>
 
   <script> <!--unorganized javascript -->
+  var flag = 0;
 
   $(document).ready(function(){
   $("#mapbutton").click(function(){
   console.log("make clickmesh appear");
   $("#map").toggle('fast');
+  $("#smapText2").toggle('fast');
   });
   });
 
-  function fullOpac() { return 1.0; }
-
-  function randColor() { //for random color of button mouseover
-  return '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+  function changeColor() { //for random color of button mouseover
+  if(flag ==0){
+  flag = 1;
+  return '#FF0000';
+  }else{
+  flag = 0;
+  return '#FFFF00';
   }
-  $("#mapbutton").css("background-color",randColor());//set inital random color
+  }
 
-  $("#mapbutton").mousemove(function() {
-  $(this).css("background-color",randColor());//change on mouseover
+  $("#mapbutton").click(function() {
+  $(this).css("background-color",changeColor());//change on mouseover
   });
 
-$(".map").css('opacity','0.65');
-$(document).ready(function(){
-    $(".map2").hover(
-      function() {
-      $(this).find(".map").stop().animate({ opacity: 1 });
-      },
-      function() {
-      $(this).find(".map").stop().animate({ opacity: 0.65 }); 
-      });
-
-    });
+  $(".map").css('opacity','0.75');
+  $(document).ready(function(){
+  $(".map2").hover(
+  function() {
+  $(this).find(".map").stop().animate({ opacity: 1 });
+  },
+  function() {
+  $(this).find(".map").stop().animate({ opacity: 0.75 }); 
+  });
+  });
 
   </script><!--unorganized javascript -->
 </div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
