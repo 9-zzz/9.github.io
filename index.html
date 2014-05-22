@@ -195,7 +195,7 @@ var video = document.getElementsByTagName('video')[0];
 var i = 0;
 
 var targets = [];
-var projector, mouse = {x: 0, y: 0}, clickCube;
+var projector, mouse = {x: 0, y: 0}, clickCube, clickCube2;
 
 init();
 animate();
@@ -239,26 +239,32 @@ function init()
   //scene.add( axes );//Done in animate() not here
 
   //Meshes
-  sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
-      new THREE.MeshNormalMaterial({ transparent: true, opacity: 0,wireframe:true}));
+  //sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
+  sphere3 = new THREE.Mesh(new THREE.IcosahedronGeometry( 8.5 , 4 ), // radius, subdivisions
+            new THREE.MeshNormalMaterial({ transparent: true, opacity: 0,wireframe:true}));
+
   scene.add(sphere3);
 
   //cust clickCube
   var faceColorMaterial = new THREE.MeshBasicMaterial( 
-      {transparent: true, opacity: 0.65, color: 0xffffff, vertexColors: THREE.FaceColors } );
+      {transparent: true, opacity: 0.95, color: 0xFFFFFF, vertexColors: THREE.FaceColors } );
 
-  var cubeGeometry = new THREE.CubeGeometry( 22, 22, 22);
+  var faceColorMaterial2 = new THREE.MeshNormalMaterial({wireframe: true});
+  var cubeGeometry2 = new THREE.IcosahedronGeometry( 25.5 , 0 );
+
+  var cubeGeometry = new THREE.IcosahedronGeometry( 25 , 0 );
   for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
   {
     face = cubeGeometry.faces[ i ];	
-    face.color.setRGB( 0, 0.5, 0 * Math.random() + 0.6 );		
+    face.color.setRGB( 0, 0, 0);		
   }
   clickCube = new THREE.Mesh( cubeGeometry, faceColorMaterial );
+  clickCube2 = new THREE.Mesh( cubeGeometry2, faceColorMaterial2 );
   clickCube.position.set(0, 0, 0);
-
-  clickCube.userData = { URL: 'http://google.com' };
+  clickCube2.position.set(0, 0, 0);
 
   scene.add(clickCube);
+  scene.add(clickCube2);
 
   targets.push(clickCube);
 
@@ -267,19 +273,6 @@ function init()
 
   // when the mouse moves, call the given function
   document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-
-  //Blender
-  var loader = new THREE.JSONLoader;
-
-  /*
-     loader.load('meshes/animation.js', function (geometry, materials) {
-     skinnedMesh = new THREE.SkinnedMesh(geometry, new THREE.MeshFaceMaterial(materials));
-     skinnedMesh.position.y = 20;
-     skinnedMesh.position.z = 40;
-     skinnedMesh.scale.set(15, 15, 15);
-     scene.add(skinnedMesh);
-     });
-   */
 
 }//END INIT
 
@@ -337,6 +330,9 @@ function animate()
   clickCube.scale.set(cubeSize,cubeSize,cubeSize);
   if(cubeSize <= 1.5) cubeSize *= 1.01;
 
+  clickCube2.scale.set(cubeSize,cubeSize,cubeSize);
+  if(cubeSize <= 1.5) cubeSize *= 1.01;
+
   sphere3.rotation.x -= 0.001;
   sphere3.rotation.y -= 0.001;
   sphere3.rotation.z -= 0.001;
@@ -391,6 +387,9 @@ function animate()
     //document.getElementById('Arthur').play(); //auto play when hit 'A'
   }
 
+  clickCube2.rotation.z += 0.01;
+  clickCube2.rotation.y += cr;
+  clickCube2.rotation.x += 0.01;
   clickCube.rotation.z += 0.01;
   clickCube.rotation.y += cr;
   clickCube.rotation.x += 0.01;

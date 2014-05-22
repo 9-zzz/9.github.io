@@ -21,13 +21,13 @@
 <body>
 <div id="smapText" class="smapText">
 
-    <h3>Leaflet.js Thing
-      <span 
-        style="color:magenta;font-size: 8pt" 
-        title="This is me.">by Shahan
-      </span>
-      <button id="mapbutton" title="Random Color on every mousemove and Refresh.">TOGGLE MAP</button>
-    </h3>
+  <h3>Leaflet.js Thing
+    <span 
+      style="color:magenta;font-size: 8pt" 
+      title="This is me.">by Shahan
+    </span>
+    <button id="mapbutton" title="Random Color on every mousemove and Refresh.">TOGGLE MAP</button>
+  </h3>
 
   <div id="map2" class="map2">
     <div id="map" class="map"></div>
@@ -41,104 +41,104 @@
   <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
   <script src="leaflet-plugins/leaflet-geoip-master/leaflet-geoip.js"></script>
   <script><!-- Leaflet script -->
-var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+  var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+  '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+  'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+  mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
 
-var yourLoc = new L.LayerGroup();//for IP loc.
-var cities = new L.LayerGroup();
-L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+  var yourLoc = new L.LayerGroup();//for IP loc.
+  var cities = new L.LayerGroup();
+  L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
 
-var mapOSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+  var mapOSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
 
-streets = L.tileLayer(mbUrl, {id: 'examples.map-i86knfo3',   attribution: mbAttr});
+  streets = L.tileLayer(mbUrl, {id: 'examples.map-i86knfo3',   attribution: mbAttr});
 
-var map = L.map('map', {
-center: [39.73, -104.99],
-zoom: 10,
-layers: [mapOSM, cities, yourLoc]
-});
+  var map = L.map('map', {
+  center: [39.73, -104.99],
+  zoom: 10,
+  layers: [mapOSM, cities, yourLoc]
+  });
 
-var tobIconG= L.icon({ iconUrl: 'images/tobicon-green.png', shadowUrl: 'images/tobicon-shadow.png',//minimized space IP-tobicon code
-    iconSize:[35, 47],shadowSize:[25, 32],iconAnchor:[22, 94],shadowAnchor:[9, 79],popupAnchor:[-3, -76]});
+  var tobIconG= L.icon({ iconUrl: 'images/tobicon-green.png', shadowUrl: 'images/tobicon-shadow.png',//minimized space IP-tobicon code
+  iconSize:[35, 47],shadowSize:[25, 32],iconAnchor:[22, 94],shadowAnchor:[9, 79],popupAnchor:[-3, -76]});
 
-//IP address stuff
-var pos = L.GeoIP.getPosition();
-//L.GeoIP.centerMapOnPosition(map);//center on IP address
-//OR var ip = "13.15.13.15";//for any IP
-//var pos = L.GeoIP.getPosition(ip);
-L.marker(pos, {icon: tobIconG}).addTo(map).bindPopup("<b>This is approximately where you live.</b><br/>Unless you're using mobile data...").addTo(yourLoc);;//Puts a Tobias head on your IP address.
+  //IP address stuff
+  var pos = L.GeoIP.getPosition();
+  //L.GeoIP.centerMapOnPosition(map);//center on IP address
+  //OR var ip = "13.15.13.15";//for any IP
+  //var pos = L.GeoIP.getPosition(ip);
+  L.marker(pos, {icon: tobIconG}).addTo(map).bindPopup("<b>This is approximately where you live.</b><br/>Unless you're using mobile data...").addTo(yourLoc);;//Puts a Tobias head on your IP address.
 
-var baseLayers = {
+  var baseLayers = {
   "Pretty Sweet Map": mapOSM,
   "Streets": streets
-};
+  };
 
-var overlays = {
+  var overlays = {
   "Your Location": yourLoc,
   "Cities": cities
-};
+  };
 
-L.control.layers(baseLayers, overlays).addTo(map);
+  L.control.layers(baseLayers, overlays).addTo(map);
 
-map = map.setView([40.5221, -74.46252], 18);
+  map = map.setView([40.5221, -74.46252], 18);
 
-L.marker([40.5221, -74.46252]).addTo(map)
+  L.marker([40.5221, -74.46252]).addTo(map)
   .bindPopup("<b>Hello Ian!</b><br />I am a popup... Just for you <3 This is literally exactly where the cave is.").openPopup();
 
   L.circle([40.5221, -74.4629], 10, {
-color: 'green',
-fillColor: '#f09',
-fillOpacity: 0.4
-}).addTo(map).bindPopup("I am a random circle.");
+  color: 'green',
+  fillColor: '#f09',
+  fillOpacity: 0.4
+  }).addTo(map).bindPopup("I am a random circle.");
 
-var redIcon= L.icon({
-iconUrl: 'images/leaf-red.png',
-shadowUrl: 'images/leaf-shadow.png',
+  var redIcon= L.icon({
+  iconUrl: 'images/leaf-red.png',
+  shadowUrl: 'images/leaf-shadow.png',
 
-iconSize:     [38, 95], // size of the icon
-shadowSize:   [50, 64], // size of the shadow
-iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-shadowAnchor: [4, 62],  // the same for the shadow
-popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
+  iconSize:     [38, 95], // size of the icon
+  shadowSize:   [50, 64], // size of the shadow
+  iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62],  // the same for the shadow
+  popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+  });
 
-var tobIcon= L.icon({
-iconUrl: 'images/tobicon.png',
-shadowUrl: 'images/tobicon-shadow.png',
+  var tobIcon= L.icon({
+  iconUrl: 'images/tobicon.png',
+  shadowUrl: 'images/tobicon-shadow.png',
 
-iconSize:     [35, 47], // size of the icon
-shadowSize:   [25, 32], // size of the shadow
-iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-shadowAnchor: [9, 79],  // the same for the shadow
-popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
+  iconSize:     [35, 47], // size of the icon
+  shadowSize:   [25, 32], // size of the shadow
+  iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [9, 79],  // the same for the shadow
+  popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+  });
 
-L.marker([40.5221, -74.462], {icon: redIcon}).addTo(map).bindPopup("<b>This is a leaf</b><br/>...For Ian...");
-L.marker([40.5221, -74.461], {icon: tobIcon}).addTo(map).bindPopup("<b>This is Tobias</b><br/>...For Ian...");
-L.marker([40.5220, -74.458], {icon: tobIcon}).addTo(map).bindPopup("<b>This is Tobias</b><br/>...For Ian...");
-L.marker([40.5216, -74.461], {icon: tobIcon}).addTo(map).bindPopup("<b>This is Tobias</b><br/>...For Ian...");
+  L.marker([40.5221, -74.462], {icon: redIcon}).addTo(map).bindPopup("<b>This is a leaf</b><br/>...For Ian...");
+  L.marker([40.5221, -74.461], {icon: tobIcon}).addTo(map).bindPopup("<b>This is Tobias</b><br/>...For Ian...");
+  L.marker([40.5220, -74.458], {icon: tobIcon}).addTo(map).bindPopup("<b>This is Tobias</b><br/>...For Ian...");
+  L.marker([40.5216, -74.461], {icon: tobIcon}).addTo(map).bindPopup("<b>This is Tobias</b><br/>...For Ian...");
 
-var popup = L.popup();
+  var popup = L.popup();
 
-function GoTo(lat, lng, zoom)
-{ 
+  function GoTo(lat, lng, zoom)
+  { 
   map.setView(new L.LatLng(lat, lng), zoom);
-}
+  }
 
-document.onkeydown = function (e) {
-      console.log(e.keyCode);
-      if(e.keyCode == '73') GoTo(pos.lat,pos.lng,17);
-};
+  document.onkeydown = function (e) {
+  console.log(e.keyCode);
+  if(e.keyCode == '73') GoTo(pos.lat,pos.lng,17);
+  };
 
-function onMapClick(e) {
+  function onMapClick(e) {
   popup
-    .setLatLng(e.latlng)
-    .setContent("You clicked the map at " + e.latlng.toString())
-    .openOn(map);
-}
-map.on('click', onMapClick);
+  .setLatLng(e.latlng)
+  .setContent("Yo Dog! You clicked the map at " + e.latlng.toString())
+  .openOn(map);
+  }
+  map.on('click', onMapClick);
   </script>
 
   <script> <!--unorganized javascript -->
@@ -148,23 +148,16 @@ map.on('click', onMapClick);
   $("#mapbutton").click(function(){
   console.log("make clickmesh appear");
   $("#map").toggle('fast');
-  $("#smapText2").toggle('fast');
-  });
-  });
+  $("#smapText2").toggle('fast');});});
 
   function changeColor() { //for random color of button mouseover
   if(flag ==0){
   flag = 1;
   return '#FF0000';
-  }else{
-  flag = 0;
-  return '#FFFF00';
-  }
-  }
+  }else{ flag = 0; return '#FFFF00';}}
 
   $("#mapbutton").click(function() {
-  $(this).css("background-color",changeColor());//change on mouseover
-  });
+  $(this).css("background-color",changeColor()); });
 
   $(".map").css('opacity','0.75');
   $(document).ready(function(){
@@ -173,13 +166,10 @@ map.on('click', onMapClick);
   $(this).find(".map").stop().animate({ opacity: 1 });
   },
   function() {
-  $(this).find(".map").stop().animate({ opacity: 0.75 }); 
-  });
-  });
-
+  $(this).find(".map").stop().animate({ opacity: 0.75 });});});
   </script><!--unorganized javascript -->
-</div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
 
+</div><!--End of the html, links, non threejs, essentially the website, in a div zindex > than threejs-->
 <script src="js/Three.js"></script>
 <script src="js/Detector.js"></script>
 <script src="js/Stats.js"></script>
@@ -198,10 +188,9 @@ var clock = new THREE.Clock();
 var sphere3;
 var sphereSize = 0.25;
 var cubeSize = 0.25;
-var userData;
+var sprite;
 var cr = 0.01;
 var cubeCtr=0;
-var skinnedMesh;
 
 var video = document.getElementsByTagName('video')[0];
 var i = 0;
@@ -243,7 +232,7 @@ controls = new THREE.OrbitControls( camera, renderer.domElement );
 var leafletLogo = THREE.ImageUtils.loadTexture( 'images/leaflet-logo.png' );
 var leafletMaterial = new THREE.SpriteMaterial( { map: leafletLogo, useScreenCoordinates: false,transparent: true, opacity: 0.6} );
 
-var sprite = new THREE.Sprite( leafletMaterial);
+sprite = new THREE.Sprite( leafletMaterial);
 sprite.position.set( 0, 0, 0 );
 //sprite.scale.set( 83.5, 129.5, 1.0 ); // imageWidth, imageHeight
 sprite.scale.set( 63.5, 99.5, 1.0 ); // imageWidth, imageHeight
@@ -269,7 +258,7 @@ scene.add(sphere3);
 var faceColorMaterial = new THREE.MeshNormalMaterial( 
 {wireframe:true, transparent: true, opacity: 0.65, color: 0x000fff, vertexColors: THREE.FaceColors } );
 
-var cubeGeometry = new THREE.IcosahedronGeometry( 40, 1 ); // radius, subdivisions
+var cubeGeometry = new THREE.IcosahedronGeometry( 40, 0 ); // radius, subdivisions
 for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
 {
 face = cubeGeometry.faces[ i ];	
