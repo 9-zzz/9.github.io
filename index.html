@@ -254,7 +254,7 @@ function init()
       {transparent: true, opacity: 0.95, color: 0xFFFFFF, vertexColors: THREE.FaceColors } );
 
   var faceColorMaterial2 = new THREE.MeshNormalMaterial({wireframe: true});
-  var cubeGeometry2 = new THREE.IcosahedronGeometry( 20.5 , 0 );
+  var cubeGeometry2 = new THREE.IcosahedronGeometry( 20.05 , 0 );
 
   var cubeGeometry = new THREE.IcosahedronGeometry( 20 , 0 );
   for ( var i = 0; i < cubeGeometry.faces.length; i++ ) 
@@ -335,7 +335,7 @@ function animate()
   if(cubeSize <= 1.5) cubeSize *= 1.01;
 
   clickCube2.scale.set(cubeSize,cubeSize,cubeSize);
-  if(cubeSize <= 1.5) cubeSize *= 1.01;
+
 
   sphere3.rotation.x -= 0.001;
   sphere3.rotation.y -= 0.001;
