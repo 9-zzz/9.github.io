@@ -307,11 +307,11 @@ function onDocumentMouseDown( event )
   if ( intersects.length > 0 )
   {
     cubeCtr++;
-    if(cubeCtr > 10){
+    if(cubeCtr > 6){
       window.open("http://en.wikipedia.org/wiki/Special:Random","_blank")
         cubeCtr = 0;
     }
-    //console.log("Hit on cube @ " + toString( intersects[0].point ) );
+    console.log("Hit on cube @ " + toString( intersects[0].point ) );
     // change the color of the closest face.
     intersects[ 0 ].face.color.setRGB(Math.random(), Math.random(), Math.random()); 
     intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
