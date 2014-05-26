@@ -269,7 +269,7 @@ shininess: 0 });
       pac.position.set(0,17,62);
       pac.scale.set(20, 20, 20);
       pac.overdraw = true;
-      scene.add(pac);
+      //scene.add(pac);
       var lightpac = new THREE.PointLight(0xffffff, 1, 200);
       lightpac.position.x = pac.position.x -49;
       lightpac.position.y = pac.position.y +80;
@@ -341,9 +341,9 @@ function render()
   var time = Date.now() * 0.0005;
   var delta = clock.getDelta();
 
-  light.position.x = Math.sin( time * 7 ) * 300;
-  light.position.y = Math.cos( time * 5 ) * 400;
-  light.position.z = Math.cos( time * 3 ) * 300;
+  /*light.position.x = Math.sin( time * .7 ) * 300;
+  light.position.y = Math.cos( time * .5 ) * 400;
+  light.position.z = Math.cos( time * .3 ) * 300;*/
 
   cog.rotation.z += 0.01;
   cog2.rotation.z -= 0.001;
@@ -355,9 +355,9 @@ function render()
   //camera.rotation.y += Math.sin( time * 7 ) * 0.01;
   //camera.position.x += Math.sin( time * 7 ) * 2.5;
 
-  lensFlare.position.x = pac.position.x -49;
+  lensFlare.position.x = pac.position.x +49;
   lensFlare.position.y = pac.position.y +80;
-  lensFlare.position.z = pac.position.z;
+  lensFlare.position.z = pac.position.z -200;
   //lensflare.position.x -= math.sin( time * 20 ) * 1;
 
 
