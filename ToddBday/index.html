@@ -137,9 +137,7 @@ function animate()
   render();		
   update();
 
-  tobias.rotation.y += 9992314;
   tobiasX.rotation.y += 992314;
-  tobias.rotation.x += 0.008;
 
   var time = Date.now() * 0.0005;
   var delta = clock.getDelta();
@@ -161,6 +159,12 @@ function update()
 
 function render() 
 {	
+  var time = Date.now() * 0.0005;
+  var delta = clock.getDelta();
+
+  tobias.position.z = Math.cos( time * 10 ) * 1;
+  tobias.rotation.x = Math.cos( time * 20 ) * 1;
+
   renderer.render( scene, camera );
 }
 
