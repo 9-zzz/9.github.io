@@ -116,8 +116,11 @@ function init()
       tobias = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
       tobias2 = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
       tobias.scale.set(9, 9, 9);
+      tobias2.scale.set(9, 9, 9);
       tobias.position.set(270, -80, 0);
+      tobias2.position.set(i-270, 80, 0);
       scene.add(tobias);
+      scene.add(tobias2);
       });
 
   loader.load( 'tob.js', function(geometry, materials){
@@ -164,6 +167,8 @@ function render()
 
   tobias.position.z = Math.cos( time * 10 ) * 1;
   tobias.rotation.x = Math.cos( time * 20 ) * 1;
+  tobias2.position.z = Math.cos( time * 10 ) * 1;
+  tobias2.rotation.x = Math.cos( time * 40 ) * 0.5;
 
   renderer.render( scene, camera );
 }
