@@ -80,13 +80,13 @@
   });
   </script><!--unorganized javascript -->
 
-  <!--<a href = "http://sia.github.io/me" style="TEXT-DECORATION: NONE">
+  <a href = "http://sia.github.io/me" style="TEXT-DECORATION: NONE">
     <span 
       style="color:cyan;font-size: 11pt">ABOUT ME
     </span>
   </a>
 
-  </br>-->
+  </br>
 
   <a href = "http://www.youtube.com/user/ShahanDraw/videos" 
     style="TEXT-DECORATION: NONE"
@@ -144,13 +144,13 @@
   </a>
 
   </br>
-  <!--<a href = "http://sia.github.io/map" 
+  <a href = "http://sia.github.io/map" 
     style="TEXT-DECORATION: NONE" 
     target="_blank">
     <span 
       style="color:blue;font-size: 14pt">Leaflet Map Project
     </span>
-  </a></br>-->
+  </a></br>
 
   <!--<a href = "http://sia.github.io/can" 
     style="TEXT-DECORATION: NONE" 
@@ -279,6 +279,12 @@ function init()
   // when the mouse moves, call the given function
   document.addEventListener( 'mousedown', onDocumentMouseDown, false );
 
+  $("body").mousemove(function() {
+      sphere3.rotation.x += 0.01; 
+      sphere3.rotation.y += 0.01; 
+      sphere3.rotation.z += 0.01; 
+      });
+
 }//END INIT
 
 function onDocumentMouseDown( event ) 
@@ -338,9 +344,9 @@ function animate()
   clickCube2.scale.set(cubeSize,cubeSize,cubeSize);
 
 
-  sphere3.rotation.x -= 0.001;
-  sphere3.rotation.y -= 0.001;
-  sphere3.rotation.z -= 0.001;
+  sphere3.rotation.x -= 0.0001;
+  sphere3.rotation.y -= 0.0001;
+  sphere3.rotation.z -= 0.0001;
 
   if(keyboard.pressed("Y")){
     sphereSize /= 1.05;
