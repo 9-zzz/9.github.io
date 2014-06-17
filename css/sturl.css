@@ -15,21 +15,65 @@ body
 
 #gameinfo
 {
-  background-color:rgba(255,0,25,0.85);
-  color:rgb(43,255,191);
+  background-color:rgba(255,0,25,0.80);
+  color:rgb(43,55,191);
+  font-size: 11pt;
   display: none;
   border: 1px solid;
-  border-radius: 35px;
+  border-radius: 25px;
   padding: 11px;
   margin: 0px;
   width: 130px;
-  text-align: center;
 }
+
+div.ginfo a { color: #61FFF0; }
+div.ginfo a:hover { color: #9C39FF; }
 
 #game
 {
   background-color:rgba(0,53,177,0.65);
   border: 2px solid;
   color:rgb(223,255,0);
-  font-size: 15pt
+  font-size: 13pt;
+  padding: 3px;
 }
+
+#game :hover{
+  color:rgb(0,53,7);
+  background-color:rgba(223,255,0,0.65);
+}
+
+
+#h
+{
+  background-color:rgba(108,239,255,0.65);
+  border: 2px solid;
+  color:rgb(255,52,76);
+  font-size: 13pt;
+  padding: 3px;
+}
+
+.goodies
+{
+  font-size: 6pt;
+  padding: 10px;
+  cursor:crosshair;
+}
+
+#goodyinfo
+{
+  padding: 5px;
+  background-color:rgba(255,0,25,0.75);
+  color:rgb(3,255,191);
+  height: 160px;
+  width: 500px;
+  font-size: 12pt;
+  display: none;
+  border: 3px solid;
+  padding: 5px;
+  position: absolute;
+  left: 60%;
+  top: 25%;
+
+}
+
