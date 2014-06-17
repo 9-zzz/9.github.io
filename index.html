@@ -1,7 +1,8 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><!--JQuery mofo most up to date?-->
 <title>Shahan's GitHub Pages | "Hello, my friend. Stay awhile and listen."</title>
 <link rel="icon" href="/images/favreaucon.png" type="image/png">
 <meta property="og:title" content="Shahan's Github Page | Bwahaahaa I manipulate Facebook!"/>
@@ -10,14 +11,13 @@
 <meta property="og:description" content="This is a site for buying puppies and plutonium! Bwahaha, that is false! You've been LIED to!!!"/>
 <meta property="og:url" content="http://sia.github.io"/>
 <meta name="wot-verification" content="7e897864f806e7457ad5"/>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><!--JQuery mofo most up to date?-->
-<link rel="stylesheet" type="text/css" href="css/sturl.css">
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/sturl.css">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 </head>
 
-<div id="A" style="z-index: 5; position: absolute; bottom: 42px; right: 42px; opacity:0.9; display: none;">
+<div id="A">
   <video id="Arthur" height="480" width="640" preload="auto" controls poster="images/Arthur.jpg">
     <source src="Arthur-C-Clarke.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -31,18 +31,17 @@
   </audio>
 </div>
 
-<div id="credit" style="z-index: 4; position: absolute; top: 30px; right: 80px; background-color:rgba(255,26,79,0.65); border:2px solid #CAFF1A; padding:5px 20px; width:260px; border-radius:25px; display: none">
+<div id="credit" class="creditclass">
   <span style="color:white;font-size: 8pt" >
     Congratulations! You just played the sound: "Mmm"</br>From jennpeare's App:
     <a href = "https://github.com/jennpeare/Mmm"
-      style="color:#FF1A4F; background-color:rgba(202,255,26,0.85); font-size:10; width:140px; text-align:center; padding:2px; -webkit-border-radius: 5px; text-decoration:none;"
       target="_blank">Mmm</a>
     </br>Credit to jennpeare for this wonderful invention!
   </span>
 </div>
 
 <body>
-<div id="HtmlText" style="z-index: 2; position: absolute; left:82px; top:30px">
+<div id="HtmlText">
   <h1>Shahan Akhter
     <span 
       style="color:black;font-size: 8pt" 
@@ -194,7 +193,6 @@ $(letterA).css("color",randColor());//change on mouseover
 <script src="js/THREEx.WindowResize.js"></script>
 <!--Imported three.js lib files, may need to update-->
 <div id="ThreeJS"></div>
-
 <script>
 var doge = '░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░\n░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░\n░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░\n░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░\n░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░\n░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░\n░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░\n░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░\n░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░\n░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░\n▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░\n▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌\n▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░\n░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░\n░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░\n░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░\n░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░\n░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░\n░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░\nWow. Such console. Much inspect! So HTML. Wow!\n'
 console.log(doge);
@@ -258,10 +256,7 @@ function init()
   //scene.add(ambientLight);
 
   var axes = new THREE.AxisHelper(0);
-  //scene.add( axes );//Done in animate() not here
 
-  //Meshes
-  //sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
   sphere3 = new THREE.Mesh(new THREE.IcosahedronGeometry( 8.5 , 4 ), // radius, subdivisions
       new THREE.MeshNormalMaterial({ transparent: true, opacity: 0,wireframe:true}));
 
@@ -299,9 +294,9 @@ function init()
   $("body").mousemove(function() {
       var mx = event.clientX;
       var my = event.clientY;
-      sphere3.rotation.y = my*0.0002; 
-      sphere3.rotation.x = mx*0.0002; 
-      sphere3.rotation.z = mx*0.0001; 
+      sphere3.rotation.y = my*0.0003; 
+      sphere3.rotation.x = mx*0.0003; 
+      sphere3.rotation.z = mx*0.0002; 
       });
 
 }//END INIT
@@ -319,7 +314,6 @@ function onDocumentMouseDown( event )
   mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
   // find intersections
-
   // create a Ray with origin at the mouse position
   //   and direction into the scene (camera direction)
   var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
@@ -362,10 +356,9 @@ function animate()
 
   clickCube2.scale.set(cubeSize,cubeSize,cubeSize);
 
-
-  sphere3.rotation.x -= 0.0001;
-  sphere3.rotation.y -= 0.0001;
-  sphere3.rotation.z -= 0.0001;
+  sphere3.rotation.x -= 0.00003;
+  sphere3.rotation.y -= 0.00003;
+  sphere3.rotation.z -= 0.00003;
 
   if(keyboard.pressed("Y")){
     sphereSize /= 1.05;
@@ -423,7 +416,7 @@ function animate()
   clickCube.rotation.z += 0.01;
   clickCube.rotation.y += cr;
   clickCube.rotation.x += 0.01;
-  if(keyboard.pressed("space"))cr = 0.01;
+  if(keyboard.pressed("space"))cr = 0.01;//reset speed?
 
 }//END ANIM
 
@@ -431,7 +424,6 @@ function update()
 {
   // delta = change in time since last call (in seconds)
   var delta = clock.getDelta(); 
-
   controls.update();
 }
 
