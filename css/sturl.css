@@ -76,7 +76,7 @@ div.ginfo a:hover { color: #9C39FF; }
   position: absolute;
   left: 60%;
   top: 25%;
-  cursor: url(images/favreaucon.gif), auto;
+  cursor: url(../images/favreaucon.gif), auto;
 /*the balls?! mannnnnn don't work ffffffff*/  
 }
 
