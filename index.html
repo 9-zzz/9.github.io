@@ -62,12 +62,17 @@
       style="TEXT-DECORATION: NONE"
       target="_blank">source code</a>
   </div>
-
+  
   <script> <!--unorganized javascript -->
   $(document).ready(function(){
   $("#h").click(function(){
   $("#hackru").toggle('fast');
   });
+  });
+
+  $(document).ready(function(){
+  $("#game").click(function(){
+  $("#gameinfo").toggle('fast');});
   });
 
   function randColor() { //for random color of button mouseover
@@ -85,7 +90,6 @@
       style="color:cyan;font-size: 11pt">ABOUT ME
     </span>
   </a>
-
   </br>
 
   <a href = "http://www.youtube.com/user/ShahanDraw/videos" 
@@ -97,7 +101,13 @@
     </span>
   </a>
 
-  </br>
+  <br><button id="game">THREEJS GAME</button><br>
+  <div id="gameinfo">
+    <a href = "http://github.com/sia" style="TEXT-DECORATION: NONE" target="_blank">View Source Code</a></br>
+    Or play it: <a href = "http://sia.github.io/game" 
+      style="TEXT-DECORATION: NONE"
+      target="_blank">Here</a>
+  </div>
 
   <!--<span 
     style="font-size: 11pt">MY RESUME:
@@ -246,7 +256,7 @@ function init()
   //Meshes
   //sphere3 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
   sphere3 = new THREE.Mesh(new THREE.IcosahedronGeometry( 8.5 , 4 ), // radius, subdivisions
-            new THREE.MeshNormalMaterial({ transparent: true, opacity: 0,wireframe:true}));
+      new THREE.MeshNormalMaterial({ transparent: true, opacity: 0,wireframe:true}));
 
   scene.add(sphere3);
 

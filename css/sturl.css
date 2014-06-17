@@ -12,3 +12,24 @@ body
   overflow-y: hidden;
   background-color: #FFFFFF;
 }
+
+#gameinfo
+{
+  background-color:rgba(255,0,25,0.85);
+  color:rgb(43,255,191);
+  display: none;
+  border: 1px solid;
+  border-radius: 35px;
+  padding: 9px;
+  margin: 0px;
+  width: 130px;
+  text-align: center;
+}
+
+#game
+{
+  background-color:rgba(0,53,177,0.65);
+  border: 2px solid;
+  color:rgb(223,255,0);
+  font-size: 15pt
+}
