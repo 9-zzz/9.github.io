@@ -27,20 +27,20 @@ $(function() {
   <a href = "http://en.wikipedia.org/wiki/Special:Randompage" target="_blank">Random Wikipedia Page!</a> </p>
   <h2><a href = "http://sia.github.io">sia.github.io</a> </h2>
 </div>-->
-<script src="/js/Three.js"></script>
-<script src="/js/Detector.js"></script>
-<script src="/js/Stats.js"></script>
-<script src="/js/OrbitControls.js"></script>
-<script src="/js/THREEx.KeyboardState.js"></script>
-<script src="/js/THREEx.FullScreen.js"></script>
-<script src="/js/THREEx.WindowResize.js"></script>
+<script src="js/Three.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/Stats.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/THREEx.KeyboardState.js"></script>
+<script src="js/THREEx.FullScreen.js"></script>
+<script src="js/THREEx.WindowResize.js"></script>
 <div id="ThreeJS" style="opacity: 0.5; z-index: 2; position: absolute; right:0px; top:0px; background-color: #000000"></div>
 <script>
 //global variables
 var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
-var cube1, sphere2, mesh404;
+var cube1, mesh404;
 var userData;
 var targets = [];
 var projector, mouse = {x: 0, y: 0};
@@ -53,7 +53,7 @@ function init()
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
-  camera.position.set(0,-200,400);
+  camera.position.set(0,0,40);
   camera.lookAt(scene.position);	
 
   //renderer create and start the renderer; choose antialias setting.
@@ -71,28 +71,20 @@ function init()
   light.position.set( 0,100,400 );
   scene.add( light );
 
-  sphere2 = new THREE.Mesh(new THREE.SphereGeometry(9, 19, 19),
-      new THREE.MeshBasicMaterial({
-color: 0xFF0000,
-transparent: true, opacity: 0.35,
-wireframe:true}));
-
-  sphere2.scale.set(36,36,36);
-  sphere2.position.set(0, -80, 0);
-  scene.add(sphere2);
+  plane = new THREE.Mesh(new THREE.PlaneGeometry(200,200,42,42), new THREE.MeshNormalMaterial({transparent: true,opacity: 0.5,wireframe:true}));
+  scene.add(plane);
 
   //Blender
   var loader = new THREE.JSONLoader();
 
-  loader.load( '/meshes/404mesh.js', function(geometry, materials){
+  loader.load( 'meshes/404mesh.js', function(geometry, materials){
       for(var i =0;i<materials.length;i++){
       materials[i].shading = THREE.FlatShading;
       materials[i].opacity = 0.42;
       }
       var material = new THREE.MeshFaceMaterial({shading: THREE.FlatShading});
       mesh404  = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
-      mesh404.scale.set(8,9,4);
-      mesh404.position.set(0, 130, 0);
+      mesh404.position.set(0, 13, 0);
       scene.add(mesh404);
       });
 
@@ -103,8 +95,10 @@ function animate()
   render();		
   update();
   mesh404.position.y += (Math.sin( new Date().getTime() * 0.007 ))*0.7;
-  sphere2.rotation.y += 0.09;
-  if(sphere2.rotation.y >= 1) sphere2.rotation.y /= 1.04;
+  plane.rotation.y += 4;
+  plane.rotation.z += 4;
+  if(plane.rotation.y >= 2) plane.rotation.y /= 1.09;
+  if(plane.rotation.z >= 3) plane.rotation.z /= 1.09;
 }//END ANIM
 function update()
 {
