@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+
+<head>
+<title>Some 3D Art For Now...</title>
+<link rel="icon" href="/images/favreaucon.png" type="image/png">
+<meta property="og:title" content="Art"/>
+<meta property="og:image" content="http://i.imgur.com/qLW96JN.png"/>
+<meta property="og:description" content="Some of my artwork"/>
+<meta property="og:url" content="http://sia.github.io/art"/>
+<meta name="wot-verification" content="7e897864f806e7457ad5"/>
+<style>body { font-family: Ubuntu, sans-serif; }</style>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+<link rel="stylesheet" type="text/css" href="sturl.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+
+<body>
+<div id="content" style="z-index: 2; position: absolute; left:20px; top:20px">
+  <p>shahan</p>
+  <a href="http://gfycat.com/RespectfulMammothKitten" target="_blank">TEST ART</a></br></br>
+  <a href="http://www.shahanakhter.com" target="_blank">ShahanAkhter.com</a>
+</div>
+
+<script src="js/Three.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/Stats.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/THREEx.KeyboardState.js"></script>
+<script src="js/THREEx.FullScreen.js"></script>
+<script src="js/THREEx.WindowResize.js"></script>
+<!--Imported three.js lib files, may need to update-->
+<div id="ThreeJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
+<script>
+//global variables
+var container, scene, camera, renderer, controls, stats;
+var keyboard = new THREEx.KeyboardState();
+var clock = new THREE.Clock();
+var robo, dhalo, dhalo2;
+var specv = '#00FF00';
+var emv = '#1A0000';
+
+init();
+animate();
+function init() 
+{
+  scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2( 0xE500D2, 0.0005 );
+  var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
+  var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+  camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+  scene.add(camera);
+  camera.position.set(0,500,-600);
+  camera.lookAt(scene.position);	
+  if ( Detector.webgl )
+    renderer = new THREE.WebGLRenderer( {antialias:true} );
+  else
+    renderer = new THREE.CanvasRenderer(); 
+
+  renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+  container = document.getElementById( 'ThreeJS' );
+  container.appendChild( renderer.domElement );
+  THREEx.WindowResize(renderer, camera);
+  controls = new THREE.OrbitControls( camera, renderer.domElement );
+  var light = new THREE.DirectionalLight(0xffffff);
+  var light2 = new THREE.DirectionalLight(0xffffff);
+  light.position.set(0,0,200);
+  light2.position.set(0,0,-200);
+  scene.add(light);
+  scene.add(light2);
+  var ambientLight = new THREE.AmbientLight(0x111111);
+
+  //Meshes
+  var loader = new THREE.JSONLoader();
+
+  loader.load('meshes/robo.js', function(geometry){
+      var material = new THREE.MeshPhongMaterial({
+color:    '#FFFF44',
+specular: '#FF0000',
+emissive: emv,
+shading:THREE.FlatShading,
+shininess: 11 });
+
+      robo=new THREE.Mesh(geometry, material);
+      robo.scale.set(20, 20, 20);
+      robo.overdraw = true;
+
+
+      scene.add(robo);
+
+      });
+
+  loader.load('meshes/dhalo.js', function(geometry){
+      var material = new THREE.MeshPhongMaterial({
+color:    '#E9C40C',
+specular: '#E90C0C',
+emissive: '#E90C0C',
+shading:THREE.FlatShading,
+shininess: 11 });
+
+      dhalo=new THREE.Mesh(geometry, material);
+      dhalo2=new THREE.Mesh(geometry, material);
+      dhalo.scale.set(30, 30, 30);
+      dhalo2.scale.set(20, 20, 20);
+      dhalo.position.set(0, 200, 80);
+      dhalo2.position.set(0, 120, 80);
+      dhalo.overdraw = true;
+      dhalo2.overdraw = true;
+      scene.add(dhalo);
+      scene.add(dhalo2);
+      });
+
+}//END INIT
+
+
+function animate() 
+{
+  requestAnimationFrame( animate );
+  render();		
+  update();
+
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.5;
+
+  dhalo.rotation.y -= 0.003;
+  dhalo2.rotation.y += 0.006;
+
+  dhalo.position.y += (Math.sin( new Date().getTime() * 0.0007 ))*0.1;
+  dhalo2.position.y += (Math.sin( new Date().getTime() * 0.007 ))*0.09 ;
+
+  robo.position.y += (Math.sin(new Date().getTime()*0.25)*0.01);
+}//END ANIM
+
+function update()
+{
+  // delta = change in time since last call (in seconds)
+  var delta = clock.getDelta(); 
+
+  controls.update();
+  //stats.update();
+}
+
+function render() 
+{	
+  renderer.render( scene, camera );
+}
+
+</script>
+
+</body>
+
+</html>
