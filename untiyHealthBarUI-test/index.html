@@ -15,10 +15,10 @@ document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/
 <script type="text/javascript">
 <!--
 var config = {
-width: "100%", 
-       height: "100%",
+width: 960, 
+       height: 600,
        params: { enableDebugging:"0" }
-
+       ,baseDownloadUrl: "http://webplayer.unity3d.com/download_webplayer-3.x/"
 };
 var u = new UnityObject2(config);
 
@@ -56,17 +56,13 @@ jQuery(function() {
       break;
       }
     });
-    u.initPlugin(jQuery("#unityPlayer")[0], "webBuild3.unity3d");
+    u.initPlugin(jQuery("#unityPlayer")[0], "untiyHealthBarUI-test.unity3d");
 });
 -->
 </script>
 <style type="text/css">
 <!--
 body {
-  height: 100%;
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
   font-family: Helvetica, Verdana, Arial, sans-serif;
   background-color: black;
   color: white;
@@ -89,7 +85,7 @@ a:link, a:visited {
     }
     div.content {
       margin: auto;
-      width: 100%;
+      width: 960px;
     }
     div.broken,
     div.missing {
@@ -113,13 +109,15 @@ a:link, a:visited {
     }
     div#unityPlayer {
       cursor: default;
-      height: 100%;
-      width: 100%;
+      height: 600px;
+      width: 960px;
     }
     -->
 </style>
 </head>
 <body>
+<p class="header"><span>Unity Web Player | </span>Camera Tests</p>
+<p style="color: #c00; font-size: small; font-style: italic;">Built with beta version of Unity. Will only work on your computer!</p>
 <div class="content">
   <div id="unityPlayer">
     <div class="missing">
@@ -129,5 +127,6 @@ a:link, a:visited {
     </div>
   </div>
 </div>
+<p class="footer">&laquo; created with <a href="http://unity3d.com/unity/" title="Go to unity3d.com">Unity</a> &raquo;</p>
 </body>
 </html>
