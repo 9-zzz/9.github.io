@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simon Says Rutgers</title>
+    <meta name="Shahan Akhter" content="Taye Adeyemi" />
+    <meta name="keywords" content="" />
+
+    <!-- twitter card -->
+    <!--<meta name="twitter:card" content="summary" />
+      <meta name="twitter:site:id" content="2238211567" />
+      <meta name="twitter:creator:id" content="1173430910" />-->
+
+      <!-- open graph things -->
+      <meta property="og:title" content="Rutgers Simon Says Project" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="" />
+      <meta property="og:image" content="" />
+
+      <meta property="og:description" name="description" content="" />
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="./css/style.css">
+
+
+      <script src="./js/interact-1.1.2.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+interact('.tap-target')
+.on('tap', function (event) {
+  event.currentTarget.classList.toggle('switch-bg');
+  event.preventDefault();
+})
+.on('doubletap', function (event) {
+  event.currentTarget.classList.toggle('large');
+  event.preventDefault();
+});
+    </script>
+    <div class="tap-target"> <p>Tap to change color</p> <p>Doubletap to change size</p> </div>
+    <div class="tap-target"> <p>Other</p> <p>Doubletap to change size</p> </div>
+  </body>
+
+</html>
