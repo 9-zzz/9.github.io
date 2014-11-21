@@ -5,7 +5,7 @@ body {
 }
 
 .dis2 {
-  z-index:0;
+  z-index:2;
   margin:0px;
   text-align: center;
 }
@@ -36,9 +36,10 @@ body {
 
   border-radius: 4px;
 
-  font-size: 1.125em;
+  /*font-size: 1.125em;*/
+  font-size:42px;
   text-align: center;
-  color: #fff;
+  color: #000;
   background-color: #BD6;
 
   cursor: pointer;
@@ -57,9 +58,9 @@ body {
 
   border-radius: 4px;
 
-  font-size: 1.125em;
+  font-size:42px;
   text-align: center;
-  color: #fff;
+  color: #000;
   background-color: #D00;
 
   cursor: pointer;
@@ -78,9 +79,9 @@ body {
 
   border-radius: 4px;
 
-  font-size: 1.125em;
+  font-size:42px;
   text-align: center;
-  color: #fff;
+  color: #000;
   background-color: #ED0;
 
   cursor: pointer;
@@ -99,9 +100,9 @@ body {
 
   border-radius: 4px;
 
-  font-size: 1.125em;
+  font-size:42px;
   text-align: center;
-  color: #fff;
+  color: #000;
   background-color: #15E;
 
   cursor: pointer;
@@ -115,4 +116,15 @@ body {
 .tap-Red.large {
   -webkit-transform: scale(1.25);
   transform: scale(1.25);
+}
+
+#rotate-area {
+    overflow: hidden;
+    z-index:0;
+    margin:0px;
+}
+
+#cogs-logo {
+    width: 220px;
+    height: 120px;
 }

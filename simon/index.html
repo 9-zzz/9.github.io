@@ -29,7 +29,24 @@
     </div>
 
     <script>
-var simonString  = "0";
+var angle = 0;
+
+interact('#rotate-area').gesturable({
+  onmove: function (event) {
+    var logo = document.getElementById('cogs-logo');
+
+    angle += event.da;
+
+    arrow.style.webkitTransform =
+      arrow.style.transform =
+      'rotate(' + angle + 'deg)';
+
+    document.getElementById('angle-info').textContent =
+      angle.toFixed(2) + '°';
+  }
+});
+
+var simonString  = "";
 document.getElementById("dis").innerHTML = simonString;
 
 interact('.tap-Green')
@@ -89,10 +106,12 @@ interact('.tap-Blue')
       <tr>
         <td align="right" style="padding: 15px">
           <div class="tap-Green"> 
+            0
           </div>
         </td>
         <td align="left "style="padding: 15px">
           <div class="tap-Red"> 
+            1
           </div>
         </td>
       </tr>
@@ -100,15 +119,23 @@ interact('.tap-Blue')
       <tr>
         <td align="right" style="padding: 15px"> 
           <div class="tap-Yellow"> 
+            2
           </div>
         </td>
         <td align="left" style="padding: 15px"> 
           <div class="tap-Blue"> 
-          </div></td>
+            3
+          </div>
+        </td>
       </tr> 
+
     </table>
 
     <p id="match" style="color: white">0012301010</p>
+
+    <div id="rotate-area">
+      <img id="cogs-logo" src="COGS-Controller-Logo.png" />
+    </div>
 
   </body>
 </html>
