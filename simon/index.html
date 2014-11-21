@@ -50,7 +50,19 @@ var simonString  = "";
 var simonString2  = "011120120123212321";
 var audio = new Audio('watarush.mp3');
 
+function genRandSimonString()
+{
+    var text = "";
+    var possible = "0123";
+
+    for( var i=0; i < 10; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
 document.getElementById("dis").innerHTML = simonString;
+//document.getElementById("match").innerHTML = genRandSimonString();
 
 interact('.tap-Green').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
@@ -120,6 +132,7 @@ function getRandomInt(min, max)
 {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
     </script>
 
 
@@ -153,7 +166,7 @@ function getRandomInt(min, max)
 
     </table>
 
-    <p id="match" style="color: white">01210012321000</p>
+      <p id="match" style="color: white">011212010002321</p>
 
     <div class="rotate-area">
       <div id="angle-info">0&deg;</div>
