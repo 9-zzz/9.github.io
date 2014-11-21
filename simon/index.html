@@ -20,9 +20,14 @@
       <link rel="stylesheet" href="./css/style.css">
       <script src="./js/interact-1.1.2.min.js"></script>
       <script src="./js/jquery-1.11.1.min.js"></script>
+      <script src="./js/audio.min.js"></script>
   </head>
 
   <body>
+    <script>
+audiojs.events.ready(function() { var as = audiojs.createAll(); });
+    </script>
+
 
     <div class="dis2" id="dis2"> 
       <p id="dis" style="color: white"></p>
@@ -47,6 +52,8 @@ interact('#rotate-area').gesturable({
 });
 
 var simonString  = "";
+var audio = new Audio('watarush.mp3');
+
 document.getElementById("dis").innerHTML = simonString;
 
 interact('.tap-Green')
@@ -56,8 +63,10 @@ interact('.tap-Green')
   simonString += "0";
   document.getElementById("dis").innerHTML = simonString;
 
-  if(simonString == document.getElementById("match").innerHTML)
+  if(simonString == document.getElementById("match").innerHTML){
     document.getElementById("match").innerHTML = "CORRECT!"
+      audio.play();
+  }
 
 })
 interact('.tap-Red')
@@ -67,8 +76,10 @@ interact('.tap-Red')
   simonString += "1";
   document.getElementById("dis").innerHTML = simonString;
 
-  if(simonString == document.getElementById("match").innerHTML)
+  if(simonString == document.getElementById("match").innerHTML){
     document.getElementById("match").innerHTML = "CORRECT!"
+      audio.play();
+  }
 
 })
 interact('.tap-Yellow')
@@ -78,8 +89,10 @@ interact('.tap-Yellow')
   simonString += "2";
   document.getElementById("dis").innerHTML = simonString;
 
-  if(simonString == document.getElementById("match").innerHTML)
+  if(simonString == document.getElementById("match").innerHTML){
     document.getElementById("match").innerHTML = "CORRECT!"
+      audio.play();
+  }
 
 })
 interact('.tap-Blue')
@@ -89,8 +102,10 @@ interact('.tap-Blue')
   simonString += "3";
   document.getElementById("dis").innerHTML = simonString;
 
-  if(simonString == document.getElementById("match").innerHTML)
+  if(simonString == document.getElementById("match").innerHTML){
     document.getElementById("match").innerHTML = "CORRECT!"
+      audio.play();
+  }
 
 })
 
