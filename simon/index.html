@@ -29,36 +29,27 @@
     </div>
 
     <script>
-var angle = 0;
-
-interact('.rotate-area').gesturable({
-  onmove: function (event) {
-    var logo = document.getElementById('cogs-logo');
-
-    angle += event.da;
-
-    logo.style.webkitTransform =
-      logo.style.transform =
-      'rotate(' + angle + 'deg)';
-
-    document.getElementById('angle-info').textContent =
-      angle.toFixed(2) + '°';
-  }
-});
-
 var simonString  = "";
 var simonString2  = "011120120123212321";
 var audio = new Audio('watarush.mp3');
 
-function genRandSimonString()
-{
-    var text = "";
-    var possible = "0123";
+function genRandSimonString(length) {
+  var simString = "";
+  var possible = "0123";
 
-    for( var i=0; i < 10; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
+  for( var i=0; i < length; i++ )
+    simString += possible.charAt(Math.floor(Math.random() * possible.length));
 
-    return text;
+  return simString;
+}
+
+function appendToSimonString(charToAppend){
+  simonString += charToAppend;
+  document.getElementById("dis").innerHTML = simonString;
+  if(simonString == document.getElementById("match").innerHTML){
+    document.getElementById("match").innerHTML = "CORRECT!"
+      audio.play();
+  }
 }
 
 document.getElementById("dis").innerHTML = simonString;
@@ -67,60 +58,37 @@ document.getElementById("dis").innerHTML = simonString;
 interact('.tap-Green').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
-  simonString += "0";
-  document.getElementById("dis").innerHTML = simonString;
 
-  if(simonString == document.getElementById("match").innerHTML){
-    document.getElementById("match").innerHTML = "CORRECT!"
-      audio.play();
-  }
+  appendToSimonString("0");
 
 })
 interact('.tap-Red').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
-  simonString += "1";
-  document.getElementById("dis").innerHTML = simonString;
 
-  if(simonString == document.getElementById("match").innerHTML){
-    document.getElementById("match").innerHTML = "CORRECT!"
-      audio.play();
-  }
+  appendToSimonString("1");
 
 })
 interact('.tap-Yellow').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
-  simonString += "2";
-  document.getElementById("dis").innerHTML = simonString;
 
-  if(simonString == document.getElementById("match").innerHTML){
-    document.getElementById("match").innerHTML = "CORRECT!"
-      audio.play();
-  }
+  appendToSimonString("2");
 
 })
 interact('.tap-Blue').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
-  simonString += "3";
-  document.getElementById("dis").innerHTML = simonString;
 
-  if(simonString == document.getElementById("match").innerHTML){
-    document.getElementById("match").innerHTML = "CORRECT!"
-      audio.play();
-  }
+  appendToSimonString("3");
 
 })
 
 var tapArrayStr = new Array(".tap-Green",".tap-Red",".tap-Yellow",".tap-Blue");
-var inter;
 
 for(var i = 0; i < simonString2.length; i++){
 
-  inter = interact(tapArrayStr[getRandomInt(0,3)]);
-  console.log(inter);
-
+  console.log(interact(tapArrayStr[getRandomInt(0,3)]));
 
 }
 
@@ -166,14 +134,17 @@ function getRandomInt(min, max)
 
     </table>
 
-      <p id="match" style="color: white">011212010002321</p>
+      <center>
+    <p style="color: white">
+    Match this string:
+    </p>
+    <p id="match" style="color: white">012332111010</p>
 
-    <div class="rotate-area">
-      <div id="angle-info">0&deg;</div>
-      <a href="http://www.cogs.club">
-        <img class="cogs-logo" src="COGS-Controller-Logo.png" />
-      </a>
-    </div>
+    <p>
+    <a href="http://www.cogs.club">
+      <img class="cogs-logo" src="COGS-Controller-Logo.png" />
+      </center>
+    </a>
 
   </body>
 </html>
