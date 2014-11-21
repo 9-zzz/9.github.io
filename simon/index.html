@@ -20,14 +20,9 @@
       <link rel="stylesheet" href="./css/style.css">
       <script src="./js/interact-1.1.2.min.js"></script>
       <script src="./js/jquery-1.11.1.min.js"></script>
-      <script src="./js/audio.min.js"></script>
   </head>
 
   <body>
-    <script>
-audiojs.events.ready(function() { var as = audiojs.createAll(); });
-    </script>
-
 
     <div class="dis2" id="dis2"> 
       <p id="dis" style="color: white"></p>
@@ -36,7 +31,7 @@ audiojs.events.ready(function() { var as = audiojs.createAll(); });
     <script>
 var angle = 0;
 
-interact('#rotate-area').gesturable({
+interact('.rotate-area').gesturable({
   onmove: function (event) {
     var logo = document.getElementById('cogs-logo');
 
@@ -52,12 +47,12 @@ interact('#rotate-area').gesturable({
 });
 
 var simonString  = "";
+var simonString2  = "011120120123212321";
 var audio = new Audio('watarush.mp3');
 
 document.getElementById("dis").innerHTML = simonString;
 
-interact('.tap-Green')
-.on('tap', function (event) {
+interact('.tap-Green').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
   simonString += "0";
@@ -69,8 +64,7 @@ interact('.tap-Green')
   }
 
 })
-interact('.tap-Red')
-.on('tap', function (event) {
+interact('.tap-Red').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
   simonString += "1";
@@ -82,8 +76,7 @@ interact('.tap-Red')
   }
 
 })
-interact('.tap-Yellow')
-.on('tap', function (event) {
+interact('.tap-Yellow').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
   simonString += "2";
@@ -95,8 +88,7 @@ interact('.tap-Yellow')
   }
 
 })
-interact('.tap-Blue')
-.on('tap', function (event) {
+interact('.tap-Blue').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
   simonString += "3";
@@ -109,10 +101,25 @@ interact('.tap-Blue')
 
 })
 
+var tapArrayStr = new Array(".tap-Green",".tap-Red",".tap-Yellow",".tap-Blue");
+var inter;
+
+for(var i = 0; i < simonString2.length; i++){
+
+  inter = interact(tapArrayStr[getRandomInt(0,3)]);
+  console.log(inter);
+
+
+}
+
 //.on('doubletap', function (event) {
 //  event.currentTarget.classList.toggle('large');
 //  event.preventDefault();
 //});
+function getRandomInt(min, max) 
+{
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
     </script>
 
 
@@ -146,7 +153,7 @@ interact('.tap-Blue')
 
     </table>
 
-    <p id="match" style="color: white">0012301010</p>
+    <p id="match" style="color: white">01210012321000</p>
 
     <div class="rotate-area">
       <div id="angle-info">0&deg;</div>
