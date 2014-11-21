@@ -30,7 +30,7 @@ body {
 } 
 
 .tap-Green{
-  width: 65px;
+  width: 40%;
   height: 80px;
   padding: 10%;
   margin: 1%;
@@ -56,7 +56,7 @@ body {
 }
 
 .tap-Red {
-  width: 65px;
+  width: 40%;
   height: 80px;
   padding: 10%;
   margin: 1%;
@@ -80,7 +80,7 @@ body {
 }
 
 .tap-Yellow{
-  width: 65px;
+  width: 40%;
   height: 80px;
   padding: 10%;
   margin: 1%;
@@ -104,7 +104,7 @@ body {
 }
 
 .tap-Blue{
-  width: 65px;
+  width: 40%;
   height: 80px;
   padding: 10%;
   margin: 1%;
