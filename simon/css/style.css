@@ -1,26 +1,93 @@
-.tap-target {
+.SimonBox{ 
+   width:50%; 
+   margin:0 auto; 
+} 
+
+.tap-Green{
   width: 25%;
   height: 50%;
   padding: 10%;
   margin: 10% auto;
 
-  border-radius: 100%;
+  border-radius: 10%;
 
   font-size: 1.125em;
   text-align: center;
   color: #fff;
-  background-color: #29e;
+  background-color: #BD6;
 
   cursor: pointer;
-
   transition: all 0.3s;
 }
 
-.tap-target.switch-bg {
+.tap-Green.switch-bg {
   background-color: #f40;
 }
 
-.tap-target.large {
+.tap-Red {
+  width: 25%;
+  height: 50%;
+  padding: 10%;
+  margin: 10% auto;
+
+  border-radius: 10%;
+
+  font-size: 1.125em;
+  text-align: center;
+  color: #fff;
+  background-color: #D00;
+
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tap-Red.switch-bg {
+  background-color: #f40;
+}
+
+.tap-Yellow{
+  width: 25%;
+  height: 50%;
+  padding: 10%;
+  margin: 10% auto;
+
+  border-radius: 10%;
+
+  font-size: 1.125em;
+  text-align: center;
+  color: #fff;
+  background-color: #ED0;
+
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tap-Yellow.switch-bg {
+  background-color: #f40;
+}
+
+.tap-Blue{
+  width: 25%;
+  height: 50%;
+  padding: 10%;
+  margin: 10% auto;
+
+  border-radius: 10%;
+
+  font-size: 1.125em;
+  text-align: center;
+  color: #fff;
+  background-color: #15E;
+
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tap-Blue.switch-bg {
+  background-color: #f40;
+}
+
+.tap-Red.large {
   -webkit-transform: scale(1.25);
   transform: scale(1.25);
 }
