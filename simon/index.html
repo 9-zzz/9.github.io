@@ -29,7 +29,8 @@
     </div>
 
     <script>
-var simonString  = " ";
+var simonString  = "0";
+document.getElementById("dis").innerHTML = simonString;
 
 interact('.tap-Green')
 .on('tap', function (event) {
@@ -37,6 +38,10 @@ interact('.tap-Green')
   event.preventDefault();
   simonString += "0";
   document.getElementById("dis").innerHTML = simonString;
+
+  if(simonString == document.getElementById("match").innerHTML)
+    document.getElementById("match").innerHTML = "CORRECT!"
+
 })
 interact('.tap-Red')
 .on('tap', function (event) {
@@ -44,6 +49,10 @@ interact('.tap-Red')
   event.preventDefault();
   simonString += "1";
   document.getElementById("dis").innerHTML = simonString;
+
+  if(simonString == document.getElementById("match").innerHTML)
+    document.getElementById("match").innerHTML = "CORRECT!"
+
 })
 interact('.tap-Yellow')
 .on('tap', function (event) {
@@ -51,6 +60,10 @@ interact('.tap-Yellow')
   event.preventDefault();
   simonString += "2";
   document.getElementById("dis").innerHTML = simonString;
+
+  if(simonString == document.getElementById("match").innerHTML)
+    document.getElementById("match").innerHTML = "CORRECT!"
+
 })
 interact('.tap-Blue')
 .on('tap', function (event) {
@@ -58,6 +71,10 @@ interact('.tap-Blue')
   event.preventDefault();
   simonString += "3";
   document.getElementById("dis").innerHTML = simonString;
+
+  if(simonString == document.getElementById("match").innerHTML)
+    document.getElementById("match").innerHTML = "CORRECT!"
+
 })
 
 //.on('doubletap', function (event) {
@@ -68,6 +85,7 @@ interact('.tap-Blue')
 
 
     <table class="SimonBoxTable">
+
       <tr>
         <td align="right" style="padding: 15px">
           <div class="tap-Green"> 
@@ -78,11 +96,19 @@ interact('.tap-Blue')
           </div>
         </td>
       </tr>
+
       <tr>
-        <td align="right" style="padding: 15px"> <div class="tap-Yellow"> </div></td>
-        <td align="left" style="padding: 15px"> <div class="tap-Blue"> </div></td>
-      </tr>
+        <td align="right" style="padding: 15px"> 
+          <div class="tap-Yellow"> 
+          </div>
+        </td>
+        <td align="left" style="padding: 15px"> 
+          <div class="tap-Blue"> 
+          </div></td>
+      </tr> 
     </table>
+
+    <p id="match" style="color: white">0012301010</p>
 
   </body>
 </html>

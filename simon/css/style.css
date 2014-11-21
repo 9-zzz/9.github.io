@@ -16,6 +16,12 @@ body {
   font-size: 15;
 }
 
+#match {
+  z-index:1;
+  margin:0px;
+  text-align: center;
+}
+
 .SimonBoxTable {
   width:100%; 
   height:100%; 
