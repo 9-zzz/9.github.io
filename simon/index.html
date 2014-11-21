@@ -28,11 +28,51 @@
       <p id="dis" style="color: white"></p>
     </div>
 
+
+    <table class="SimonBoxTable">
+
+      <tr>
+        <td align="right" style="padding: 15px">
+          <div class="tap-Green"> 
+          </div>
+        </td>
+        <td align="left "style="padding: 15px">
+          <div class="tap-Red"> 
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td align="right" style="padding: 15px"> 
+          <div class="tap-Yellow"> 
+          </div>
+        </td>
+        <td align="left" style="padding: 15px"> 
+          <div class="tap-Blue"> 
+          </div>
+        </td>
+      </tr> 
+
+    </table>
+
+    <center>
+      <p style="color: white">
+      Match this string:
+      </p>
+      <p id="match" style="color: white">012332111010</p>
+
+      <p>
+      <a href="http://www.cogs.club">
+        <img class="cogs-logo" src="COGS-Controller-Logo.png" />
+    </center>
+      </a>
     <script>
+//simonstrings are strings consisting only of '0' '1' '2' or '3'
 var simonString  = "";
 var simonString2  = "011120120123212321";
 var audio = new Audio('watarush.mp3');
 
+//generate random simonstring to animate the tiles with and then have player match
 function genRandSimonString(length) {
   var simString = "";
   var possible = "0123";
@@ -43,6 +83,12 @@ function genRandSimonString(length) {
   return simString;
 }
 
+console.log(genRandSimonString(10));
+console.log(genRandSimonString(10));
+console.log(genRandSimonString(10));
+console.log(genRandSimonString(10));
+
+//add the to the player's simonstring and check if it matches
 function appendToSimonString(charToAppend){
   simonString += charToAppend;
   document.getElementById("dis").innerHTML = simonString;
@@ -53,7 +99,7 @@ function appendToSimonString(charToAppend){
 }
 
 document.getElementById("dis").innerHTML = simonString;
-//document.getElementById("match").innerHTML = genRandSimonString();
+document.getElementById("match").innerHTML = genRandSimonString(10);
 
 interact('.tap-Green').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
@@ -86,7 +132,7 @@ interact('.tap-Blue').on('tap', function (event) {
 
 var tapArrayStr = new Array(".tap-Green",".tap-Red",".tap-Yellow",".tap-Blue");
 
-for(var i = 0; i < simonString2.length; i++){
+for(var i = 0; i < 5; i++){
 
   console.log(interact(tapArrayStr[getRandomInt(0,3)]));
 
@@ -103,48 +149,6 @@ function getRandomInt(min, max)
 
     </script>
 
-
-    <table class="SimonBoxTable">
-
-      <tr>
-        <td align="right" style="padding: 15px">
-          <div class="tap-Green"> 
-            0
-          </div>
-        </td>
-        <td align="left "style="padding: 15px">
-          <div class="tap-Red"> 
-            1
-          </div>
-        </td>
-      </tr>
-
-      <tr>
-        <td align="right" style="padding: 15px"> 
-          <div class="tap-Yellow"> 
-            2
-          </div>
-        </td>
-        <td align="left" style="padding: 15px"> 
-          <div class="tap-Blue"> 
-            3
-          </div>
-        </td>
-      </tr> 
-
-    </table>
-
-      <center>
-    <p style="color: white">
-    Match this string:
-    </p>
-    <p id="match" style="color: white">012332111010</p>
-
-    <p>
-    <a href="http://www.cogs.club">
-      <img class="cogs-logo" src="COGS-Controller-Logo.png" />
-      </center>
-    </a>
 
   </body>
 </html>
