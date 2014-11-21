@@ -4,6 +4,18 @@ body {
   overflow: hidden;
 }
 
+.dis2 {
+  z-index:0;
+  margin:0px;
+  text-align: center;
+}
+
+#dis {
+  margin:0px;
+  text-align: center;
+  font-size: 15;
+}
+
 .SimonBoxTable {
   width:100%; 
   height:100%; 

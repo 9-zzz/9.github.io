@@ -19,30 +19,45 @@
       <!-- syntax highlighting CSS -->
       <link rel="stylesheet" href="./css/style.css">
       <script src="./js/interact-1.1.2.min.js"></script>
+      <script src="./js/jquery-1.11.1.min.js"></script>
   </head>
 
   <body>
 
+    <div class="dis2" id="dis2"> 
+      <p id="dis" style="color: white"></p>
+    </div>
+
     <script>
+var simonString  = " ";
+
 interact('.tap-Green')
 .on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
+  simonString += "0";
+  document.getElementById("dis").innerHTML = simonString;
 })
 interact('.tap-Red')
 .on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
+  simonString += "1";
+  document.getElementById("dis").innerHTML = simonString;
 })
 interact('.tap-Yellow')
 .on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
+  simonString += "2";
+  document.getElementById("dis").innerHTML = simonString;
 })
 interact('.tap-Blue')
 .on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
   event.preventDefault();
+  simonString += "3";
+  document.getElementById("dis").innerHTML = simonString;
 })
 
 //.on('doubletap', function (event) {
@@ -51,14 +66,21 @@ interact('.tap-Blue')
 //});
     </script>
 
+
     <table class="SimonBoxTable">
       <tr>
-        <td align="right"><div class="tap-Green"> </div></td>
-        <td align="left"><div class="tap-Red"> </div></td>
+        <td align="right" style="padding: 15px">
+          <div class="tap-Green"> 
+          </div>
+        </td>
+        <td align="left "style="padding: 15px">
+          <div class="tap-Red"> 
+          </div>
+        </td>
       </tr>
       <tr>
-        <td align="right"> <div class="tap-Yellow"> </div></td>
-        <td align="left"> <div class="tap-Blue"> </div></td>
+        <td align="right" style="padding: 15px"> <div class="tap-Yellow"> </div></td>
+        <td align="left" style="padding: 15px"> <div class="tap-Blue"> </div></td>
       </tr>
     </table>
 
