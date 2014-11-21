@@ -5,7 +5,7 @@
 } 
 
 .tap-Green{
-  width: 25%;
+  width: 25px;
   height: 50%;
   padding: 10%;
   margin: 1% auto;
@@ -26,7 +26,7 @@
 }
 
 .tap-Red {
-  width: 25%;
+  width: 25px;
   height: 50%;
   padding: 10%;
   margin: 1% auto;
@@ -47,7 +47,7 @@
 }
 
 .tap-Yellow{
-  width: 25%;
+  width: 25px;
   height: 50%;
   padding: 10%;
   margin: 1% auto;
@@ -68,7 +68,7 @@
 }
 
 .tap-Blue{
-  width: 25%;
+  width: 25px;
   height: 50%;
   padding: 10%;
   margin: 1% auto;
