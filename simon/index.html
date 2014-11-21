@@ -34,10 +34,12 @@
       <tr>
         <td align="right" style="padding: 15px">
           <div class="tap-Green"> 
+            0
           </div>
         </td>
         <td align="left "style="padding: 15px">
           <div class="tap-Red"> 
+            1
           </div>
         </td>
       </tr>
@@ -45,10 +47,12 @@
       <tr>
         <td align="right" style="padding: 15px"> 
           <div class="tap-Yellow"> 
+            2
           </div>
         </td>
         <td align="left" style="padding: 15px"> 
           <div class="tap-Blue"> 
+            3
           </div>
         </td>
       </tr> 
@@ -66,7 +70,7 @@
         <img class="cogs-logo" src="COGS-Controller-Logo.png" />
     </center>
       </a>
-    <script>
+      <script>
 //simonstrings are strings consisting only of '0' '1' '2' or '3'
 var simonString  = "";
 var simonString2  = "011120120123212321";
@@ -83,11 +87,6 @@ function genRandSimonString(length) {
   return simString;
 }
 
-console.log(genRandSimonString(10));
-console.log(genRandSimonString(10));
-console.log(genRandSimonString(10));
-console.log(genRandSimonString(10));
-
 //add the to the player's simonstring and check if it matches
 function appendToSimonString(charToAppend){
   simonString += charToAppend;
@@ -99,7 +98,7 @@ function appendToSimonString(charToAppend){
 }
 
 document.getElementById("dis").innerHTML = simonString;
-document.getElementById("match").innerHTML = genRandSimonString(10);
+document.getElementById("match").innerHTML = genRandSimonString(5);
 
 interact('.tap-Green').on('tap', function (event) {
   event.currentTarget.classList.toggle('switch-bg');
@@ -146,8 +145,7 @@ function getRandomInt(min, max)
 {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
-    </script>
+      </script>
 
 
   </body>
