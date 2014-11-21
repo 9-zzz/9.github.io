@@ -37,7 +37,7 @@ body {
   border-radius: 4px;
 
   /*font-size: 1.125em;*/
-  font-size:42px;
+  font-size:62px;
   text-align: center;
   color: #000;
   background-color: #BD6;
@@ -58,7 +58,7 @@ body {
 
   border-radius: 4px;
 
-  font-size:42px;
+  font-size:62px;
   text-align: center;
   color: #000;
   background-color: #D00;
@@ -79,7 +79,7 @@ body {
 
   border-radius: 4px;
 
-  font-size:42px;
+  font-size:62px;
   text-align: center;
   color: #000;
   background-color: #ED0;
@@ -100,7 +100,7 @@ body {
 
   border-radius: 4px;
 
-  font-size:42px;
+  font-size:62px;
   text-align: center;
   color: #000;
   background-color: #15E;
@@ -128,5 +128,14 @@ body {
 .cogs-logo {
   width: 220px;
   height: 120px;
-  margin:0 auto;
+}
+
+::-moz-selection {
+  background-color:Transparent;
+  color:#000;
+}
+
+::selection {
+  background-color:Transparent;
+  color:#000;
 }
