@@ -4,19 +4,19 @@ body {
   overflow: hidden;
 }
 
-.SimonBoxTable{ 
+.SimonBoxTable {
   width:100%; 
   height:100%; 
-  margin:0 auto; 
+  margin:0px auto; 
 } 
 
 .tap-Green{
-  width: 25px;
-  height: 50px;
+  width: 65px;
+  height: 80px;
   padding: 10%;
   margin: 1%;
 
-  border-radius: 10%;
+  border-radius: 4px;
 
   font-size: 1.125em;
   text-align: center;
@@ -32,12 +32,12 @@ body {
 }
 
 .tap-Red {
-  width: 25px;
-  height: 50px;
+  width: 65px;
+  height: 80px;
   padding: 10%;
   margin: 1%;
 
-  border-radius: 10%;
+  border-radius: 4px;
 
   font-size: 1.125em;
   text-align: center;
@@ -53,12 +53,12 @@ body {
 }
 
 .tap-Yellow{
-  width: 25px;
-  height: 50px;
+  width: 65px;
+  height: 80px;
   padding: 10%;
   margin: 1%;
 
-  border-radius: 10%;
+  border-radius: 4px;
 
   font-size: 1.125em;
   text-align: center;
@@ -74,12 +74,12 @@ body {
 }
 
 .tap-Blue{
-  width: 25px;
-  height: 50px;
+  width: 65px;
+  height: 80px;
   padding: 10%;
   margin: 1%;
 
-  border-radius: 10%;
+  border-radius: 4px;
 
   font-size: 1.125em;
   text-align: center;
