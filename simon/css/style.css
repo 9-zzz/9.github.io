@@ -1,5 +1,6 @@
 .SimonBox{ 
    width:50%; 
+   height:100%; 
    margin:0 auto; 
 } 
 
@@ -7,7 +8,7 @@
   width: 25%;
   height: 50%;
   padding: 10%;
-  margin: 10% auto;
+  margin: 1% auto;
 
   border-radius: 10%;
 
@@ -28,7 +29,7 @@
   width: 25%;
   height: 50%;
   padding: 10%;
-  margin: 10% auto;
+  margin: 1% auto;
 
   border-radius: 10%;
 
@@ -49,7 +50,7 @@
   width: 25%;
   height: 50%;
   padding: 10%;
-  margin: 10% auto;
+  margin: 1% auto;
 
   border-radius: 10%;
 
@@ -70,7 +71,7 @@
   width: 25%;
   height: 50%;
   padding: 10%;
-  margin: 10% auto;
+  margin: 1% auto;
 
   border-radius: 10%;
 
