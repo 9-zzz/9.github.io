@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Your Daddy Roberto!</title>
+<meta property="og:title" content="Shahan's Github Page | Bwahaahaa I manipulate Facebook!"/>
+<meta property="og:image" content="http://i.imgur.com/RX7bCjB.png"/>
+<meta property="og:site_name" content="www.erroneousName.youSuck!"/>
+<meta property="og:description" content="Roberto is sexy and awesome."/>
+<meta property="og:url" content="https://sia.github.io/Roberto"/>
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="robstyle.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><!--JQuery mofo most up to date?-->
+<script src="../js/jquery.videoBG.js"></script>
+</head>
+
+<body>
+<video id="Roberto" preload="auto" autoplay loop>
+  <source src="rob.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+</body>
+
+</html>
