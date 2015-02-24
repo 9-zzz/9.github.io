@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>testing</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<meta property="og:image" content="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfa1/t1.0-9/7324_149657702049_5886119_n.jpg"/>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+
+<body>
+
+<script src="js/Three.js"></script>
+<script src="js/Detector.js"></script>
+<script src="js/Stats.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/THREEx.KeyboardState.js"></script>
+<script src="js/THREEx.FullScreen.js"></script>
+<script src="js/THREEx.WindowResize.js"></script>
+<!--Imported three.js lib files, may need to update-->
+
+<div id="ThreeJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
+
+<script>
+//global variables
+var container, scene, camera, renderer, controls, stats;
+var keyboard = new THREEx.KeyboardState();//instant of object
+var clock = new THREE.Clock();
+var tobias;
+var tobias2;
+var mesh;
+
+init();//declaring methods
+animate();//and this
+
+function init()
+{
+    scene = new THREE.Scene();
+
+    var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+    var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 2000;
+
+    camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+    scene.add(camera);
+    camera.position.set(0,0,20);
+    camera.lookAt(scene.position);
+
+    if ( Detector.webgl )
+    renderer = new THREE.WebGLRenderer( {antialias:true} );
+    else
+    renderer = new THREE.CanvasRenderer();
+
+    renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+    container = document.getElementById( 'ThreeJS' );
+    container.appendChild( renderer.domElement );
+    THREEx.WindowResize(renderer, camera);
+    controls = new THREE.OrbitControls( camera, renderer.domElement );
+    var light = new THREE.DirectionalLight(0xffffff);
+    light.position.set(0,0,200);
+    scene.add(light);
+
+    plane = new THREE.Mesh(new THREE.PlaneGeometry(42, 42, 42, 42), new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.5,wireframe:true}));
+    scene.add(plane);
+
+    var geometry = new THREE.CubeGeometry(5,5,5);
+    var texture = THREE.ImageUtils.loadTexture( 'mano.jpg' );
+    var material = new THREE.MeshBasicMaterial({map : texture, opacity: 0.8});
+    mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    //my task, make another cube with another image and place it next to the manowar cube
+    // do this with a new thing called like "mesh2" with all the same properties
+    // a new image and use 'mesh2.position.z = 5;" or '.y' or '.x' or something to movie it once you have
+    // DO IT
+
+}//END INIT
+
+function animate()
+{
+    requestAnimationFrame( animate );
+    render();
+    update();
+
+    plane.rotation.x += 0.01;
+    plane.rotation.y += 0.01;
+    plane.rotation.z += 0.1;
+
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.01;
+    mesh.rotation.z += 0.01;
+
+
+    //  if(keyboard.pressed("space"))cr = 0.01;
+
+}//END ANIM
+
+function update()
+{
+    // delta = change in time since last call (in seconds)
+    var delta = clock.getDelta();
+
+    controls.update();
+    //stats.update();
+}
+
+function render()
+{
+    renderer.render( scene, camera );
+}
+</script>
+
+</body>
+</html>
