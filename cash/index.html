@@ -64,7 +64,7 @@ function init()
     plane = new THREE.Mesh(new THREE.PlaneGeometry(42, 42, 42, 42), new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.5,wireframe:true}));
     scene.add(plane);
 
-    var geometry = new THREE.CubeGeometry(5,5,5);
+    var geometry = new THREE.CubeGeometry(0.1,4.5,10);
     var texture = THREE.ImageUtils.loadTexture( 'mano.jpg' );
     var material = new THREE.MeshBasicMaterial({map : texture, opacity: 0.8});
     mesh = new THREE.Mesh(geometry, material);
