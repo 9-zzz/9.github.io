@@ -38,6 +38,7 @@ var mesh2;
 var mesh3;
 var mesh4;
 var mesh5;
+var ctr = 0;
 
 init();//declaring methods
 animate();//and this
@@ -98,14 +99,14 @@ function init()
 
 function myFunction()
 {
-  var ctr = 3;
+  ctr = ctr + 1;
   var geometry = new THREE.CubeGeometry(0.05,4.5,10);
   var texture = THREE.ImageUtils.loadTexture( 'cash.jpg' );
   var material = new THREE.MeshBasicMaterial({map : texture, opacity: 0.8});
   mesh = new THREE.Mesh(geometry, material);
   mesh.position.set(0,ctr,0);
   scene.add(mesh);
-  ctr += 2;
+  console.log(ctr);
   //document.getElementById("demo").innerHTML = "Hello World";
 }
 
