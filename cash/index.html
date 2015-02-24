@@ -50,6 +50,7 @@ var keyboard = new THREEx.KeyboardState();//instant of object
 var clock = new THREE.Clock();
 var tobias;
 var tobias2;
+var newMesh;
 var mesh;
 var mesh1;
 var mesh2;
@@ -117,14 +118,14 @@ function init()
 
 function myFunction()
 {
-  ctr = ctr + 1;
   var geometry = new THREE.CubeGeometry(0.05,4.5,10);
   var texture = THREE.ImageUtils.loadTexture( 'cash.jpg' );
   var material = new THREE.MeshBasicMaterial({map : texture, opacity: 0.8});
-  mesh = new THREE.Mesh(geometry, material);
-  mesh.position.set(0,ctr,0);
-  scene.add(mesh);
+  newMesh = new THREE.Mesh(geometry, material);
+  newMesh.position.set(0,ctr,0);
+  scene.add(newMesh);
   console.log(ctr);
+  ctr += 3.5;
   //document.getElementById("demo").innerHTML = "Hello World";
 }
 
@@ -135,8 +136,14 @@ function animate()
   update();
 
   plane.rotation.x += 0.001;
-  plane.rotation.y += 0.001;
   plane.rotation.z += 0.01;
+
+  if(newMesh != null)
+  {
+    newMesh.rotation.x += 0.01;
+    newMesh.rotation.y += 0.01;
+    newMesh.rotation.z += 0.01;
+  }
 
   mesh.rotation.x += 0.01;
   mesh.rotation.y += 0.01;
