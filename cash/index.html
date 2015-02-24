@@ -31,6 +31,11 @@ var clock = new THREE.Clock();
 var tobias;
 var tobias2;
 var mesh;
+var mesh1;
+var mesh2;
+var mesh3;
+var mesh4;
+var mesh5;
 
 init();//declaring methods
 animate();//and this
@@ -69,7 +74,23 @@ function init()
     var texture = THREE.ImageUtils.loadTexture( 'mano.jpg' );
     var material = new THREE.MeshBasicMaterial({map : texture, opacity: 0.8});
     mesh = new THREE.Mesh(geometry, material);
+	mesh1 = new THREE.Mesh(geometry, material);
+	mesh2 = new THREE.Mesh(geometry, material);
+	mesh3 = new THREE.Mesh(geometry, material);
+	mesh4 = new THREE.Mesh(geometry, material);
+	mesh5 = new THREE.Mesh(geometry, material);
+	mesh1.position.set(0,0,-5);
+	mesh2.position.set(3,0,-10);
+	mesh3.position.set(0,10,-5);
+	mesh4.position.set(-20,-3,-19);
+	mesh5.position.set(0,7,-10);
     scene.add(mesh);
+	scene.add(mesh1);
+	scene.add(mesh2);
+	scene.add(mesh3);
+	scene.add(mesh4);
+	scene.add(mesh5);
+
 
     //my task, make another cube with another image and place it next to the manowar cube
     // do this with a new thing called like "mesh2" with all the same properties
@@ -88,11 +109,29 @@ function animate()
     plane.rotation.y += 0.001;
     plane.rotation.z += 0.01;
 
-    mesh.rotation.x += 0.01;
+	mesh.rotation.x += 0.01;
     mesh.rotation.y += 0.01;
     mesh.rotation.z += 0.01;
+	
+    mesh1.rotation.x -= 0.1;
+    mesh1.rotation.y += 0.01;
+    mesh1.rotation.z += 0.07;
+    
+	mesh2.rotation.x += 0.01;
+    mesh2.rotation.y -= 0.03;
+    mesh2.rotation.z += 0.01;
+	
+	mesh3.rotation.x -= 0.01;
+    mesh3.rotation.y += 0.1;
+    mesh3.rotation.z += 0.01;
+	
+	mesh4.rotation.x += 0.01;
+    mesh4.rotation.y -= 0.01;
+    mesh4.rotation.z += 0.01;
 
-
+	mesh5.rotation.x += 0.09;
+    mesh5.rotation.y -= 0.1;
+    mesh5.rotation.z += 0.01;
     //  if(keyboard.pressed("space"))cr = 0.01;
 
 }//END ANIM
