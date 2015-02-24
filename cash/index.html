@@ -4,13 +4,15 @@
 <head>
 <title>testing</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<meta property="og:image" content="https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xfa1/t1.0-9/7324_149657702049_5886119_n.jpg"/>
+<meta property="og:image" content=""/>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 
 <body>
+
+<button style="z-index: 1;" onclick="myFunction()">CA$H</button>
 
 <script src="js/Three.js"></script>
 <script src="js/Detector.js"></script>
@@ -21,7 +23,7 @@
 <script src="js/THREEx.WindowResize.js"></script>
 <!--Imported three.js lib files, may need to update-->
 
-<div id="ThreeJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
+<div id="ThreeJS" style="z-index: -1; position: absolute; right:0px; top:0px"></div>
 
 <script>
 //global variables
@@ -70,84 +72,92 @@ function init()
     plane.position.set(0,0,-200);
 	scene.add(plane);
 
-    var geometry = new THREE.CubeGeometry(0.1,4.5,10);
-    var texture = THREE.ImageUtils.loadTexture( 'mano.jpg' );
+    var geometry = new THREE.CubeGeometry(0.05,4.5,10);
+    var texture = THREE.ImageUtils.loadTexture( 'cash.jpg' );
     var material = new THREE.MeshBasicMaterial({map : texture, opacity: 0.8});
     mesh = new THREE.Mesh(geometry, material);
-	mesh1 = new THREE.Mesh(geometry, material);
-	mesh2 = new THREE.Mesh(geometry, material);
-	mesh3 = new THREE.Mesh(geometry, material);
-	mesh4 = new THREE.Mesh(geometry, material);
-	mesh5 = new THREE.Mesh(geometry, material);
-	mesh1.position.set(0,0,-5);
-	mesh2.position.set(3,0,-10);
-	mesh3.position.set(0,10,-5);
-	mesh4.position.set(-20,-3,-19);
-	mesh5.position.set(0,7,-10);
+
+    mesh1 = new THREE.Mesh(geometry, material);
+    mesh2 = new THREE.Mesh(geometry, material);
+    mesh3 = new THREE.Mesh(geometry, material);
+    mesh4 = new THREE.Mesh(geometry, material);
+    mesh5 = new THREE.Mesh(geometry, material);
+    mesh1.position.set(0,0,-5);
+    mesh2.position.set(3,0,-10);
+    mesh3.position.set(0,10,-5);
+    mesh4.position.set(-20,-3,-19);
+    mesh5.position.set(0,7,-10);
     scene.add(mesh);
-	scene.add(mesh1);
-	scene.add(mesh2);
-	scene.add(mesh3);
-	scene.add(mesh4);
-	scene.add(mesh5);
-
-
-    //my task, make another cube with another image and place it next to the manowar cube
-    // do this with a new thing called like "mesh2" with all the same properties
-    // a new image and use 'mesh2.position.z = 5;" or '.y' or '.x' or something to movie it once you have
-    // DO IT
+    scene.add(mesh1);
+    scene.add(mesh2);
+    scene.add(mesh3);
+    scene.add(mesh4);
+    scene.add(mesh5);
 
 }//END INIT
 
+function myFunction()
+{
+  var ctr = 3;
+  var geometry = new THREE.CubeGeometry(0.05,4.5,10);
+  var texture = THREE.ImageUtils.loadTexture( 'cash.jpg' );
+  var material = new THREE.MeshBasicMaterial({map : texture, opacity: 0.8});
+  mesh = new THREE.Mesh(geometry, material);
+  mesh.position.set(0,ctr,0);
+  scene.add(mesh);
+  ctr += 2;
+  //document.getElementById("demo").innerHTML = "Hello World";
+}
+
 function animate()
 {
-    requestAnimationFrame( animate );
-    render();
-    update();
+  requestAnimationFrame( animate );
+  render();
+  update();
 
-    plane.rotation.x += 0.001;
-    plane.rotation.y += 0.001;
-    plane.rotation.z += 0.01;
+  plane.rotation.x += 0.001;
+  plane.rotation.y += 0.001;
+  plane.rotation.z += 0.01;
 
-	mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.01;
-    mesh.rotation.z += 0.01;
-	
-    mesh1.rotation.x -= 0.1;
-    mesh1.rotation.y += 0.01;
-    mesh1.rotation.z += 0.07;
-    
-	mesh2.rotation.x += 0.01;
-    mesh2.rotation.y -= 0.03;
-    mesh2.rotation.z += 0.01;
-	
-	mesh3.rotation.x -= 0.01;
-    mesh3.rotation.y += 0.1;
-    mesh3.rotation.z += 0.01;
-	
-	mesh4.rotation.x += 0.01;
-    mesh4.rotation.y -= 0.01;
-    mesh4.rotation.z += 0.01;
+  mesh.rotation.x += 0.01;
+  mesh.rotation.y += 0.01;
+  mesh.rotation.z += 0.01;
 
-	mesh5.rotation.x += 0.09;
-    mesh5.rotation.y -= 0.1;
-    mesh5.rotation.z += 0.01;
-    //  if(keyboard.pressed("space"))cr = 0.01;
+  mesh1.rotation.x -= 0.1;
+  mesh1.rotation.y += 0.01;
+  mesh1.rotation.z += 0.07;
+
+  mesh2.rotation.x += 0.01;
+  mesh2.rotation.y -= 0.03;
+  mesh2.rotation.z += 0.01;
+
+  mesh3.rotation.x -= 0.01;
+  mesh3.rotation.y += 0.1;
+  mesh3.rotation.z += 0.01;
+
+  mesh4.rotation.x += 0.01;
+  mesh4.rotation.y -= 0.01;
+  mesh4.rotation.z += 0.01;
+
+  mesh5.rotation.x += 0.09;
+  mesh5.rotation.y -= 0.1;
+  mesh5.rotation.z += 0.01;
+  //  if(keyboard.pressed("space"))cr = 0.01;
 
 }//END ANIM
 
 function update()
 {
-    // delta = change in time since last call (in seconds)
-    var delta = clock.getDelta();
+  // delta = change in time since last call (in seconds)
+  var delta = clock.getDelta();
 
-    controls.update();
-    //stats.update();
+  controls.update();
+  //stats.update();
 }
 
 function render()
 {
-    renderer.render( scene, camera );
+  renderer.render( scene, camera );
 }
 </script>
 
