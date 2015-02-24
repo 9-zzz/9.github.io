@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-<title>testing</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<meta property="og:image" content=""/>
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-</head>
+  <head>
+    <title>testing</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta property="og:image" content=""/>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  </head>
 
-<body>
+  <body>
 
-<button style="z-index: 1;" onclick="myFunction()">CA$H</button>
+    <button 
+                          style=
+                          "vertical-align: top;
+                          width: 100%;
+                          height: 60px;
+                          padding: 0;
+                          font-size: 22px;
+                          color: white;
+                          text-align: center;
+                          text-shadow: 0 2px 1px rgba(0, 0, 0, 0.05);
+                          background: #2ecc71;
+                          border: 0;
+                          border-bottom: 2px solid #28be68;
+                          cursor: pointer;
+                          -webkit-box-shadow: inset 0 -10px #28be68;
+                          box-shadow: inset 0 -2px #28be68;
+                          position: absolute;
+                          bottom: 0px;"
+                          onclick="myFunction()">CA$H</button>
 
-<script src="js/Three.js"></script>
-<script src="js/Detector.js"></script>
-<script src="js/Stats.js"></script>
-<script src="js/OrbitControls.js"></script>
-<script src="js/THREEx.KeyboardState.js"></script>
-<script src="js/THREEx.FullScreen.js"></script>
-<script src="js/THREEx.WindowResize.js"></script>
-<!--Imported three.js lib files, may need to update-->
+    <script src="js/Three.js"></script>
+    <script src="js/Detector.js"></script>
+    <script src="js/Stats.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/THREEx.KeyboardState.js"></script>
+    <script src="js/THREEx.FullScreen.js"></script>
+    <script src="js/THREEx.WindowResize.js"></script>
+    <!--Imported three.js lib files, may need to update-->
 
-<div id="ThreeJS" style="z-index: -1; position: absolute; right:0px; top:0px"></div>
+    <div id="ThreeJS" style="z-index: -1; position: absolute; right:0px; top:0px"></div>
 
-<script>
+    <script>
 //global variables
 var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();//instant of object
@@ -45,55 +63,55 @@ animate();//and this
 
 function init()
 {
-    scene = new THREE.Scene();
+  scene = new THREE.Scene();
 
-    var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
-    var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 2000;
+  var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+  var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 2000;
 
-    camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
-    scene.add(camera);
-    camera.position.set(0,0,20);
-    camera.lookAt(scene.position);
+  camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+  scene.add(camera);
+  camera.position.set(0,0,20);
+  camera.lookAt(scene.position);
 
-    if ( Detector.webgl )
+  if ( Detector.webgl )
     renderer = new THREE.WebGLRenderer( {antialias:true} );
-    else
+  else
     renderer = new THREE.CanvasRenderer();
 
-    renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-    container = document.getElementById( 'ThreeJS' );
-    container.appendChild( renderer.domElement );
-    THREEx.WindowResize(renderer, camera);
-    controls = new THREE.OrbitControls( camera, renderer.domElement );
-    var light = new THREE.DirectionalLight(0xffffff);
-    light.position.set(0,0,200);
-    scene.add(light);
+  renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+  container = document.getElementById( 'ThreeJS' );
+  container.appendChild( renderer.domElement );
+  THREEx.WindowResize(renderer, camera);
+  controls = new THREE.OrbitControls( camera, renderer.domElement );
+  var light = new THREE.DirectionalLight(0xffffff);
+  light.position.set(0,0,200);
+  scene.add(light);
 
-    plane = new THREE.Mesh(new THREE.PlaneGeometry(420, 420, 42, 42), new THREE.MeshLambertMaterial({ transparent: true, opacity: 0.9,wireframe:true}));
-    plane.position.set(0,0,-200);
-	scene.add(plane);
+  plane = new THREE.Mesh(new THREE.PlaneGeometry(420, 420, 42, 42), new THREE.MeshLambertMaterial({ transparent: true, opacity: 0.9,wireframe:true}));
+  plane.position.set(0,0,-200);
+  scene.add(plane);
 
-    var geometry = new THREE.CubeGeometry(0.05,4.5,10);
-    var texture = THREE.ImageUtils.loadTexture( 'cash.jpg' );
-    var material = new THREE.MeshBasicMaterial({map : texture, opacity: 0.8});
-    mesh = new THREE.Mesh(geometry, material);
+  var geometry = new THREE.CubeGeometry(0.05,4.5,10);
+  var texture = THREE.ImageUtils.loadTexture( 'cash.jpg' );
+  var material = new THREE.MeshBasicMaterial({map : texture, opacity: 0.8});
+  mesh = new THREE.Mesh(geometry, material);
 
-    mesh1 = new THREE.Mesh(geometry, material);
-    mesh2 = new THREE.Mesh(geometry, material);
-    mesh3 = new THREE.Mesh(geometry, material);
-    mesh4 = new THREE.Mesh(geometry, material);
-    mesh5 = new THREE.Mesh(geometry, material);
-    mesh1.position.set(0,0,-5);
-    mesh2.position.set(3,0,-10);
-    mesh3.position.set(0,10,-5);
-    mesh4.position.set(-20,-3,-19);
-    mesh5.position.set(0,7,-10);
-    scene.add(mesh);
-    scene.add(mesh1);
-    scene.add(mesh2);
-    scene.add(mesh3);
-    scene.add(mesh4);
-    scene.add(mesh5);
+  mesh1 = new THREE.Mesh(geometry, material);
+  mesh2 = new THREE.Mesh(geometry, material);
+  mesh3 = new THREE.Mesh(geometry, material);
+  mesh4 = new THREE.Mesh(geometry, material);
+  mesh5 = new THREE.Mesh(geometry, material);
+  mesh1.position.set(0,0,-5);
+  mesh2.position.set(3,0,-10);
+  mesh3.position.set(0,10,-5);
+  mesh4.position.set(-20,-3,-19);
+  mesh5.position.set(0,7,-10);
+  scene.add(mesh);
+  scene.add(mesh1);
+  scene.add(mesh2);
+  scene.add(mesh3);
+  scene.add(mesh4);
+  scene.add(mesh5);
 
 }//END INIT
 
@@ -160,7 +178,7 @@ function render()
 {
   renderer.render( scene, camera );
 }
-</script>
+    </script>
 
-</body>
+  </body>
 </html>
