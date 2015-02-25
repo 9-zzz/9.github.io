@@ -99,6 +99,8 @@ function init()
   var light = new THREE.DirectionalLight(0xffffff);
   light.position.set(0,0,200);
   scene.add(light);
+  scene.fog = new THREE.FogExp2( 0x70DBDB, 0.002 );
+
 
   plane = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000, 42, 42), new THREE.MeshLambertMaterial({ color: 0x2ecc71,transparent: true, opacity: 0.2,wireframe:true}));
   plane.position.set(0,0,-200);
