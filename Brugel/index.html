@@ -108,7 +108,7 @@ div .button {
 <img alt="Google" height="95" id="hplogo" src="logo.png" style="padding-top:112px">
 </div>
 <form>
-<input class="inp" type="text" name="dumbQuestion">
+<input class="inp" type="text" name="dumbQuestion" autofocus>
 </form>
 <div>
 	<a href="#" id="b1" class="button">Google Search</a>
@@ -136,6 +136,17 @@ var replies = [
 			"Let's play League after this.",
 			"Are you sure you looked at the man pages?",
 			"It'll probably take me like 5 hours to code that."];
+
+$('.inp').keypress(function (e) {
+  if (e.which == 13) {
+i = Math.floor(Math.random() * replies.length);
+	$('.retort').text(replies[i])    
+    $(".retort").fadeOut();
+	$(".retort").fadeIn();
+    $('form#login').submit();
+    return false;    //<---- Add this line
+  }
+});
 			
 	$(document).ready(function(){
     $("#b2").click(function(){
