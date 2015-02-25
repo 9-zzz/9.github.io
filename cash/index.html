@@ -100,7 +100,7 @@ function init()
   light.position.set(0,0,200);
   scene.add(light);
 
-  plane = new THREE.Mesh(new THREE.PlaneGeometry(420, 420, 42, 42), new THREE.MeshLambertMaterial({ transparent: true, opacity: 0.9,wireframe:true}));
+  plane = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000, 42, 42), new THREE.MeshLambertMaterial({ color: 0x2ecc71,transparent: true, opacity: 0.2,wireframe:true}));
   plane.position.set(0,0,-200);
   scene.add(plane);
 
@@ -148,8 +148,8 @@ function animate()
   render();
   update();
 
-  plane.rotation.x += 0.001;
-  plane.rotation.z += 0.01;
+  plane.rotation.x += 0.0001;
+  plane.rotation.z += 0.0001;
 
   if(newMesh != null)
   {
