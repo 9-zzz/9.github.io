@@ -12,6 +12,16 @@
 
   <body>
 
+<center>
+<p 
+style=
+"font-size: 42px;
+text-shadow: 0 2px 2px rgba(5, 5, 5, 5);
+color: #2ecc71;
+top: 0px;"
+id="cashctr">BILLS YOU HAVE STACKED: </p>
+</center>
+
     <button 
                           style=
                           "vertical-align: top;
@@ -58,6 +68,7 @@ var mesh3;
 var mesh4;
 var mesh5;
 var ctr = 0;
+var cashCounter = 0;
 
 init();//declaring methods
 animate();//and this
@@ -127,6 +138,7 @@ function myFunction()
   console.log(ctr);
   ctr += 3.5;
   //document.getElementById("demo").innerHTML = "Hello World";
+  document.getElementById("cashctr").innerHTML = "BILLS YOU HAVE STACKED: " + cashCounter++;
 }
 
 function animate()
