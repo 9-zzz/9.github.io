@@ -12,29 +12,29 @@
 <style>
 input
 {
-font-size: 12pt;
+	font-size: 12pt;
 width: 570px;
 height: 25px;
-padding-left: 9px;
-padding-top: 1px;
-border-radius: 0px;
+	padding-left: 9px;
+	padding-top: 1px;
+	border-radius: 0px;
 border: 1px solid rgba(1,1,1,0.15);
 }
 input:hover
 {
-outline-color: transparent;
+	outline-color: transparent;
 outline:none;
 border: 1px solid rgba(1,1,1,0.3);
 }
 input:focus
 {
-outline-color: transparent;
+	outline-color: transparent;
 outline:none;
 border: 1px solid rgba(27,112,239,1);
 }
 center {
 display: block;
-text-align: -webkit-center;
+	 text-align: -webkit-center;
 }
 
 body {
@@ -43,38 +43,38 @@ body {
 }
 
 div {
-	width: auto;
-	margin: 15px auto;
+width: auto;
+margin: 15px auto;
 }
 
 div .button {
-	margin: 0 15px 15px 0;
+margin: 0 15px 15px 0;
 }
 
 .button {
-	display: inline-block;
-	background-color: #f5f5f5;
-	background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
-	background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1);
-	background-image: -ms-linear-gradient(top,#f5f5f5,#f1f1f1);
-	background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1);
-	background-image: linear-gradient(top,#f5f5f5,#f1f1f1);
-	color: #444;
-	
-	border: 1px solid #dcdcdc;
+display: inline-block;
+	 background-color: #f5f5f5;
+	 background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+	 background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1);
+	 background-image: -ms-linear-gradient(top,#f5f5f5,#f1f1f1);
+	 background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1);
+	 background-image: linear-gradient(top,#f5f5f5,#f1f1f1);
+color: #444;
+
+border: 1px solid #dcdcdc;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
-	
-	cursor: default;
+
+cursor: default;
 	font-size: 11px;
 	font-weight: bold;
 	text-align: center;
-	height: 27px;
+height: 27px;
 	line-height: 27px;
 	min-width: 54px;
-	padding: 0 8px;
-	text-decoration: none;
+padding: 0 8px;
+	 text-decoration: none;
 }
 
 .button:hover {
@@ -84,21 +84,21 @@ div .button {
 	background-image: -ms-linear-gradient(top,#f8f8f8,#f1f1f1);
 	background-image: -o-linear-gradient(top,#f8f8f8,#f1f1f1);
 	background-image: linear-gradient(top,#f8f8f8,#f1f1f1);
-	
-	border: 1px solid #C6C6C6;
-	color: #333;
-	
-	-webkit-box-shadow: 0px 1px 1px rgba(0,0,0,.1);
-	-moz-box-shadow: 0px 1px 1px rgba(0,0,0,.1);
-	box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+
+border: 1px solid #C6C6C6;
+color: #333;
+
+       -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+       -moz-box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+       box-shadow: 0px 1px 1px rgba(0,0,0,.1);
 }
 .retort
 {
- width:500px;
-    height:60px;
-    top: 0px;
-    text-align:center;
-	font-size: 15pt;
+width:500px;
+height:60px;
+top: 0px;
+     text-align:center;
+     font-size: 15pt;
 }
 </style>
 </head>
@@ -112,8 +112,8 @@ div .button {
 <input class="inp" type="text" name="dumbQuestion" autofocus x-webkit-speech >
 </form>
 <div>
-	<a href="#" id="b1" class="button">Google Search</a>
-	<a href="#" id="b2" class="button">I'm Feeling Lucky</a>
+<a href="#" id="b1" class="button">Google Search</a>
+<a href="#" id="b2" class="button">I'm Feeling Lucky</a>
 </div>
 <div class="retort" ></div>
 </center>
@@ -124,49 +124,56 @@ div .button {
 var i = 0;
 var j = 0;
 var replies = [
-			"You probably should've learned that in 111...", 
-			"You still haven't taken comp arch yet?!?!",
-			"Why don't you just write the entire assignment in scheme?",
-			"Take the Grad version... It's easier.",
-			"Don't I look just like the guy from Killswitch Engage?",
-			"Oh that?! I took that my freshman year.",
-			"Uhhh... I think we did this in high school...",
-			"Honestly... I wouldn't want to work at Google.",
-			"Did you look at the man pages?",
-			"You wanna play League?",
-			"That textbook sucks.",
-			"Just use Vim.",
-			"Why are you using Eclipse?!?!",
-			"Let's play League after this.",
-			"Are you sure you looked at the man pages?",
-			"It'll probably take me like 5 hours to code that."];
-			
+"You probably should've learned that in 111...", 
+	"You still haven't taken comp arch yet?!?!",
+	"Why don't you just write the entire assignment in scheme?",
+	"Take the Grad version... It's easier.",
+	"Don't I look just like the guy from Killswitch Engage?",
+	"Oh that?! I took that my freshman year.",
+	"Uhhh... I think we did this in high school...",
+	"Honestly... I wouldn't want to work at Google.",
+	"Did you look at the man pages?",
+	"You wanna play League?",
+	"That textbook sucks.",
+	"Just use Vim.",
+	"Why are you using Eclipse?!?!",
+	"Let's play League after this.",
+	"Are you sure you looked at the man pages?",
+	"It'll probably take me like 5 hours to code that."];
+
 var colors = ["#0266C8", "#F90101", "#F2B50F", "#00933B"];
 
+$(".retort").fadeOut();
+
 $('.inp').keypress(function (e) {
-  if (e.which == 13) {
-    i = Math.floor(Math.random() * replies.length);
-	$('.retort').text(replies[i])    
-	j = Math.floor(Math.random() * colors.length);
-	$( '.retort' ).css( "color", colors[j] );
-    $(".retort").fadeOut();
-	$(".retort").fadeIn();
-    $('form#login').submit();
-    return false;    //<---- Add this line
-  }
-});
-			
-	$(document).ready(function(){
-    $("#b2").click(function(){
-		$(".retort").fadeOut()
-    });
-    $("#b1").click(function(){
-	i = Math.floor(Math.random() * replies.length);
-	$('.retort').text(replies[i])    
-    $(".retort").fadeOut();
-	$(".retort").fadeIn();
-    });
-});
+		if (e.which == 13) {
+		i = Math.floor(Math.random() * replies.length);
+		$('.retort').text(replies[i])    
+		j = Math.floor(Math.random() * colors.length);
+		$( '.retort' ).css( "color", colors[j] );
+		$(".retort").fadeOut();
+		$(".retort").fadeIn();
+		$('form#login').submit();
+		return false;    //<---- Add this line
+		}
+		});
+
+$(document).ready(function(){
+		$("#b2").click(function(){
+			j = Math.floor(Math.random() * colors.length);
+			$( '.retort' ).css( "color", colors[j] );
+			$('.retort').text("Luck is not quantifiable. You feel nothing.");
+			$(".retort").fadeIn();
+			});
+		$("#b1").click(function(){
+			j = Math.floor(Math.random() * colors.length);
+			$( '.retort' ).css( "color", colors[j] );
+			i = Math.floor(Math.random() * replies.length);
+			$('.retort').text(replies[i])    
+			$(".retort").fadeOut();
+			$(".retort").fadeIn();
+			});
+		});
 </script>
 
 </html>
