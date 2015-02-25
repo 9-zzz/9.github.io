@@ -14,7 +14,7 @@ input
 {
 font-size: 12pt;
 width: 570px;
-height: 30px;
+height: 25px;
 padding-left: 9px;
 padding-top: 1px;
 border-radius: 0px;
@@ -98,6 +98,7 @@ div .button {
     height:60px;
     top: 0px;
     text-align:center;
+	font-size: 15pt;
 }
 </style>
 </head>
@@ -121,6 +122,7 @@ div .button {
 
 <script>
 var i = 0;
+var j = 0;
 var replies = [
 			"You probably should've learned that in 111...", 
 			"You still haven't taken comp arch yet?!?!",
@@ -136,11 +138,15 @@ var replies = [
 			"Let's play League after this.",
 			"Are you sure you looked at the man pages?",
 			"It'll probably take me like 5 hours to code that."];
+			
+var colors = ["#0266C8", "#F90101", "#F2B50F", "#00933B"];
 
 $('.inp').keypress(function (e) {
   if (e.which == 13) {
-i = Math.floor(Math.random() * replies.length);
+    i = Math.floor(Math.random() * replies.length);
 	$('.retort').text(replies[i])    
+	j = Math.floor(Math.random() * colors.length);
+	$( '.retort' ).css( "color", colors[j] );
     $(".retort").fadeOut();
 	$(".retort").fadeIn();
     $('form#login').submit();
