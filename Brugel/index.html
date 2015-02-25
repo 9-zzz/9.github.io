@@ -8,6 +8,7 @@
 <meta content="noodp" name="robots">
 <meta content="https://raw.githubusercontent.com/sia/sia.github.io/master/Brugel/fb.png" itemprop="image">
 <link rel="icon" type="image/png" href="favicon.png" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <style>
 input
 {
@@ -84,23 +85,62 @@ div .button {
 	-moz-box-shadow: 0px 1px 1px rgba(0,0,0,.1);
 	box-shadow: 0px 1px 1px rgba(0,0,0,.1);
 }
+.retort
+{
+ width:500px;
+    height:60px;
+    top: 0px;
+    text-align:center;
+}
 </style>
 </head>
 
 <body>
 <center>
-<div style="height:210px;margin-top:80px" id="lga">
+<div style="height:210px; margin-top:80px" id="lga">
 <img alt="Google" height="95" id="hplogo" src="logo.png" style="padding-top:112px">
 </div>
 <form>
-<input class="inp" type="text" name="firstname">
+<input class="inp" type="text" name="dumbQuestion">
 </form>
 <div>
-	<a href="#" class="button default">Google Search</a>
-	<a href="#" class="button default">I'm Feeling Lucky</a>
+	<a href="#" id="b1" class="button">Google Search</a>
+	<a href="#" id="b2" class="button">I'm Feeling Lucky</a>
 </div>
+<div class="retort" ></div>
 </center>
 
 </body>
+
+<script>
+var i = 0;
+var replies = [
+			"You probably shoul've learned that in 111...", 
+			"You still haven't taken comp arch yet?!?!",
+			"Take the Grad version... It's easier.",
+			"Oh that?! I took that my freshman year.",
+			"Uhhh... I think we did this in high school...",
+			"Honestly... I wouldn't want to work at Google.",
+			"Did you look at the man pages?",
+			"You wanna play League?",
+			"That textbook sucks.",
+			"Just use Vim.",
+			"Why are you using Eclipse?!?!",
+			"Let's play League after this.",
+			"Are you sure you looked at the man pages?",
+			"It'll probably take me like 5 hours to code that."];
+			
+	$(document).ready(function(){
+    $("#b2").click(function(){
+		$(".retort").fadeOut()
+    });
+    $("#b1").click(function(){
+	i = Math.floor(Math.random() * replies.length);
+	$('.retort').text(replies[i])    
+    $(".retort").fadeOut();
+	$(".retort").fadeIn();
+    });
+});
+</script>
 
 </html>
