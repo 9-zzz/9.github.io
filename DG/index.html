@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<style>
+.rotated-image {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.up-image {
+  -webkit-transform: rotate(-360deg);
+          transform: rotate(-360deg);
+}
+</style>
+
+<center>
+<section id="middle">
+    <img id="image" src="MC.png" >
+</br>
+    <button onclick="myFunction()">MAN DOWN??????????????M?¨???????!</button>
+</section>
+</center>
+
+<script>
+var b = true;
+function myFunction() {
+  var img = document.getElementById("image");
+if(b){  
+img.setAttribute("class", "rotated-image");
+b= false;
+}else{
+img.setAttribute("class", "up-image");
+b = true;
+}
+
+document.getElementById('MYMAN').play()
+}
+</script>
+
+<audio id="MYMAN">
+  <source src="MANDOWNMYMAN.mp3">
+</audio>
+
+</html>
