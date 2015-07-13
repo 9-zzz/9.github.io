@@ -9,17 +9,34 @@
   -webkit-transform: rotate(-360deg);
           transform: rotate(-360deg);
 }
+
+button {
+  width: 50%;
+  height: 100px;
+  font-weight: bold;
+  font-size: 42px;
+}
 </style>
 
 <center>
 <section id="middle">
     <img id="image" src="MC.png" >
 </br>
-    <button onclick="myFunction()">MAN DOWN??????????????M?¨???????!</button>
+</br>
+</br>
+</br>
+</br>
+    <button onclick="myFunction()" >MAN DOWN??????????????M?¨????clickme???!</button>
+</br>
+</br>
+</br>
+</br>
+</br>
 </section>
 </center>
 
 <script>
+document.getElementById('MYMAN').volume = 0.5;
 var b = true;
 function myFunction() {
   var img = document.getElementById("image");
@@ -31,12 +48,30 @@ img.setAttribute("class", "up-image");
 b = true;
 }
 
+document.getElementById('MYMAN').volume = 0.5;
 document.getElementById('MYMAN').play()
 }
+var vid = document.getElementById('MYMAN');
+vid.volume = 0.5;
 </script>
 
-<audio id="MYMAN">
+<center>
+<audio id="MYMAN" controls>
   <source src="MANDOWNMYMAN.mp3">
 </audio>
+WARNING LOUD
+</center>
+
+</br>
+</br>
+</br>
+</br>
+</br>
+<script type="text/javascript">
+cid = "275807";
+</script>
+<script type="text/javascript" 
+src="http://www.ezwebsitecounter.com/c.js?id=275807"></script><noscript><a href="http://www.ezwebsitecounter.com/">free hit counter ezwebsitecounter.com</a>
+</noscript>
 
 </html>
