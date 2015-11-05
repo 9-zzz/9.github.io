@@ -97,6 +97,32 @@ and they intersected upon themselves.</br>
 A simple fix for this was to just make them convex and</br>
 unfolded so GJK and EPA (unmodified) could be used on them.</p> 
 </p>
+<h1>A3 Assignment Blog</h1>
+<b>11/4/15</b></br>
+<p>
+The goal force is pretty straight forward. We were given the direction and dt.  </br>
+We just set the goal force to (direction * speed) – velocity / dt. The proximity force  </br>
+was harder. It included using a spatial database to locate all of the nearby neighbors.  </br>
+We determined if the neighbor was an agent and applied the proximity force based on the  </br>
+formula for agents. If it was a wall, we applied the force based on the formula for walls  </br>
+which is a very similar formula. We returned the force of all of these neighbors acting together. </br> 
+The agent repulsion force and wall repulsion force were both found the same way. Search through the  </br>
+neighbors in the spatial database. The agent function looked for agents and calculated a  </br>
+force based on position, radius, and body force. The wall function looked for walls and  </br>
+calculated a force based on the wall normal, points, and distance from the wall.  </br>
+
+Altogether our algorithm gave us slightly high steerbench scores. We noticed that our agents weren’t  </br>
+being repelled enough which resulted in many collisions but very quick finish times. Upon talking to  </br>
+Mahyar, we realized that by increasing the proximity force by a factor of 3 we could greatly reduce  </br>
+collisions with very small damage to our finish time. This allowed us to achieve steerbench scores  </br>
+that were very similar to the ones listed in the assignment 3 write up.  </br></br>
+
+<a href="https://www.youtube.com/watch?v=x4jV404zp1k" target="_blank">Bottleneck Video</a></br></br>
+<a href="https://www.youtube.com/watch?v=YK7lvLLrptE" target="_blank">Hallway One Way Video</a></br></br>
+<a href="https://www.youtube.com/watch?v=mdTS1wzLyBE" target="_blank">Hallway Two Way Video</a></br></br>
+<a href="https://www.youtube.com/watch?v=ePBboM6zpC8" target="_blank">Hallway Four Way Video ( ͡° ͜ʖ ͡°)</a></br></br>
+
+</p>
 
     </br>
     <a href = "http://sia.github.io"
