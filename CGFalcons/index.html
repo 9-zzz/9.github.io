@@ -40,7 +40,7 @@
 src="http://www.youtube.com/embed/DvqJYxep6fA">
 </iframe>
 
-
+</center>
 <p>
 <b>10/10/15</b>
 <ul>
@@ -126,10 +126,26 @@ that were very similar to the ones listed in the assignment 3 write up.  </br></
 <b>11/13/15</b></br>
 <p>
 For this assignment we...</br>
-A* is coooool....
-</p>
-</p>
+In order to implement A* path finding algorithm we used _gSpatialDataBase to populate </br>
+our vectors of points. As the algorithm goes, we took our starting point and added it to </br>
+our closed vector. Then we populated the open vector with the points around it. We calculated </br>
+the F G H values appropriately based on whether we needed to use Euclidean Distance or </br>
+Manhattan Distance and multiplied by the weight. The default value of weight that we used </br>
+was 1 and while we tested to make sure our code worked we kept the value at 1. For the </br>
+videos we have included tests with a weight of 1 2 4 and 8 each giving different results. </br>
+Once the algorithm found the goal node, we broke out of the main while loop and did the </br>
+appropriate back track in order to fill in the path from start to goal. If our while loop </br>
+terminated after searching every possible node on the field, we determined that there was </br>
+no possible path to the goal and we returned false. </br></br>
 
+Our videos look very similar to the videos provided by the TAs, however we are slightly off. </br>
+This may be because of a small error in our A* implementation. We tested our code with search-1 </br>
+search-2 and a few other XML files that we made to make sure that our algorithm does indeed work.</br>
+ We look forward to beefing up this attempt at A* and combining it with A3 to have a full crowd </br>
+ simulation project for A5.</br></br>
+</p>
+</p>
+<center>
     </br>
     <a href = "http://sia.github.io"
       title = "Author of this site" 
