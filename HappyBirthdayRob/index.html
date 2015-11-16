@@ -50,6 +50,7 @@ var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
 var tobias;
 var tobias2;
+var toddTextMesh;
 
 init();
 animate();
@@ -97,7 +98,7 @@ function init()
   //Meshes
   var loader = new THREE.JSONLoader();
 
-  loader.load( 'a.js', function(geometry, materials){
+  loader.load( 'untitled.json', function(geometry, materials){
       for(var i =0;i<materials.length;i++){
       materials[i].shading = THREE.FlatShading;
       }
