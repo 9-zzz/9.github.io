@@ -97,7 +97,7 @@ function init()
   //Meshes
   var loader = new THREE.JSONLoader();
 
-  loader.load( 'a.json', function(geometry, materials){
+  loader.load( 'a.js', function(geometry, materials){
       for(var i =0;i<materials.length;i++){
       materials[i].shading = THREE.FlatShading;
       }
