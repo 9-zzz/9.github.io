@@ -1,97 +1,248 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - materials</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				font-family: Monospace;
+				background-color: #000;
+				margin: 0px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
 
-<head>
-<title>What is that? | Off in the distance...</title>
-<link rel="icon" href="/images/favreaucon.png" type="image/png">
-<meta property="og:title" content="What is that? ...Off in the distance"/>
-<meta property="og:image" content="http://i.imgur.com/MlmNGX3.png"/>
-<meta property="og:site_name" content="www.erroneousName.youSuck!"/>
-<meta property="og:description" content="This is a website."/>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-</head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.js"></script>
 
-<body>
-<script src="js/Three.js"></script>
-<script src="js/Detector.js"></script>
-<script src="js/Stats.js"></script>
-<script src="js/THREEx.KeyboardState.js"></script>
-<script src="js/THREEx.FullScreen.js"></script>
-<script src="js/THREEx.WindowResize.js"></script>
-<script type='text/javascript' src='js/tween.min.js'></script>
-<!--Imported three.js lib files, may need to update-->
-<div id="ThreeJS" style="z-index: 1; position: absolute; right:0px; top:0px"></div>
-<script>
-var container, scene, camera, renderer, controls, stats, f;
-var i = 1;
-var clock = new THREE.Clock();
+		<script>
 
-init();
-animate();
-function init() 
-{
-  scene = new THREE.Scene();
-  var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;	
-  var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000000;
-  camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
-  scene.add(camera);
-  camera.position.set(0,0,6400);
-  camera.lookAt(scene.position);	
+			//if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
-  if ( Detector.webgl )
-    renderer = new THREE.WebGLRenderer( {antialias:true} );
-  else
-    renderer = new THREE.CanvasRenderer(); 
+			var container, stats;
 
-  renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+			var camera, scene, renderer;
+			var particleLight;
 
-  container = document.getElementById( 'ThreeJS' );
-  container.appendChild( renderer.domElement );
-  THREEx.WindowResize(renderer, camera);
-  //controls = new THREE.OrbitControls( camera, renderer.domElement );
-  var light = new THREE.PointLight(0xffffff);
-  light.position.set(0,100,0);
-  scene.add(light);
+			var objects = [], materials = [];
 
-  loader = new THREE.JSONLoader();
-  loader.load( 'meshes/geometry.json', function(geometry){
-      var material = new THREE.MeshPhongMaterial({color: "#FF0000",shading:THREE.FlatShading});
+			init();
+			animate();
 
-      f = new THREE.Mesh(geometry, material);
-      f.scale.set(2,2,2);
-      f.position.set(0,0,0);
-      scene.add(f);
-      });
-	  
-	  
-}
+			function init() {
 
+				container = document.createElement( 'div' );
+				document.body.appendChild( container );
 
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.set( 0, 200, 800 );
 
-function animate() 
-{
-  requestAnimationFrame( animate );
-  render();		
-  update();
+				scene = new THREE.Scene();
 
-  f.position.z = (i*(i++))/42;
+				// Grid
 
-  console.log(f.position.z);
+				var line_material = new THREE.LineBasicMaterial( { color: 0x303030 } ),
+					geometry = new THREE.Geometry(),
+					floor = -75, step = 25;
 
-  if(f.position.z > 6501) f.position.z = 6502;
-}
+				for ( var i = 0; i <= 40; i ++ ) {
 
-function update(){
+					geometry.vertices.push( new THREE.Vector3( - 500, floor, i * step - 500 ) );
+					geometry.vertices.push( new THREE.Vector3(   500, floor, i * step - 500 ) );
 
-  //controls.update();
+					geometry.vertices.push( new THREE.Vector3( i * step - 500, floor, -500 ) );
+					geometry.vertices.push( new THREE.Vector3( i * step - 500, floor,  500 ) );
 
-}
+				}
 
-function render() {renderer.render( scene, camera );}
+				var line = new THREE.LineSegments( geometry, line_material );
+				scene.add( line );
 
-</script>
+				// Materials
 
-</body>
+				var texture = new THREE.Texture( generateTexture() );
+				texture.needsUpdate = true;
 
+				materials.push( new THREE.MeshLambertMaterial( { map: texture, transparent: true } ) );
+				materials.push( new THREE.MeshLambertMaterial( { color: 0xdddddd, shading: THREE.FlatShading } ) );
+				materials.push( new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x009900, shininess: 30, shading: THREE.FlatShading } ) );
+				materials.push( new THREE.MeshNormalMaterial( ) );
+				materials.push( new THREE.MeshBasicMaterial( { color: 0xffaa00, transparent: true, blending: THREE.AdditiveBlending } ) );
+				//materials.push( new THREE.MeshBasicMaterial( { color: 0xff0000, blending: THREE.SubtractiveBlending } ) );
+
+				materials.push( new THREE.MeshLambertMaterial( { color: 0xdddddd, shading: THREE.SmoothShading } ) );
+				materials.push( new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x009900, shininess: 30, shading: THREE.SmoothShading, map: texture, transparent: true } ) );
+				materials.push( new THREE.MeshNormalMaterial( { shading: THREE.SmoothShading } ) );
+				materials.push( new THREE.MeshBasicMaterial( { color: 0xffaa00, wireframe: true } ) );
+
+				materials.push( new THREE.MeshDepthMaterial() );
+
+				materials.push( new THREE.MeshLambertMaterial( { color: 0x666666, emissive: 0xff0000, shading: THREE.SmoothShading } ) );
+				materials.push( new THREE.MeshPhongMaterial( { color: 0x000000, specular: 0x666666, emissive: 0xff0000, shininess: 10, shading: THREE.SmoothShading, opacity: 0.9, transparent: true } ) );
+
+				materials.push( new THREE.MeshBasicMaterial( { map: texture, transparent: true } ) );
+
+				// Spheres geometry
+
+				var geometry = new THREE.SphereGeometry( 70, 32, 16 );
+
+				for ( var i = 0, l = geometry.faces.length; i < l; i ++ ) {
+
+					var face = geometry.faces[ i ];
+					face.materialIndex = Math.floor( Math.random() * materials.length );
+
+				}
+
+				geometry.sortFacesByMaterialIndex();
+
+				objects = [];
+
+				for ( var i = 0, l = materials.length; i < l; i ++ ) {
+
+					addMesh( geometry, materials[ i ] );
+
+				}
+
+				addMesh( geometry, new THREE.MeshFaceMaterial( materials ) );
+
+				particleLight = new THREE.Mesh( new THREE.SphereGeometry( 4, 8, 8 ), new THREE.MeshBasicMaterial( { color: 0xffffff } ) );
+				scene.add( particleLight );
+
+				// Lights
+
+				scene.add( new THREE.AmbientLight( 0x111111 ) );
+
+				var directionalLight = new THREE.DirectionalLight( /*Math.random() * */ 0xffffff, 0.125 );
+
+				directionalLight.position.x = Math.random() - 0.5;
+				directionalLight.position.y = Math.random() - 0.5;
+				directionalLight.position.z = Math.random() - 0.5;
+
+				directionalLight.position.normalize();
+
+				scene.add( directionalLight );
+
+				var pointLight = new THREE.PointLight( 0xffffff, 1 );
+				particleLight.add( pointLight );
+
+				//
+
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+				//
+
+				
+
+				container.appendChild( stats.domElement );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function addMesh( geometry, material ) {
+
+				var mesh = new THREE.Mesh( geometry, material );
+
+				mesh.position.x = ( objects.length % 4 ) * 200 - 400;
+				mesh.position.z = Math.floor( objects.length / 4 ) * 200 - 200;
+
+				mesh.rotation.x = Math.random() * 200 - 100;
+				mesh.rotation.y = Math.random() * 200 - 100;
+				mesh.rotation.z = Math.random() * 200 - 100;
+
+				objects.push( mesh );
+
+				scene.add( mesh );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function generateTexture() {
+
+				var canvas = document.createElement( 'canvas' );
+				canvas.width = 256;
+				canvas.height = 256;
+
+				var context = canvas.getContext( '2d' );
+				var image = context.getImageData( 0, 0, 256, 256 );
+
+				var x = 0, y = 0;
+
+				for ( var i = 0, j = 0, l = image.data.length; i < l; i += 4, j ++ ) {
+
+					x = j % 256;
+					y = x == 0 ? y + 1 : y;
+
+					image.data[ i ] = 255;
+					image.data[ i + 1 ] = 255;
+					image.data[ i + 2 ] = 255;
+					image.data[ i + 3 ] = Math.floor( x ^ y );
+
+				}
+
+				context.putImageData( image, 0, 0 );
+
+				return canvas;
+
+			}
+
+			//
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				render();
+				stats.update();
+
+			}
+
+			function render() {
+
+				var timer = 0.0001 * Date.now();
+
+				camera.position.x = Math.cos( timer ) * 1000;
+				camera.position.z = Math.sin( timer ) * 1000;
+
+				camera.lookAt( scene.position );
+
+				for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+					var object = objects[ i ];
+
+					object.rotation.x += 0.01;
+					object.rotation.y += 0.005;
+
+				}
+
+				materials[ materials.length - 2 ].emissive.setHSL( 0.54, 1, 0.35 * ( 0.5 + 0.5 * Math.sin( 35 * timer ) ) );
+				materials[ materials.length - 3 ].emissive.setHSL( 0.04, 1, 0.35 * ( 0.5 + 0.5 * Math.cos( 35 * timer ) ) );
+
+				particleLight.position.x = Math.sin( timer * 7 ) * 300;
+				particleLight.position.y = Math.cos( timer * 5 ) * 400;
+				particleLight.position.z = Math.cos( timer * 3 ) * 300;
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+	</body>
 </html>
