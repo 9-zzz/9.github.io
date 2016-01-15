@@ -44,6 +44,15 @@ div.ginfo a:hover { color: #9C39FF; }
   background-color:rgba(223,255,0,0.65);
 }
 
+#y9
+{
+  background-color:rgba(39,9,87,0.65);
+  border: 2px solid;
+  color:rgb(142,250,10);
+  font-size: 13pt;
+  padding: 3px;
+  cursor:pointer;
+}
 
 #h
 {
