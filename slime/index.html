@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>SlimeUnityBall WebGL</title>
+    <style>
+    /* a style sheet needs to be present for cursor hiding and custom cursors to work. */
+    </style>
+  </head>
+  <body>
+    <center>
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="1000px"></canvas>
+	</center>
+	
+    <script type='text/javascript'>
+  var Module = {
+    TOTAL_MEMORY: 268435456,
+    errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+    compatibilitycheck: null,
+    dataUrl: "Release/SlimeUnityBallWebGL.data",
+    codeUrl: "Release/SlimeUnityBallWebGL.js",
+    memUrl: "Release/SlimeUnityBallWebGL.mem",
+  };
+</script>
+<script src="Release/UnityLoader.js"></script>
+
+<p> Red Slime Controls: A | D
+</br>Blue Slime Controls: <- | ->
+</br>Jumping is DLC $495.00 for 2 month subscription
+</br><a href="https://github.com/9/SlimeUnityBall">My source code</a>
+</br><a href="http://www.maths.tcd.ie/~horkana/work/slime.html">Actual Slime Volleyball source code</a>
+</p>
+
+  </body>
+</html>
