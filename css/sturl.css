@@ -5,6 +5,11 @@ body
   font-family: Ubuntu, sans-serif;
 }
 
+button:focus 
+{
+  outline: none;
+}
+
 .ThreeJS
 {
   z-index: 1;
