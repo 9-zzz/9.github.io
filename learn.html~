@@ -11,11 +11,27 @@
 </head>
 
 <body>
-<p>I will be adding links that helped me on my game dev journey...</p>
 
-<h4>Add Mesh Solid</h4></br>
+<h4>List of useful websites/tutorials/resources for Game Development</h4>
 
-<p>more coming soon...</p>
+<b>BEGINNER</b></br>
+<a href="http://www.unity3dstudent.com/category/modules/">Pure beginner Unity3D tutorials</a></br>
+<a href="https://unity3d.com/learn">Unity3D's official tutorials</a></br>
+</br>
+<b>NEWS</b></br>
+<a href="http://www.gamasutra.com/">Gamasutra - game development news</a></br>
+<a href="https://www.reddit.com/r/unity3d">Sub-reddit for Unity3D</a></br>
+<a href="https://www.reddit.com/r/gamedev">Sub-reddit for general game development</a></br>
+<a href="https://www.reddit.com/r/gamedev">Sub-reddit for general game development</a></br>
+<a href="https://twitter.com/hashtag/gamedev?lang=en">Twitter #gamedev</a></br>
+</br>
+<b>ADVANCED</b></br>
+<a href="https://www.youtube.com/user/Cercopithecan">Sebastian Lague's YouTube channel for Blender+Unity</a></br>
+<a href="https://www.youtube.com/user/derekbanas/playlists">Derek Banas' YouTube channel for General Coding</a></br>
+<a href="https://www.youtube.com/channel/UCb0DBpjN2lZhJCflvMUCJpw/playlists">Stuart Spence's specific game mechanics YouTube tutorials</a></br>
+<a href="https://www.youtube.com/user/ExtraCreditz/playlists">Extra Credits playlists for game design</a></br>
+<a href="https://www.twitch.tv/directory/game/Creative/gamedev">Game Development on Twitch</a></br>
+<a href="http://www.alanzucconi.com/tutorials/">Alan Zucconi's Unity text tutorials</a></br>
 
 </body>
 
