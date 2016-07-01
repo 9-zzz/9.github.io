@@ -20,15 +20,13 @@ button:focus
 
 #gameinfo
 {
-  background-color:rgba(255,0,25,0.80);
-  color:rgb(43,55,191);
-  font-size: 11pt;
   display: none;
-  border: 1px solid;
-  border-radius: 5px;
-  padding: 11px;
-  margin: 0px;
-  width: 130px;
+  background-color:rgba(255,20,45,0.75);
+  color:rgb(43,55,191);
+  font-size: 13pt;
+  border: 2px solid;
+  padding: 3px;
+  width: 150px;
 }
 
 div.ginfo a { color: #61FFF0; }
@@ -36,9 +34,9 @@ div.ginfo a:hover { color: #9C39FF; }
 
 #game
 {
-  background-color:rgba(0,53,177,0.65);
+  background-color:rgba(108,239,255,0.75);
   border: 2px solid;
-  color:rgb(223,255,0);
+  color:#00637E;
   font-size: 13pt;
   padding: 3px;
   cursor:pointer;
@@ -71,9 +69,9 @@ div.ginfo a:hover { color: #9C39FF; }
 
 #h
 {
-  background-color:rgba(108,239,255,0.65);
+  background-color:rgba(108,239,255,0.75);
   border: 2px solid;
-  color:rgb(255,52,76);
+  color:#00637E;
   font-size: 13pt;
   padding: 3px;
   cursor:pointer;
@@ -82,7 +80,6 @@ div.ginfo a:hover { color: #9C39FF; }
 .goodies
 {
   font-size: 4pt;
-  padding: 10px;
   cursor:crosshair;
 }
 
