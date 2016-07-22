@@ -4,6 +4,7 @@
     <title>thrext</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta property="og:image" content="https://raw.githubusercontent.com/9/9.github.io/master/thrext/fb.jpg" />
     <style>
 body {
   font-family: Monospace;
@@ -35,6 +36,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 THREE.Cache.enabled = true;
 
 var i = 0;
+var movingFlag = true;
 
 var container, stats, permalink, hex, color;
 
@@ -374,9 +376,16 @@ function render() {
 
   if(group.position.z < 7100) 
   {
-  group.position.z = (i*(i++))/42;
-  //console.log(group.position.z);
+    group.position.z = (i*(i++))/10;
+    //console.log(group.position.z);
+    if(group.position.z > 7100)
+    {
+      i = 0;
+      group.position.set(0,0,0);
+    }
+
   }
+
 
 
   //camera.lookAt( group.position);
