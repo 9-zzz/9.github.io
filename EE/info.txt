@@ -14,3 +14,11 @@ email icon  for contact us
 order
 
 intro - news and events - hist backgrnd - AIR framework - relevant papers - bios - contact us
+
+
+list
+
+when hover over button show what it is in text.
+
+-bios section
+add bios section 7 circles in a pattern for pictures
