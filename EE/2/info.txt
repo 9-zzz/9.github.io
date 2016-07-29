@@ -1,0 +1,16 @@
+home icon is default
+
+bio is account circle icon
+
+news and events event icon
+
+relevant papers content copy
+
+history and background icon is book icon
+
+email icon  for contact us
+
+
+order
+
+intro - news and events - hist backgrnd - AIR framework - relevant papers - bios - contact us
