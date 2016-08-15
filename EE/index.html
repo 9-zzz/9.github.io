@@ -194,15 +194,16 @@
           </header>
 
           <center>
+            <p id="biostext" >Bios</p>
 
-              <img src="images/circle1.png" alt="" />
-              <img src="images/circle1.png" alt="" />
-              <img src="images/circle1.png" alt="" />
-              <img src="images/circle1.png" alt="" />
-              <br>
-              <img src="images/circle1.png" alt="" />
-              <img src="images/circle1.png" alt="" />
-              <img src="images/circle1.png" alt="" />
+            <a href="bios/johnsmith.html"><img onmouseover="bigImg('Jack')" class="hoverimage" src="images/circle1.png"/></a>
+            <a href="bios/johnsmith.html"><img onmouseover="bigImg('Barbara')" class="hoverimage" src="images/circle1.png"/></a>
+            <a href="bios/johnsmith.html"><img onmouseover="bigImg('Lars')" class="hoverimage" src="images/circle1.png"/></a>
+            <a href="bios/johnsmith.html"><img onmouseover="bigImg('Jason')" class="hoverimage" src="images/circle1.png"/></a>
+            <br>
+            <a href="bios/johnsmith.html"><img onmouseover="bigImg('Tim')" class="hoverimage" src="images/circle1.png"/></a>
+            <a href="bios/jefflebowski.html"><img onmouseover="bigImg('Clark')" class="hoverimage" src="images/circle1.png"/></a>
+            <a href="bios/johnsmith.html"><img onmouseover="bigImg('Bruce')" class="hoverimage" src="images/circle1.png"/></a>
 
           </center>
 
@@ -269,6 +270,17 @@
     <script src="assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="assets/js/main.js"></script>
+
+    <script>
+
+function bigImg(x) {
+  document.getElementById("biostext").innerHTML = x;
+}
+
+function test(btext)
+{
+}
+    </script>
 
   </body>
 </html>
