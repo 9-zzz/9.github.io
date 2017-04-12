@@ -9,12 +9,14 @@ body {
 }
 
 p{
-  padding-left:0.5em;
+  margin-top: 4px;
+  margin-bottom: 5px;
+  padding-left:26px;
   font-style: oblique;
 }
 
 h3{
-  padding-left:0.5em;
+  padding-left:26px;
   display: inline;
 }
 
@@ -37,6 +39,11 @@ a:hover {
 
 a:active {
   text-decoration: underline;
+}
+
+.fa
+{
+  color: #0084b4;
 }
 
 #grad1 {
