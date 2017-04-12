@@ -43,6 +43,8 @@ a:active {
 
 .fa
 {
+  display: inline;
+  position: absolute;
   color: #0084b4;
 }
 
