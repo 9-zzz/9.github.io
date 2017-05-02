@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<style>
+.rotated-image {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.up-image {
+  -webkit-transform: rotate(-360deg);
+          transform: rotate(-360deg);
+}
+
+button {
+  width: 50%;
+  height: 100px;
+  font-weight: bold;
+  font-size: 42px;
+}
+</style>
+
+<center>
+<section id="middle">
+    <img id="image" src="" >
+</br>
+</br>
+</br>
+</br>
+</br>
+    <button onclick="myFunction()" >WeeEEEeeeeLLL!</button>
+</br>
+</br>
+</br>
+</br>
+</br>
+</section>
+</center>
+
+<center>
+<audio id="MYMAN">
+  <source src="well.ogg">
+</audio>
+</center>
+
+<script>
+var vid = document.getElementById('MYMAN');
+vid.volume = 0.5;
+var b = true;
+function myFunction() {
+  var img = document.getElementById("image");
+if(b){  
+img.setAttribute("class", "rotated-image");
+b= false;
+}else{
+img.setAttribute("class", "up-image");
+b = true;
+}
+vid.play();
+
+}
+</script>
+
+</br>
+</br>
+</br>
+</br>
+</br>
+<script type="text/javascript">
+cid = "275807";
+</script>
+<script type="text/javascript" 
+src="http://www.ezwebsitecounter.com/c.js?id=275807"></script><noscript><a href="http://www.ezwebsitecounter.com/">free hit counter ezwebsitecounter.com</a>
+</noscript>
+
+</html>
