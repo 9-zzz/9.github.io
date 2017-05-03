@@ -48,6 +48,16 @@
         }
       },
 
+      doug2: {
+        id    : "doug2",
+        ogg   : "sounds/well.ogg",
+        mp3   : "sounds/well.mp3",
+        //example of sprite
+        sprite: {
+          doug2 : {id: "doug2", start: 0, end: 1.3, loop: false},
+        }
+      },
+
       doug: {
         id    : "doug",
         ogg   : "sounds/well.ogg",
@@ -117,8 +127,7 @@ if (isiOs || !isDevice) {
       <div id="bgndControls" style="">
 
         <button style="cursor:pointer" onclick="$.mbAudio.play('doug','doug')">WELL</button>
-        <button style="cursor:pointer" onclick="$.mbAudio.play('doug','doug')">WELL</button>
-        <button style="cursor:pointer" onclick="$.mbAudio.play('doug','doug')">WELL</button>
+        <button style="cursor:pointer" onclick="$.mbAudio.play('doug2','doug2')">WELL</button>
 
       </div>
 
