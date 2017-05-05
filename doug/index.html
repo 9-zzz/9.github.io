@@ -4,137 +4,184 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-
     <title>Ouchy Wowchy!</title>
-
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="inc/jquery.mb.audio.js"></script>
     <script type="text/javascript">
-
 /*
 * DEFINE SOUNDS
  */
     $.mbAudio.sounds = {
-      backgroundSprite: {
-        id    : "backgroundSprite",
-        ogg   : "sounds/bgndsSprite.ogg",
-        mp3   : "sounds/bgndsSprite.mp3",
-        //example of sprite
-        sprite: {
-          intro     : {id: "intro", start: 80, end: 116.975, loop: true},
-          levelIntro: {id: "levelIntro", start: 63, end: 75.5, loop: true},
-          tellStory : {id: "tellStory", start: 80, end: 116.975, loop: true},
-          level1    : {id: "level1", start: 5, end: 13, loop: true},
-          level2    : {id: "level2", start: 40, end: 56, loop: true},
-          level3    : {id: "level3", start: 120, end: 136.030, loop: true}
-        }
-      },
-
-      effectSprite: {
-        id    : "effectSprite",
-        ogg   : "sounds/effectsSprite.ogg",
-        mp3   : "sounds/effectsSprite1.mp3",
-        //example of sprite
-        sprite: {
-          streak        : {id: "streak", start: 0, end: 1.3, loop: 3},
-          great         : {id: "great", start: 5.8, end: 8, loop: false},
-          divine        : {id: "divine", start: 10, end: 11.6, loop: false},
-          wow           : {id: "wow", start: 15, end: 20, loop: false},
-          levelIntro    : {id: "levelIntro", start: 20, end: 25, loop: false},
-          levelCompleted: {id: "levelCompleted", start: 25, end: 30, loop: false},
-          subLevelLost  : {id: "subLevelLost", start: 35, end: 38.1, loop: false},
-          subLevelWon   : {id: "subLevelWon", start: 30, end: 31.9, loop: false},
-          gameWon       : {id: "gameWon", start: 30, end: 31.9, loop: false}
-        }
-      },
-
       doug: {
         id    : "doug",
-        ogg   : "sounds/effectsSprite.ogg",
-        mp3   : "sounds/dlm.mp3",
+        mp3   : "sounds/ouchy1.mp3",
         //example of sprite
         sprite: {
           doug : {id: "doug", start: 0, end: 1.3, loop: false},
         }
+      },
+
+      doug2: {
+        id    : "doug2",
+        mp3   : "sounds/ouchy2.mp3",
+        //example of sprite
+        sprite: {
+          doug2 : {id: "doug2", start: 0, end: 1.3, loop: false},
+        }
+      },
+
+      doug3: {
+        id    : "doug3",
+        mp3   : "sounds/ouchy3.mp3",
+        //example of sprite
+        sprite: {
+          doug3 : {id: "doug3", start: 0, end: 1.3, loop: false},
+        }
+      },
+
+      doug4: {
+        id    : "doug4",
+        mp3   : "sounds/ouchy4.mp3",
+        //example of sprite
+        sprite: {
+          doug4 : {id: "doug4", start: 0, end: 1.3, loop: false},
+        }
+      },
+
+      doug5: {
+        id    : "doug5",
+        mp3   : "sounds/ohyuh1.mp3",
+        //example of sprite
+        sprite: {
+          doug5 : {id: "doug5", start: 0, end: 1.3, loop: false},
+        }
+      },
+
+      doug6: {
+        id    : "doug6",
+        mp3   : "sounds/ohyuh2.mp3",
+        //example of sprite
+        sprite: {
+          doug6 : {id: "doug6", start: 0, end: 1.3, loop: false},
+        }
+      },
+
+      doug7: {
+        id    : "doug7",
+        mp3   : "sounds/ohyuh3.mp3",
+        //example of sprite
+        sprite: {
+          doug7 : {id: "doug7", start: 0, end: 1.3, loop: false},
+        }
+      },
+
+      doug8: {
+        id    : "doug8",
+        mp3   : "sounds/brains.mp3",
+        //example of sprite
+        sprite: {
+          doug8 : {id: "doug8", start: 0, end: 1.3, loop: false},
+        }
       }
+
     };
 
 function audioIsReady() {
   setTimeout(function () {
     $('#buttons').fadeIn();
     $("#loading").hide();
-
-    if(isStandAlone || !isDevice)
-      $.mbAudio.play('backgroundSprite', 'levelIntro');
-
   }, 3000);
 }
 
 $(document).on("initAudio", function () {
-  $.mbAudio.pause('effectSprite', audioIsReady);
+  $.mbAudio.pause('doug', audioIsReady);
 
   $('#start').hide();
   $("#loading").show();
 });
 
+$(document).trigger('initAudio'); 
     </script>
 
-    <style>
+<style>
 body {
-  padding: 50px;
+  padding: 30px;
+  color: white;
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-        button {
-          display: block;
-          margin: 30px 10px;
-          padding: 10px;;
-        }
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+}
 
-    </style>
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 2px;
+}
 
+a:hover, a:active {
+  background-color: red;
+}
+</style>
   </head>
   <body>
-    <a href="https://github.com/pupunzi/jquery.mb.audio"><img
-       style="width:100px; position: absolute; top: 20px; right: 20px; border: 0; z-index: 1000"
-       src="http://upload.wikimedia.org/wikipedia/commons/b/b3/GitHub.svg" alt="Fork me on GitHub"></a>
-    111
-    <h2>jquery.mb.audio API: Using the "direct play" and the "sprite" features.</h2>
 
-    <p>To invoke the "play" event for a specific sprite:<br>
-    <b>$.mbAudio.play(audio, sprite)</b></p>
+      <img style="width:200px; top: 20px; right: 20px; border: 0; z-index: 999" src="dlm.jpg" alt="">
+   <h2>Sound Clips from Doug Loves Movies</h2>
+    <p>
+    Doug Loves Movies
+    <p>Chris Cubas, John Erler and Sean Jordan guest
+    <p>Live from Cap City in Austin, Doug welcomes Chris Cubas, John Erler and Sean Jordan back to the show.
+    </p>
 
-    <div id="start">
-      <p>This button is needed to initialize audio (see the table in the documentation) [todo: wiki].</p>
-      <script>
-if (isiOs || !isDevice) {
-  document.write("<p>This button will also initialize the effects sprite and will play the background sprite (only iOS).</p>")
-}
-      </script>
-      <button style="cursor:pointer" onmousedown="$(document).trigger('initAudio'); ">Lets start</button>
-    </div>
-    <div id="loading" style="display: none;">... loading ...</div>
+    <a href="http://douglovesmovies.com/">
+      DougLovesMovies.com
+    </a>
 
-    <div id="buttons" style="display: none;">
-      <p>The three buttons below play sounds from the same audio file (sounds/bgndsSprite .mp3 or .ogg)</b></p>
-      <button style="cursor:pointer" onmousedown="$.mbAudio.play('effectSprite', 'great')">play effect 1</button>
-      <button style="cursor:pointer" onmousedown="$.mbAudio.play('effectSprite', 'wow')">play effect 2</button>
-      <button id="playSound1" style="cursor:pointer" onmousedown="$.mbAudio.play('effectSprite', 'streak')">play effect 3
-        (it loops 3 times)
-      </button>
+    <a href="https://twitter.com/DougBenson">@DougBenson</a>
+    <a href="https://twitter.com/ChrisCubas">@ChrisCubas</a>
+    <a href="https://twitter.com/elkmating">@Elkmating (John Erler)</a>
+    <a href="https://twitter.com/SeanSJordan">@SeanSJordan</a>
 
-      <div id="bgndControls" style="display: none">
-        <button style="cursor:pointer" onclick="$.mbAudio.pause('backgroundSprite')">stop background sound</button>
-        <button style="cursor:pointer" onclick="$.mbAudio.play('backgroundSprite','levelIntro')">start background sound </button>
-        <button style="cursor:pointer" onclick="$.mbAudio.play('doug','doug')">Owchee Wowchee</button>
+    <br>
+    <div id="loading" style="color: red; font-size: 20px;">Loading audio...</div>
+    <br>
+    <p>AUDIO:</p>
 
-      </div>
+       <div id="start">
+         <script> //if (isiOs || !isDevice) { document.write("<p>This button will also initialize the effects sprite and will play the background sprite (only iOS).</p>") }
+         </script>
+         <!--<button style="cursor:pointer" onmousedown="$(document).trigger('initAudio'); ">Lets start</button>-->
+       </div>
+       <div id="buttons" style="display: none;">
+         <div id="bgndControls" style="">
+           <button style="cursor:pointer" onclick="$.mbAudio.play('doug','doug')">Ouchy_Wowchy_1</button>
+           <button style="cursor:pointer" onclick="$.mbAudio.play('doug2','doug2')">Ouchy_Wowchy_2</button>
+           <button style="cursor:pointer" onclick="$.mbAudio.play('doug3','doug3')">Ouchy_Wowchy_3</button>
+           <button style="cursor:pointer" onclick="$.mbAudio.play('doug4','doug4')">Ouchy_Wowchy_4</button>
+           <button style="cursor:pointer" onclick="$.mbAudio.play('doug5','doug5')">Oh_Yeauh_1</button>
+           <button style="cursor:pointer" onclick="$.mbAudio.play('doug6','doug6')">Oh_Yeauh_2</button>
+           <button style="cursor:pointer" onclick="$.mbAudio.play('doug7','doug7')">Oh_Yeauh_3</button>
+           <button style="cursor:pointer" onclick="$.mbAudio.play('doug8','doug8')">(special!)Brains!</button>
 
-      <script>
-if (!isAndroid)
-  $("#bgndControls").show();
-      </script>
-      <br>
-      <a href="demo_queue.html">See also the "Queue" demo</a>
-    </div>
+         </div>
+         <script> if (!isAndroid) $("#bgndControls").show(); </script>
+       </div>
   </body>
 </html>
