@@ -43,7 +43,18 @@
         sprite: {
           doug3 : {id: "doug3", start: 0, end: 1.3, loop: false},
         }
+      },
+
+      lod: {
+        id    : "lod",
+        ogg   : "sounds/lod.ogg",
+        mp3   : "sounds/lod.mp3",
+        //example of sprite
+        sprite: {
+          lod: {id: "lod", start: 0, end: 1.3, loop: false},
+        }
       }
+
     };
 
 function audioIsReady() {
@@ -92,6 +103,9 @@ padding: 10px;;
            <button style="cursor:pointer" onclick="$.mbAudio.play('doug','doug')">WELL</button>
            <button style="cursor:pointer" onclick="$.mbAudio.play('doug2','doug2')">WELL2</button>
            <button style="cursor:pointer" onclick="$.mbAudio.play('doug3','doug3')">WELL3</button>
+           <br>
+           <img style="width:30%" src="lod.jpg">
+           <button style="cursor:pointer" onclick="$.mbAudio.play('lod','lod')">OOOWWWHHATTARUSH</button>
 
          </div>
          <script> if (!isAndroid) $("#bgndControls").show(); </script>
